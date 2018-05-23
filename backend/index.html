@@ -265,29 +265,29 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#callback-after-pgresponse" title="Callback after PGResponse" class="md-nav__link">
     Callback after PGResponse
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#query" title="Query" class="md-nav__link">
     Query
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#refund" title="Refund" class="md-nav__link">
     Refund
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -406,29 +406,29 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#callback-after-pgresponse" title="Callback after PGResponse" class="md-nav__link">
     Callback after PGResponse
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#query" title="Query" class="md-nav__link">
     Query
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#refund" title="Refund" class="md-nav__link">
     Refund
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -621,7 +621,7 @@ Sample Request
     ]
   }
 }</p>
-<h2 id="callback-after-pgresponse">Callback after PGResponse</h2>
+<h3 id="callback-after-pgresponse">Callback after PGResponse</h3>
 <p>Request (will be sent as form parameters)</p>
 <p>{
       "transaction_status": "", //  SUCCESS, FAILED
@@ -672,7 +672,7 @@ Sample Request
 }</p>
 <p>Form Data</p>
 <p>transaction_status=""&amp;account_type=""&amp;pg_trackid=""&amp;merchant_adjustments=[ {'offer_id':'', 'offer_unit_price':0, 'amount_applied':0, 'amount_requested':0, 'actual_subvention_amount':0, 'effective_subvention_amount':0, ent_response_code':'', 'metadata':{'paymentSystem':'', 'offerId':'', 'discountType':''}} ]transaction_amount=""&amp;emi_months=""&amp;merchant_id=""&amp;transaction_response_code=""&amp;payzippy_transaction_id=""&amp;having_multiple_transactions=""&amp;bank_name=""&amp;card_brand=""&amp;hash_method=""&amp;transaction_time=""&amp;transaction_currency=""&amp;payment_method=""&amp;timestamp=""&amp;merchant_key_id=""&amp;primary_record={'transaction_id': '', 'primary_amount': ''}merchant_transaction_id=""&amp;bank_transaction_id=""&amp;payment_instrument=""&amp;transaction_response_message=""&amp;pg_mid=""&amp;pg_name=""&amp;pg_authcode=""&amp;pg_id=""&amp;is_international=""&amp;fraud_action=""&amp;is_risky_instrument=""&amp;transaction_auth_state=""&amp;hash=""&amp;masked_card_number=""&amp;transaction_status=""&amp;account_type=""&amp;pg_trackid=""&amp;merchant_adjustments=""&amp;transaction_amount=""&amp;emi_months=""&amp;merchant_id=""&amp;transaction_response_code=""&amp;payzippy_transaction_id=""&amp;having_multiple_transactions=""&amp;bank_name=""&amp;card_brand=""&amp;hash_method=""&amp;transaction_time=""&amp;transaction_currency=""&amp;payment_method=""&amp;timestamp=""&amp;merchant_key_id=""&amp;primary_record=""&amp;merchant_transaction_id=""&amp;bank_transaction_id=""&amp;payment_instrument=""&amp;transaction_response_message=""&amp;pg_mid=""&amp;pg_name=""&amp;pg_authcode=""&amp;pg_id=""&amp;is_international=""&amp;fraud_action=""&amp;is_risky_instrument=""&amp;transaction_auth_state=""&amp;hash=""&amp;masked_card_number=""</p>
-<h2 id="query">Query</h2>
+<h3 id="query">Query</h3>
 <p>Path: 1/payment/query</p>
 <p>Method: POST
 Body: QueryRequest 
@@ -787,7 +787,7 @@ Sample Request
   "merchantTransactionId": "transaction1",
   "paymentTransactionId": "PZT1712211056FQM0400"
 }</p>
-<h2 id="refund">Refund</h2>
+<h3 id="refund">Refund</h3>
 <p>Path: 1/payment/query</p>
 <p>Method: POST
 Body: RefundRequest 
