@@ -1,0 +1,8 @@
+site_name: Ultra documentation
+pages:
+    - Home: index.md
+    - User guide : userguide.md
+    - Client Side API: clients.md
+    - Server Side API: backend.md
+theme:
+  name: 'material'
