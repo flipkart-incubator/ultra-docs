@@ -134,7 +134,7 @@ Sample Request
   }
 }
 
-##Callback after PGResponse
+###Callback after PGResponse
 
 Request (will be sent as form parameters)
 
@@ -193,7 +193,7 @@ transaction_status=""&account_type=""&pg_trackid=""&merchant_adjustments=[ {'off
 
 
 
-##Query
+###Query
 Path: 1/payment/query
 
 Method: POST
@@ -311,7 +311,7 @@ Sample Request
   "paymentTransactionId": "PZT1712211056FQM0400"
 }
 
-##Refund
+###Refund
 Path: 1/payment/query
 
 Method: POST
