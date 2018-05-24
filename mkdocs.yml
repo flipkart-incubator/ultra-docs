@@ -5,6 +5,7 @@ pages:
     - User guide : userguide.md
     - Client Side API: clients.md
     - Server Side API: backend.md
+    - Demo: demo.md
 theme:
   name: 'material'
 markdown_extensions:
