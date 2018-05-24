@@ -370,24 +370,32 @@
                 <h2 id="integration-steps-on-client-side">Integration steps on Client Side</h2>
 <h3 id="step-1">Step 1</h3>
 <p>Paste this within your HTML's head tag.</p>
-<p><code>&lt;script src="https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.0.8.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.0.8.js&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
 <h3 id="step-2">Step 2</h3>
 <p>Initialized the SDK with your clientId. Contact flipkart to generate a clientId and secret.</p>
-<p><code>&lt;script type="text/javascript"&gt;
-var clientId = "playground";
-var fkPlatform = FKExtension.newPlatformInstance(clientId);
-&lt;/script&gt;</code>
-Copy</p>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+<span class="kd">var</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="s2">&quot;playground&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">fkPlatform</span> <span class="o">=</span> <span class="nx">FKExtension</span><span class="p">.</span><span class="nx">newPlatformInstance</span><span class="p">(</span><span class="nx">clientId</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
+
 <h3 id="step-3">Step 3</h3>
 <p>Call getToken to get a grant token</p>
-<p><code>var scopeReq = [{"scope":"user.email","isMandatory":true,"shouldVerify":false},{"scope":"user.mobile","isMandatory":false,"shouldVerify":false},{"scope":"user.name","isMandatory":false,"shouldVerify":false}];
-fkPlatform.getModuleHelper().getPermissionsModule().getToken(scopeReq).then(
-function (e) {
-    console.log("Your grant token is: " + e.grantToken);
-}).catch(
-function (e) {
-    console.log(e.message);
-}</code></p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">scopeReq</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;scope&quot;</span><span class="o">:</span><span class="s2">&quot;user.email&quot;</span><span class="p">,</span><span class="s2">&quot;isMandatory&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span><span class="s2">&quot;shouldVerify&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">},{</span><span class="s2">&quot;scope&quot;</span><span class="o">:</span><span class="s2">&quot;user.mobile&quot;</span><span class="p">,</span><span class="s2">&quot;isMandatory&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span><span class="s2">&quot;shouldVerify&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">},{</span><span class="s2">&quot;scope&quot;</span><span class="o">:</span><span class="s2">&quot;user.name&quot;</span><span class="p">,</span><span class="s2">&quot;isMandatory&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span><span class="s2">&quot;shouldVerify&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">}];</span>
+<span class="nx">fkPlatform</span><span class="p">.</span><span class="nx">getModuleHelper</span><span class="p">().</span><span class="nx">getPermissionsModule</span><span class="p">().</span><span class="nx">getToken</span><span class="p">(</span><span class="nx">scopeReq</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+<span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Your grant token is: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">grantToken</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span>
+<span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <h3 id="step-4">Step 4</h3>
 <p>Send the token to you server using a AJAX call or any other mechanism. This token can be used by the server to get an access token. This access token can be use to fetch the users identity token as well as other resources like name, email address and verified mobile number on the server side. Refer the server side guide for details. Note : Always get user data on server side and not on the client side to avoid security risks like MITM attacks.</p>
                 
