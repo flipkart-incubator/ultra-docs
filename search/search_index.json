@@ -209,6 +209,16 @@
             "location": "/backend/#test-endpoint-for-secure-token", 
             "text": "Path: /1/dummy\nMethod: GET\nHeader: secureToken\nResponse:  Will be HTTP 200 if secureToken is valid otherwise response code will be self explanatory.", 
             "title": "Test endpoint for secure token"
+        }, 
+        {
+            "location": "/demo/", 
+            "text": "Ultra playground\n\n\nTo play around with the API's first install Flipkart Android app and then clicking on \nthis link\n on your android phone will open Ultra playground within flipkart app.\nThis process will open \nthis page\n within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.", 
+            "title": "Demo"
+        }, 
+        {
+            "location": "/demo/#ultra-playground", 
+            "text": "To play around with the API's first install Flipkart Android app and then clicking on  this link  on your android phone will open Ultra playground within flipkart app.\nThis process will open  this page  within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.", 
+            "title": "Ultra playground"
         }
     ]
 }
