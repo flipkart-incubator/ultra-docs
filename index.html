@@ -194,43 +194,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#integration-steps" title="Integration steps" class="md-nav__link">
-    Integration steps
+  <a href="#what-is-ultra" title="What is Ultra?" class="md-nav__link">
+    What is Ultra?
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" title="Step 1" class="md-nav__link">
-    Step 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2" title="Step 2" class="md-nav__link">
-    Step 2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" title="Step 3" class="md-nav__link">
-    Step 3
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4" title="Step 4" class="md-nav__link">
-    Step 4
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -242,6 +208,18 @@
   
 </nav>
     
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="onboarding/" title="Onboarding" class="md-nav__link">
+      Onboarding
+    </a>
   </li>
 
     
@@ -302,43 +280,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#integration-steps" title="Integration steps" class="md-nav__link">
-    Integration steps
+  <a href="#what-is-ultra" title="What is Ultra?" class="md-nav__link">
+    What is Ultra?
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" title="Step 1" class="md-nav__link">
-    Step 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2" title="Step 2" class="md-nav__link">
-    Step 2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" title="Step 3" class="md-nav__link">
-    Step 3
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4" title="Step 4" class="md-nav__link">
-    Step 4
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -360,29 +304,71 @@
                 
                 
                 <h1 id="welcome-to-ultra">Welcome to Ultra</h1>
-<h2 id="integration-steps">Integration steps</h2>
-<h3 id="step-1">Step 1</h3>
-<p>Paste this within your HTML's head tag.</p>
-<p><code>&lt;script src="https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.0.8.js" type="text/javascript"&gt;&lt;/script&gt;</code></p>
-<h3 id="step-2">Step 2</h3>
-<p>Initialized the SDK with your clientId. Contact flipkart to generate a clientId and secret.</p>
-<p><code>&lt;script type="text/javascript"&gt;
-var clientId = "playground";
-var fkPlatform = FKExtension.newPlatformInstance(clientId);
-&lt;/script&gt;</code>
-Copy</p>
-<h3 id="step-3">Step 3</h3>
-<p>Call getToken to get a grant token</p>
-<p><code>var scopeReq = [{"scope":"user.email","isMandatory":true,"shouldVerify":false},{"scope":"user.mobile","isMandatory":false,"shouldVerify":false},{"scope":"user.name","isMandatory":false,"shouldVerify":false}];
-fkPlatform.getModuleHelper().getPermissionsModule().getToken(scopeReq).then(
-function (e) {
-    console.log("Your grant token is: " + e.grantToken);
-}).catch(
-function (e) {
-    console.log(e.message);
-}</code></p>
-<h3 id="step-4">Step 4</h3>
-<p>Send the token to you server using a AJAX call or any other mechanism. This token can be used by the server to get an access token. This access token can be use to fetch the users identity token as well as other resources like name, email address and verified mobile number on the server side. Refer the server side guide for details. Note : Always get user data on server side and not on the client side to avoid security risks like MITM attacks.</p>
+<p>We are pleased to announce the launch of version 1 of Ultra Platform on Android App. With this launch, we take a leap forward towards a vision of becoming a single shopping destination for all customer needs. This effort also brings us to a place where we can enable faster learnings for us on not-so-known shopping categories like Travel &amp; Food, as well as non-shopping categories like Video and Music. It’s an idea which is designed to pave new ways for users to interact with any 3rd party App within Flipkart App securely and with trust. Hence, Ultra and its meaning ( Revolution) has become synonymous and is consecrated by usage.</p>
+<h2 id="what-is-ultra"><strong>What is Ultra?</strong></h2>
+<p>Ultra is a project name for all the efforts required to <strong>onboard</strong> other services ( like Travel tickets, Bill payments, etc) through <strong>partners</strong> like MakeMyTrip, PhonePe, etc on Flipkart Android App, keeping following ethos in mind with utmost sincerity. </p>
+<ol>
+<li>
+<p>Swift onboarding</p>
+</li>
+<li>
+<p>Data Security</p>
+</li>
+<li>
+<p>User Privacy</p>
+</li>
+<li>
+<p>Payment Security</p>
+</li>
+<li>
+<p>User Experience</p>
+</li>
+<li>
+<p>Customer Experience</p>
+</li>
+<li>
+<p>Developer Experience</p>
+</li>
+<li>
+<p>App Performance</p>
+</li>
+<li>
+<p>Affordability</p>
+</li>
+</ol>
+<p><strong>What is launched in Ultra V1?</strong></p>
+<p>In Ultra V1, we have setup a minimal viable process required to onboard a partner keeping above ethos in check. We also took some strategic product decisions which has shaped Ultra as a service offering to partners, like following</p>
+<ol>
+<li>
+<p>User experience over purchase funnel will be built and owned by the partner.</p>
+</li>
+<li>
+<p>Discovery of Applications will be controlled by Flipkart.</p>
+</li>
+<li>
+<p>Only Logged in Users can access partner applications.</p>
+</li>
+<li>
+<p>Payments is powered by Flipkart Payment Gateway(FKPG).</p>
+</li>
+<li>
+<p>Flipkart can run offers on partners purchase funnel.</p>
+</li>
+<li>
+<p>Fulfillment and post purchase experience will also be built and owned by the partner.</p>
+</li>
+<li>
+<p>All customer support related queries will be answered by the partner</p>
+</li>
+<li>
+<p>Money will reach partner’s nodal account directly.</p>
+</li>
+</ol>
+<p>You can read step by step approach to onboard a partner in the Onboarding section</p>
+<p><strong>What is in for Partners/Businesses?</strong></p>
+<p>Partners can integrate their Apps to Flipkart’s Android App using developer’s friendly API’s and use the benefit of being on more than 100 million handhelds in the country. </p>
+<p><strong>What is in for Developers?</strong></p>
+<p>Ultra plans to become one of the most dominant channel that no business or, developer can afford to miss. Ultra platform is one of its kind which supports a wide variety of technologies from the most basic web apps to very advanced experiences powered by React Native. This provides ample room to grow and develop unique skills while keeping entry barrier low so that no one is overwhelmed. In near future we would want Ultra to be a prestigious developer platform enabling cutting edge experiences. Being great on Ultra should be synonymous with being a great developer.</p>
                 
                   
                 
@@ -404,13 +390,13 @@ function (e) {
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="userguide/" title="User guide" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="onboarding/" title="Onboarding" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                User guide
+                Onboarding
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
