@@ -179,6 +179,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../onboarding/" title="Onboarding" class="md-nav__link">
+      Onboarding
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../userguide/" title="User guide" class="md-nav__link">
       User guide
     </a>
@@ -502,27 +514,34 @@
 <p>Prod endpoint: <code>https://platform.flipkart.net</code></p>
 <h2 id="access-token-flow">Access token flow</h2>
 <p>Using the grantToken from the SDK, you have to fetch the accessToken before querying for any resources.
-Get Auth token flow
-Path: /1/authorization/auth</p>
-<p>Method: GET
-Query parameters: </p>
-<p>grantToken : String
+Get Auth token flow</p>
+<div class="codehilite"><pre><span></span>Path: /1/authorization/auth
+
+Method: GET
+
+Query parameters: 
+grantToken : String
 clientId : String
 clientSecret : String
+
 Response :
 AuthTokenResponse {
 identityToken (string),
 accessToken (string)
-}</p>
+}
+</pre></div>
+
+
 <h2 id="resource-fetching-flow">Resource fetching flow</h2>
 <p>Resources like user.mobile, user.email can be fetched with this API
-fetch bulk data
-Path: /1/resource/bulk</p>
-<p>Method: POST
+fetch bulk data</p>
+<div class="codehilite"><pre><span></span>Path: /1/resource/bulk
+
+Method: POST
 Query parameters: 
 accessToken : String
-Body: List<String> //where each string is scope for which data is to be fetched.
-Response : Map<String,Object> // String the scope and Object for each scope is defined below
+Body: List&lt;String&gt; //where each string is scope for which data is to be fetched.
+Response : Map&lt;String,Object&gt; // String the scope and Object for each scope is defined below
 user.mobile{
 email(string)
 isVerified(boolean)
@@ -530,328 +549,361 @@ isVerified(boolean)
 user.email{
 mobileNumber(string)
 isVerified(boolean)
-}</p>
+}
+</pre></div>
+
+
 <h2 id="payment-flow">Payment flow.</h2>
 <h3 id="payment-token">Payment Token</h3>
-<p>Path: 1/payment/token</p>
-<p>Method: POST
-Body: PaymentTokenRequest 
-PaymentTokenRequest {
-merchantCredential(MerchantCredential),
-amountPaise (long),
-paymentExpiryMilliSeconds (long, optional),
-userInfo (UserInfo),
-adjustmentWrapper(AdjustmentWrapper, optional),
-priceSummary (PriceSummary),
-successfulCallBackUrl (string),
-failureCallBackUrl (string),
-address (Address, optional),
-description (string, optional),
-metadata (string, optional),
-merchantTransactionId (string),
-merchantReferenceId (string)
-}
-MerchantCredential {
-name (string),
-password (string)
-}
-UserInfo {
-name (string, optional),
-phone (string, optional),
-email (string, optional),
-identityToken (string)
-}
-AdjustmentWrapper {
-eligibleAdjustments(Array[EligibleAdjustment], optional)
-}
-EligibleAdjustment {
-adjustment_id (string, optional),
-offerUnitPrice (long, optional),
-metadata (object, optional)
-}
-PriceSummary {
-basePricePaise (long),
-itemCount (integer),
-breakup(Array[PriceSummaryBreakup])
-}
-PriceSummaryBreakup {
-description (string),
-displayText (string),
-valueInPaise (long),
-breakupType (string) = ['DEFAULT' or 'DISCOUNT']
-}
-Address {
-addressLine (string, optional),
-city (string, optional),
-state (string, optional),
-pincode (string, optional),
-country (string, optional)
-}
-Response : PaymentToken
-PaymentToken {
-token (string)
-}
-Sample Request
+<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">token</span>
+
+<span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
+<span class="n">Body</span><span class="o">:</span> <span class="n">PaymentTokenRequest</span> 
+<span class="n">PaymentTokenRequest</span> <span class="o">{</span>
+<span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
+<span class="n">amountPaise</span> <span class="o">(</span><span class="n">long</span><span class="o">),</span>
+<span class="n">paymentExpiryMilliSeconds</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">userInfo</span> <span class="o">(</span><span class="n">UserInfo</span><span class="o">),</span>
+<span class="n">adjustmentWrapper</span><span class="o">(</span><span class="n">AdjustmentWrapper</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">priceSummary</span> <span class="o">(</span><span class="n">PriceSummary</span><span class="o">),</span>
+<span class="n">successfulCallBackUrl</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">failureCallBackUrl</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">address</span> <span class="o">(</span><span class="n">Address</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">description</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">metadata</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">merchantReferenceId</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">MerchantCredential</span> <span class="o">{</span>
+<span class="n">name</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">password</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">UserInfo</span> <span class="o">{</span>
+<span class="n">name</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">phone</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">email</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">identityToken</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">AdjustmentWrapper</span> <span class="o">{</span>
+<span class="n">eligibleAdjustments</span><span class="o">(</span><span class="n">Array</span><span class="o">[</span><span class="n">EligibleAdjustment</span><span class="o">],</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">EligibleAdjustment</span> <span class="o">{</span>
+<span class="n">adjustment_id</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">offerUnitPrice</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">metadata</span> <span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">PriceSummary</span> <span class="o">{</span>
+<span class="n">basePricePaise</span> <span class="o">(</span><span class="n">long</span><span class="o">),</span>
+<span class="n">itemCount</span> <span class="o">(</span><span class="n">integer</span><span class="o">),</span>
+<span class="n">breakup</span><span class="o">(</span><span class="n">Array</span><span class="o">[</span><span class="n">PriceSummaryBreakup</span><span class="o">])</span>
+<span class="o">}</span>
+<span class="n">PriceSummaryBreakup</span> <span class="o">{</span>
+<span class="n">description</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">displayText</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">valueInPaise</span> <span class="o">(</span><span class="n">long</span><span class="o">),</span>
+<span class="n">breakupType</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;DEFAULT&#39;</span> <span class="n">or</span> <span class="s1">&#39;DISCOUNT&#39;</span><span class="o">]</span>
+<span class="o">}</span>
+<span class="n">Address</span> <span class="o">{</span>
+<span class="n">addressLine</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">city</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">state</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pincode</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">country</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">Response</span> <span class="o">:</span> <span class="n">PaymentToken</span>
+<span class="n">PaymentToken</span> <span class="o">{</span>
+<span class="n">token</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Sample Request
 {
-  "merchantCredential": {
-    "name": "Enter name here",
-    "password": "Enter hash here"
+  &quot;merchantCredential&quot;: {
+    &quot;name&quot;: &quot;Enter name here&quot;,
+    &quot;password&quot;: &quot;Enter hash here&quot;
   },
-  "merchantTransactionId": "transaction1",
-  "merchantReferenceId": "order1",
-  "amountPaise": 200,
-  "paymentExpiryMilliSeconds": 100000,
-  "userInfo": {
-    "identityToken": "Actual ID token here"
+  &quot;merchantTransactionId&quot;: &quot;transaction1&quot;,
+  &quot;merchantReferenceId&quot;: &quot;order1&quot;,
+  &quot;amountPaise&quot;: 200,
+  &quot;paymentExpiryMilliSeconds&quot;: 100000,
+  &quot;userInfo&quot;: {
+    &quot;identityToken&quot;: &quot;Actual ID token here&quot;
   },
-  "successfulCallBackUrl": "http://www.partner.com/success",
-  "failureCallBackUrl": "http://www.partner.com/failure",
-  "description": "this is a test transaction",
-  "metadata": "this is a test transaction",
-  "priceSummary": {
-    "basePricePaise": 100,
-    "itemCount": 0,
-    "breakup": [
+  &quot;successfulCallBackUrl&quot;: &quot;http://www.partner.com/success&quot;,
+  &quot;failureCallBackUrl&quot;: &quot;http://www.partner.com/failure&quot;,
+  &quot;description&quot;: &quot;this is a test transaction&quot;,
+  &quot;metadata&quot;: &quot;this is a test transaction&quot;,
+  &quot;priceSummary&quot;: {
+    &quot;basePricePaise&quot;: 100,
+    &quot;itemCount&quot;: 0,
+    &quot;breakup&quot;: [
       {
-        "description": "convinience_fee",
-        "displayText": "Convinence Fee",
-        "valueInPaise": 100,
-        "breakupType": "DEFAULT"
+        &quot;description&quot;: &quot;convinience_fee&quot;,
+        &quot;displayText&quot;: &quot;Convinence Fee&quot;,
+        &quot;valueInPaise&quot;: 100,
+        &quot;breakupType&quot;: &quot;DEFAULT&quot;
       }
     ]
   }
-}</p>
+}
+</pre></div>
+
+
 <h3 id="callback-after-pgresponse">Callback after PGResponse</h3>
-<p>Request (will be sent as form parameters)</p>
-<p>{
-      "transaction_status": "", //  SUCCESS, FAILED
-      "account_type": "NODAL",
-      "pg_trackid": "",   <br />
-      "merchant_adjustments": 
-      "[
-      {"offer_id":"",
-      "offer_unit_price":0,
-      "amount_applied":0,
-      "amount_requested":0,
-      "actual_subvention_amount":0,
-      "effective_subvention_amount":0,
-      "Adjustment_response_code": AdjustmentResponseCode,   //  Appendix
-      "metadata":{"paymentSystem":"", "offerId":"", "discountType":""}}
-      ]",
-      "transaction_amount": "",
-      "emi_months": "",
-      "merchant_id": "",
-      "transaction_response_code": "",      //  Appendix
-      "payzippy_transaction_id": "",
-      "having_multiple_transactions": "",
-      "bank_name": "",
-      "card_brand": CardName,   //  Appendix
-      "hash_method": "",
-      "transaction_time": "",
-      "transaction_currency": "",
-      "payment_method": "",     //  Appendix
-      "timestamp": "",
-      "merchant_key_id": "",
-      "primary_record": 
-      "{"transaction_id": "", "primary_amount": ""}",
-      "merchant_transaction_id": "",
-      "bank_transaction_id": "",
-      "payment_instrument": "",
-      "transaction_response_message": "",
-      "pg_mid": "",
-      "pg_name": "",
-      "pg_authcode": "",
-      "pg_id": "",
-      "is_international": "",
-      "fraud_action": "",
-      "is_risky_instrument": "",
-      "transaction_auth_state": "",
-      "hash": "",
-      "masked_card_number": "",
-"card_bin": "",
-}</p>
-<p>Form Data</p>
-<p>transaction_status=""&amp;account_type=""&amp;pg_trackid=""&amp;merchant_adjustments=[ {'offer_id':'', 'offer_unit_price':0, 'amount_applied':0, 'amount_requested':0, 'actual_subvention_amount':0, 'effective_subvention_amount':0, ent_response_code':'', 'metadata':{'paymentSystem':'', 'offerId':'', 'discountType':''}} ]transaction_amount=""&amp;emi_months=""&amp;merchant_id=""&amp;transaction_response_code=""&amp;payzippy_transaction_id=""&amp;having_multiple_transactions=""&amp;bank_name=""&amp;card_brand=""&amp;hash_method=""&amp;transaction_time=""&amp;transaction_currency=""&amp;payment_method=""&amp;timestamp=""&amp;merchant_key_id=""&amp;primary_record={'transaction_id': '', 'primary_amount': ''}merchant_transaction_id=""&amp;bank_transaction_id=""&amp;payment_instrument=""&amp;transaction_response_message=""&amp;pg_mid=""&amp;pg_name=""&amp;pg_authcode=""&amp;pg_id=""&amp;is_international=""&amp;fraud_action=""&amp;is_risky_instrument=""&amp;transaction_auth_state=""&amp;hash=""&amp;masked_card_number=""&amp;transaction_status=""&amp;account_type=""&amp;pg_trackid=""&amp;merchant_adjustments=""&amp;transaction_amount=""&amp;emi_months=""&amp;merchant_id=""&amp;transaction_response_code=""&amp;payzippy_transaction_id=""&amp;having_multiple_transactions=""&amp;bank_name=""&amp;card_brand=""&amp;hash_method=""&amp;transaction_time=""&amp;transaction_currency=""&amp;payment_method=""&amp;timestamp=""&amp;merchant_key_id=""&amp;primary_record=""&amp;merchant_transaction_id=""&amp;bank_transaction_id=""&amp;payment_instrument=""&amp;transaction_response_message=""&amp;pg_mid=""&amp;pg_name=""&amp;pg_authcode=""&amp;pg_id=""&amp;is_international=""&amp;fraud_action=""&amp;is_risky_instrument=""&amp;transaction_auth_state=""&amp;hash=""&amp;masked_card_number=""</p>
+<div class="codehilite"><pre><span></span>Request (will be sent as form parameters)
+
+{
+      &quot;transaction_status&quot;: &quot;&quot;, //  SUCCESS, FAILED
+      &quot;account_type&quot;: &quot;NODAL&quot;,
+      &quot;pg_trackid&quot;: &quot;&quot;,     
+      &quot;merchant_adjustments&quot;: 
+      &quot;[
+      {&quot;offer_id&quot;:&quot;&quot;,
+      &quot;offer_unit_price&quot;:0,
+      &quot;amount_applied&quot;:0,
+      &quot;amount_requested&quot;:0,
+      &quot;actual_subvention_amount&quot;:0,
+      &quot;effective_subvention_amount&quot;:0,
+      &quot;Adjustment_response_code&quot;: AdjustmentResponseCode,   //  Appendix
+      &quot;metadata&quot;:{&quot;paymentSystem&quot;:&quot;&quot;, &quot;offerId&quot;:&quot;&quot;, &quot;discountType&quot;:&quot;&quot;}}
+      ]&quot;,
+      &quot;transaction_amount&quot;: &quot;&quot;,
+      &quot;emi_months&quot;: &quot;&quot;,
+      &quot;merchant_id&quot;: &quot;&quot;,
+      &quot;transaction_response_code&quot;: &quot;&quot;,      //  Appendix
+      &quot;payzippy_transaction_id&quot;: &quot;&quot;,
+      &quot;having_multiple_transactions&quot;: &quot;&quot;,
+      &quot;bank_name&quot;: &quot;&quot;,
+      &quot;card_brand&quot;: CardName,   //  Appendix
+      &quot;hash_method&quot;: &quot;&quot;,
+      &quot;transaction_time&quot;: &quot;&quot;,
+      &quot;transaction_currency&quot;: &quot;&quot;,
+      &quot;payment_method&quot;: &quot;&quot;,     //  Appendix
+      &quot;timestamp&quot;: &quot;&quot;,
+      &quot;merchant_key_id&quot;: &quot;&quot;,
+      &quot;primary_record&quot;: 
+      &quot;{&quot;transaction_id&quot;: &quot;&quot;, &quot;primary_amount&quot;: &quot;&quot;}&quot;,
+      &quot;merchant_transaction_id&quot;: &quot;&quot;,
+      &quot;bank_transaction_id&quot;: &quot;&quot;,
+      &quot;payment_instrument&quot;: &quot;&quot;,
+      &quot;transaction_response_message&quot;: &quot;&quot;,
+      &quot;pg_mid&quot;: &quot;&quot;,
+      &quot;pg_name&quot;: &quot;&quot;,
+      &quot;pg_authcode&quot;: &quot;&quot;,
+      &quot;pg_id&quot;: &quot;&quot;,
+      &quot;is_international&quot;: &quot;&quot;,
+      &quot;fraud_action&quot;: &quot;&quot;,
+      &quot;is_risky_instrument&quot;: &quot;&quot;,
+      &quot;transaction_auth_state&quot;: &quot;&quot;,
+      &quot;hash&quot;: &quot;&quot;,
+      &quot;masked_card_number&quot;: &quot;&quot;,
+&quot;card_bin&quot;: &quot;&quot;,
+}
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Form Data
+
+transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&quot;&quot;&amp;merchant_adjustments=[ {&#39;offer_id&#39;:&#39;&#39;, &#39;offer_unit_price&#39;:0, &#39;amount_applied&#39;:0, &#39;amount_requested&#39;:0, &#39;actual_subvention_amount&#39;:0, &#39;effective_subvention_amount&#39;:0, ent_response_code&#39;:&#39;&#39;, &#39;metadata&#39;:{&#39;paymentSystem&#39;:&#39;&#39;, &#39;offerId&#39;:&#39;&#39;, &#39;discountType&#39;:&#39;&#39;}} ]transaction_amount=&quot;&quot;&amp;emi_months=&quot;&quot;&amp;merchant_id=&quot;&quot;&amp;transaction_response_code=&quot;&quot;&amp;payzippy_transaction_id=&quot;&quot;&amp;having_multiple_transactions=&quot;&quot;&amp;bank_name=&quot;&quot;&amp;card_brand=&quot;&quot;&amp;hash_method=&quot;&quot;&amp;transaction_time=&quot;&quot;&amp;transaction_currency=&quot;&quot;&amp;payment_method=&quot;&quot;&amp;timestamp=&quot;&quot;&amp;merchant_key_id=&quot;&quot;&amp;primary_record={&#39;transaction_id&#39;: &#39;&#39;, &#39;primary_amount&#39;: &#39;&#39;}merchant_transaction_id=&quot;&quot;&amp;bank_transaction_id=&quot;&quot;&amp;payment_instrument=&quot;&quot;&amp;transaction_response_message=&quot;&quot;&amp;pg_mid=&quot;&quot;&amp;pg_name=&quot;&quot;&amp;pg_authcode=&quot;&quot;&amp;pg_id=&quot;&quot;&amp;is_international=&quot;&quot;&amp;fraud_action=&quot;&quot;&amp;is_risky_instrument=&quot;&quot;&amp;transaction_auth_state=&quot;&quot;&amp;hash=&quot;&quot;&amp;masked_card_number=&quot;&quot;&amp;transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&quot;&quot;&amp;merchant_adjustments=&quot;&quot;&amp;transaction_amount=&quot;&quot;&amp;emi_months=&quot;&quot;&amp;merchant_id=&quot;&quot;&amp;transaction_response_code=&quot;&quot;&amp;payzippy_transaction_id=&quot;&quot;&amp;having_multiple_transactions=&quot;&quot;&amp;bank_name=&quot;&quot;&amp;card_brand=&quot;&quot;&amp;hash_method=&quot;&quot;&amp;transaction_time=&quot;&quot;&amp;transaction_currency=&quot;&quot;&amp;payment_method=&quot;&quot;&amp;timestamp=&quot;&quot;&amp;merchant_key_id=&quot;&quot;&amp;primary_record=&quot;&quot;&amp;merchant_transaction_id=&quot;&quot;&amp;bank_transaction_id=&quot;&quot;&amp;payment_instrument=&quot;&quot;&amp;transaction_response_message=&quot;&quot;&amp;pg_mid=&quot;&quot;&amp;pg_name=&quot;&quot;&amp;pg_authcode=&quot;&quot;&amp;pg_id=&quot;&quot;&amp;is_international=&quot;&quot;&amp;fraud_action=&quot;&quot;&amp;is_risky_instrument=&quot;&quot;&amp;transaction_auth_state=&quot;&quot;&amp;hash=&quot;&quot;&amp;masked_card_number=&quot;&quot;
+</pre></div>
+
+
 <h3 id="query">Query</h3>
-<p>Path: 1/payment/query</p>
-<p>Method: POST
-Body: QueryRequest 
-QueryRequest {
-merchantCredential(MerchantCredential),
-forcePgQuery (boolean, optional),
-merchantTransactionId (string),
-paymentTransactionId (string),
-transactionType (string, optional) = ['ADJUSTMENT' or 'SALE' or 'REFUND' or 'REVADJUSTMENT']
-}
-MerchantCredential {
-name (string),
-password (string)
-}
-Response : QueryResponse
- QueryResponse {
-responseStatus (string, optional) = ['SUCCESS' or 'FAILED'],
-responseType (string, optional),
-responseMessage (string, optional),
-messages (Array[QueryMessage], optional),
-merchantId (string, optional),
-merchantTransactionId (string, optional),
-merchantReferenceId (string, optional),
-transactionState (string, optional) = ['INITIATED' or 'PENDING' or 'SUCCESS' or 'FAILED'],
-paymentTransactions (Array[PaymentTransaction], optional)
-}</p>
-<p>QueryMessage {
-type (string, optional),
-message (string, optional)
-}
-PaymentTransaction {
-merchantTransactionId (string, optional),
-paymentTransactionId (string, optional),
-transactionAmount (long, optional),
-transactionCurrency (string, optional),
-transactionType (string, optional) = ['ADJUSTMENT' or 'SALE' or 'REFUND' or 'REVADJUSTMENT'],
-transactionTime (string, optional),
-realTransactionTime (string, optional),
-transactionStatus (string, optional) = ['INITIATED' or 'PENDING' or 'SUCCESS' or 'FAILED'],
-transactionAuthState (string, optional) = ['PRE_AUTH' or 'PARTIAL_CAPTURED' or 'FULL_CAPTURED' or 'CAPTURE_COMPLETED' or 'VOID' or 'FAILED' or 'SALE'],
-transactionResponseCode (string, optional) = ['REFUND_REQUEST_ACCEPTED' or 'REFUND_REQUEST_SENT' or 'REFUNDED' or 'REFUND_VOID_SUCCESS' or 'TXNID_NOT_FOUND' or 'REFUND_NOT_SUPPORTED' or 'REFUND_WINDOW_EXPIRED' or 'SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED' or 'SALE_TRANSACTION_UNSUCCESSFUL' or 'SALE_TRANSACTION_VOID' or 'PARTIAL_REFUNDS_UNSUPPORTED' or 'INSUFFICIENT_BALANCE' or 'DUPLICATE_REFUND_REQUEST' or 'EXCESS_REFUND_AMOUNT' or 'SALE_TRANSACTION_REFUNDED' or 'MULTIPLE_REFUNDS_UNSUPPORTED' or 'REFUND_TEMPORARILY_UNAVAILABLE' or 'VISA_DIRECT_TIMEOUT' or 'PENDING_ON_REFUND_REQUERY' or 'FAILED_ON_REFUND_REQUERY' or 'COULD_NOT_ACQUIRE_LOCK' or '_3DS_AUTH_FAILED' or '_3DS_AUTH_UNSUPPORTED' or 'ADDRESS_VERIFICATION_FAILED' or 'BANK_RESPONSE_DELAYED' or 'BIN_BLOCKED_BY_ACQUIRER' or 'CARD_EXPIRED' or 'CARD_NOT_ENROLLED' or 'CARD_NUMBER_INVALID' or 'COUNTRY_NOT_SUPPORTED' or 'CVV_INCORRECT' or 'CVV_MISSING' or 'SBI_DEBIT_CARD_BLOCKED' or 'PIN_INCORRECT' or 'CANCELLED_BY_ACQUIRER' or 'DECLINED_BY_ACQUIRER' or 'DECLINED_BY_ISSUER' or 'DECLINED_BY_RISK' or 'INSUFFICIENT_FUNDS' or 'ISSUER_TECHNICAL_ERROR' or 'EMI_NO_PG_FOR_CURRENT_AMOUNT' or 'NO_PG_FOR_CURRENT_AMOUNT' or 'UPI_EXTERNAL_VPA_UNSUPPORTED' or 'MID_NOT_ACTIVE' or 'MID_NOT_FOUND' or 'DUPLICATE_TXN_REQUEST' or 'INVALID_TRANSACTION_ID' or 'MERCHANT_AUTH_FAILED' or 'DECLINED_BY_PAYZIPPY' or 'BANK_UNAVAILABLE' or 'CARD_EXPIRY_DATE_INVALID' or 'CANCELLED_BY_USER' or 'USER_SESSION_TIMED_OUT' or 'USER_REFRESH_COUNT_EXCEEDED' or 'USER_RETRY_COUNT_EXCEEDED' or 'INVALID_PROCESSPAY_REQUEST' or 'MANDATORY_PARAM_MISSING' or 'INVALID_PARAM_FORMAT' or 'INVALID_PARAM_VALUE' or 'INVALID_PAYZIPPY_ACCOUNT' or 'NETBANKING_NOT_ENABLED' or 'NETBANKING_LIMIT_EXCEEDED' or 'ACCOUNT_ON_HOLD' or 'PAY_LATER_ELIGIBILITY_FAILURE' or 'PAYZIPPY_TECHNICAL_ERROR' or 'ACQUIRER_TECHNICAL_ERROR' or 'SUCCESS' or 'INITIATED' or 'PENDING' or 'REQUEST_FIELD_INVALID' or 'SYSTEM_UNDER_MAINTENANCE' or 'EMPTY_OTP_ERROR' or 'INTERNAL_SERVER_ERROR' or 'DATABASE_SERVER_ERROR' or 'PROTOCOL_ERROR' or 'NOT_PERMITTED' or 'CARD_NOT_IN_3DS_RANGE' or 'INVALID_AUTH_DATA' or 'INVALID_REQUEST_TYPE' or 'INVALID_REQUEST_XML_FORMAT' or 'HASH_CHECK_FAILED' or 'INVALID_MERCHANT_ID' or 'ITP_VALIDATION_FAILED' or 'INVALID_IVR_OTP_DATA' or 'TIMED_OUT' or 'UNABLE_TO_PROCESS_REQUEST' or 'INVALID_RESPONSE_XML_FORMAT' or 'CARD_BLOCKS' or 'OPEN_ECS_NACH_MANDATE' or 'DDF_DEALER' or 'CARD_OFFER_EXHAUSTED' or 'CHECK_SUM_MISMATCH'],
-refundResponseCode (string, optional) = ['SUCCESS' or 'REFUND_REQUEST_ACCEPTED' or 'REFUND_REQUEST_SENT' or 'REFUNDED' or 'REFUND_VOID_SUCCESS' or 'TXNID_NOT_FOUND' or 'REFUND_NOT_SUPPORTED' or 'REFUND_WINDOW_EXPIRED' or 'SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED' or 'SALE_TRANSACTION_UNSUCCESSFUL' or 'SALE_TRANSACTION_VOID' or 'PARTIAL_REFUNDS_UNSUPPORTED' or 'INSUFFICIENT_BALANCE' or 'DUPLICATE_REFUND_REQUEST' or 'EXCESS_REFUND_AMOUNT' or 'SALE_TRANSACTION_REFUNDED' or 'MULTIPLE_REFUNDS_UNSUPPORTED' or 'PAYZIPPY_TECHNICAL_ERROR' or 'ACQUIRER_TECHNICAL_ERROR' or 'REFUND_TEMPORARILY_UNAVAILABLE' or 'VISA_DIRECT_TIMEOUT' or 'PENDING_ON_REFUND_REQUERY' or 'FAILED_ON_REFUND_REQUERY' or 'COULD_NOT_ACQUIRE_LOCK' or 'UPI_EXTERNAL_VPA_UNSUPPORTED'],
-transactionResponseMessage (string, optional),
-bankArn (string, optional),
-refundSla (RefundSla, optional),
-paymentMethod (string, optional) = ['CREDIT' or 'DEBIT' or 'EMI' or 'NET' or 'PAYZIPPY' or 'NET_OPTIONS' or 'EMI_OPTIONS' or 'PHONEPE' or 'FLIPKART_CREDIT'],
-paymentInstrument (string, optional) = ['CREDIT' or 'DEBIT' or 'EMI' or 'NET' or 'PAYZIPPY' or 'NET_OPTIONS' or 'EMI_OPTIONS' or 'PHONEPE' or 'FLIPKART_CREDIT'],
-emiMonths (long, optional),
-bankName (string, optional),
-emiScheme (EmiScheme, optional),
-fraudAction (string, optional),
-fraudDecision (string, optional),
-fraudDetails (string, optional),
-fraudSource (string, optional),
-pgMID (string, optional),
-pgTrackId (string, optional),
-pgId (string, optional),
-pgName (string, optional),
-bankTransactionId (string, optional),
-terminalId (string, optional),
-pgAuthCode (string, optional),
-accountType (string, optional),
-subventionPercentage (long, optional),
-cardBrand (string, optional) = ['VISA' or 'MASTERCARD' or 'AMEX' or 'MAESTRO' or 'DINERS' or 'RUPAY' or 'DEFAULT' or 'DISCOVER' or 'BAJAJ'],
-cardBin (string, optional),
-orderId (string, optional),
-relatedRecords (Array[RelatedRecord], optional),
-primaryAmount (long, optional),
-merchantAdjustments (Array[MerchantAdjustment], optional),
-queryTransactionStatus (string, optional),
-metadata (string, optional),
-saleTransactionId (string, optional),
-confirmedFraud (boolean, optional),
-international (boolean, optional),
-riskyInstrument (boolean, optional)
-}
-RefundSla {
-minSla (long, optional),
-maxSla (long, optional)
-}
-EmiScheme {
-emiTenureInMonths (long, optional),
-interestValue (long, optional),
-interestType (string, optional)
-}
-RelatedRecord {
-adjustmentTransactionId (string, optional),
-relation (string, optional),
-adjustmentId (string, optional),
-adjustmentAmount (long, optional)
-}
-MerchantAdjustment {
-transactionId (string, optional),
-offerId (string, optional),
-offerUnitPrice (long, optional),
-amountApplied (long, optional),
-amountRequested (long, optional),
-promiseDate (string, optional),
-actualSubventionAmount (long, optional),
-effectiveSubventionAmount (long, optional),
-adjustmentResponseCode (string, optional) = ['EXPIRED' or 'INVALID' or 'FAILED_BY_TIME' or 'REJECTED_BY_WHITELIST' or 'REJECTED_BY_BLACKLIST' or 'REJECTED_BY_RULE' or 'REJECTED_LOW_PRIORITY' or 'EXHAUSTED_BY_TXNID' or 'EXHAUSTED_BY_EMAIL' or 'EXHAUSTED_BY_ACCOUNT' or 'EXHAUSTED_BY_PHONE' or 'EXHAUSTED_BY_IP' or 'EXHAUSTED_BY_ACCID' or 'EXHAUSTED_BY_MID' or 'EXHAUSTED_GLOBAL' or 'EXHAUSTED_BY_CARD' or 'MISSING_PAYMENT_INFO' or 'ELIGIBLE' or 'NOT_ELIGIBLE' or 'OFFER_NOT_APPLIED' or 'REJECTED_DUE_TO_PAYMENT_WARNING'],
-adjustmentType (string, optional) = ['INSTANT_DISCOUNT' or 'CASHBACK_ON_CARD' or 'CASHBACK_IN_BANK' or 'CASHBACK_IN_WALLET' or 'INSTANT_CASHBACK' or 'DOWN_PAYMENT'],
-metadata (object, optional)
-}
-Sample Request
+<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">query</span>
+
+<span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
+<span class="n">Body</span><span class="o">:</span> <span class="n">QueryRequest</span> 
+<span class="n">QueryRequest</span> <span class="o">{</span>
+<span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
+<span class="n">forcePgQuery</span> <span class="o">(</span><span class="n">boolean</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">paymentTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">transactionType</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;ADJUSTMENT&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND&#39;</span> <span class="n">or</span> <span class="s1">&#39;REVADJUSTMENT&#39;</span><span class="o">]</span>
+<span class="o">}</span>
+<span class="n">MerchantCredential</span> <span class="o">{</span>
+<span class="n">name</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">password</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">Response</span> <span class="o">:</span> <span class="n">QueryResponse</span>
+ <span class="n">QueryResponse</span> <span class="o">{</span>
+<span class="n">responseStatus</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED&#39;</span><span class="o">],</span>
+<span class="n">responseType</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">responseMessage</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">messages</span> <span class="o">(</span><span class="n">Array</span><span class="o">[</span><span class="n">QueryMessage</span><span class="o">],</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantReferenceId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">transactionState</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;INITIATED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING&#39;</span> <span class="n">or</span> <span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED&#39;</span><span class="o">],</span>
+<span class="n">paymentTransactions</span> <span class="o">(</span><span class="n">Array</span><span class="o">[</span><span class="n">PaymentTransaction</span><span class="o">],</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="n">QueryMessage</span> <span class="o">{</span>
+<span class="n">type</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">message</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">PaymentTransaction</span> <span class="o">{</span>
+<span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">paymentTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">transactionAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">transactionCurrency</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">transactionType</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;ADJUSTMENT&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND&#39;</span> <span class="n">or</span> <span class="s1">&#39;REVADJUSTMENT&#39;</span><span class="o">],</span>
+<span class="n">transactionTime</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">realTransactionTime</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">transactionStatus</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;INITIATED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING&#39;</span> <span class="n">or</span> <span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED&#39;</span><span class="o">],</span>
+<span class="n">transactionAuthState</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;PRE_AUTH&#39;</span> <span class="n">or</span> <span class="s1">&#39;PARTIAL_CAPTURED&#39;</span> <span class="n">or</span> <span class="s1">&#39;FULL_CAPTURED&#39;</span> <span class="n">or</span> <span class="s1">&#39;CAPTURE_COMPLETED&#39;</span> <span class="n">or</span> <span class="s1">&#39;VOID&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE&#39;</span><span class="o">],</span>
+<span class="n">transactionResponseCode</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;REFUND_REQUEST_ACCEPTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_REQUEST_SENT&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_VOID_SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;TXNID_NOT_FOUND&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_NOT_SUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_WINDOW_EXPIRED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_UNSUCCESSFUL&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_VOID&#39;</span> <span class="n">or</span> <span class="s1">&#39;PARTIAL_REFUNDS_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INSUFFICIENT_BALANCE&#39;</span> <span class="n">or</span> <span class="s1">&#39;DUPLICATE_REFUND_REQUEST&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXCESS_REFUND_AMOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;MULTIPLE_REFUNDS_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_TEMPORARILY_UNAVAILABLE&#39;</span> <span class="n">or</span> <span class="s1">&#39;VISA_DIRECT_TIMEOUT&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING_ON_REFUND_REQUERY&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED_ON_REFUND_REQUERY&#39;</span> <span class="n">or</span> <span class="s1">&#39;COULD_NOT_ACQUIRE_LOCK&#39;</span> <span class="n">or</span> <span class="s1">&#39;_3DS_AUTH_FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;_3DS_AUTH_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;ADDRESS_VERIFICATION_FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;BANK_RESPONSE_DELAYED&#39;</span> <span class="n">or</span> <span class="s1">&#39;BIN_BLOCKED_BY_ACQUIRER&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_EXPIRED&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_NOT_ENROLLED&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_NUMBER_INVALID&#39;</span> <span class="n">or</span> <span class="s1">&#39;COUNTRY_NOT_SUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;CVV_INCORRECT&#39;</span> <span class="n">or</span> <span class="s1">&#39;CVV_MISSING&#39;</span> <span class="n">or</span> <span class="s1">&#39;SBI_DEBIT_CARD_BLOCKED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PIN_INCORRECT&#39;</span> <span class="n">or</span> <span class="s1">&#39;CANCELLED_BY_ACQUIRER&#39;</span> <span class="n">or</span> <span class="s1">&#39;DECLINED_BY_ACQUIRER&#39;</span> <span class="n">or</span> <span class="s1">&#39;DECLINED_BY_ISSUER&#39;</span> <span class="n">or</span> <span class="s1">&#39;DECLINED_BY_RISK&#39;</span> <span class="n">or</span> <span class="s1">&#39;INSUFFICIENT_FUNDS&#39;</span> <span class="n">or</span> <span class="s1">&#39;ISSUER_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;EMI_NO_PG_FOR_CURRENT_AMOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;NO_PG_FOR_CURRENT_AMOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;UPI_EXTERNAL_VPA_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;MID_NOT_ACTIVE&#39;</span> <span class="n">or</span> <span class="s1">&#39;MID_NOT_FOUND&#39;</span> <span class="n">or</span> <span class="s1">&#39;DUPLICATE_TXN_REQUEST&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_TRANSACTION_ID&#39;</span> <span class="n">or</span> <span class="s1">&#39;MERCHANT_AUTH_FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;DECLINED_BY_PAYZIPPY&#39;</span> <span class="n">or</span> <span class="s1">&#39;BANK_UNAVAILABLE&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_EXPIRY_DATE_INVALID&#39;</span> <span class="n">or</span> <span class="s1">&#39;CANCELLED_BY_USER&#39;</span> <span class="n">or</span> <span class="s1">&#39;USER_SESSION_TIMED_OUT&#39;</span> <span class="n">or</span> <span class="s1">&#39;USER_REFRESH_COUNT_EXCEEDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;USER_RETRY_COUNT_EXCEEDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_PROCESSPAY_REQUEST&#39;</span> <span class="n">or</span> <span class="s1">&#39;MANDATORY_PARAM_MISSING&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_PARAM_FORMAT&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_PARAM_VALUE&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_PAYZIPPY_ACCOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;NETBANKING_NOT_ENABLED&#39;</span> <span class="n">or</span> <span class="s1">&#39;NETBANKING_LIMIT_EXCEEDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;ACCOUNT_ON_HOLD&#39;</span> <span class="n">or</span> <span class="s1">&#39;PAY_LATER_ELIGIBILITY_FAILURE&#39;</span> <span class="n">or</span> <span class="s1">&#39;PAYZIPPY_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;ACQUIRER_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;INITIATED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING&#39;</span> <span class="n">or</span> <span class="s1">&#39;REQUEST_FIELD_INVALID&#39;</span> <span class="n">or</span> <span class="s1">&#39;SYSTEM_UNDER_MAINTENANCE&#39;</span> <span class="n">or</span> <span class="s1">&#39;EMPTY_OTP_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;INTERNAL_SERVER_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;DATABASE_SERVER_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;PROTOCOL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;NOT_PERMITTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_NOT_IN_3DS_RANGE&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_AUTH_DATA&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_REQUEST_TYPE&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_REQUEST_XML_FORMAT&#39;</span> <span class="n">or</span> <span class="s1">&#39;HASH_CHECK_FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_MERCHANT_ID&#39;</span> <span class="n">or</span> <span class="s1">&#39;ITP_VALIDATION_FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_IVR_OTP_DATA&#39;</span> <span class="n">or</span> <span class="s1">&#39;TIMED_OUT&#39;</span> <span class="n">or</span> <span class="s1">&#39;UNABLE_TO_PROCESS_REQUEST&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID_RESPONSE_XML_FORMAT&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_BLOCKS&#39;</span> <span class="n">or</span> <span class="s1">&#39;OPEN_ECS_NACH_MANDATE&#39;</span> <span class="n">or</span> <span class="s1">&#39;DDF_DEALER&#39;</span> <span class="n">or</span> <span class="s1">&#39;CARD_OFFER_EXHAUSTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;CHECK_SUM_MISMATCH&#39;</span><span class="o">],</span>
+<span class="n">refundResponseCode</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_REQUEST_ACCEPTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_REQUEST_SENT&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_VOID_SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;TXNID_NOT_FOUND&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_NOT_SUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_WINDOW_EXPIRED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_UNSUCCESSFUL&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_VOID&#39;</span> <span class="n">or</span> <span class="s1">&#39;PARTIAL_REFUNDS_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INSUFFICIENT_BALANCE&#39;</span> <span class="n">or</span> <span class="s1">&#39;DUPLICATE_REFUND_REQUEST&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXCESS_REFUND_AMOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;MULTIPLE_REFUNDS_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PAYZIPPY_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;ACQUIRER_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_TEMPORARILY_UNAVAILABLE&#39;</span> <span class="n">or</span> <span class="s1">&#39;VISA_DIRECT_TIMEOUT&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING_ON_REFUND_REQUERY&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED_ON_REFUND_REQUERY&#39;</span> <span class="n">or</span> <span class="s1">&#39;COULD_NOT_ACQUIRE_LOCK&#39;</span> <span class="n">or</span> <span class="s1">&#39;UPI_EXTERNAL_VPA_UNSUPPORTED&#39;</span><span class="o">],</span>
+<span class="n">transactionResponseMessage</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">bankArn</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">refundSla</span> <span class="o">(</span><span class="n">RefundSla</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">paymentMethod</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;CREDIT&#39;</span> <span class="n">or</span> <span class="s1">&#39;DEBIT&#39;</span> <span class="n">or</span> <span class="s1">&#39;EMI&#39;</span> <span class="n">or</span> <span class="s1">&#39;NET&#39;</span> <span class="n">or</span> <span class="s1">&#39;PAYZIPPY&#39;</span> <span class="n">or</span> <span class="s1">&#39;NET_OPTIONS&#39;</span> <span class="n">or</span> <span class="s1">&#39;EMI_OPTIONS&#39;</span> <span class="n">or</span> <span class="s1">&#39;PHONEPE&#39;</span> <span class="n">or</span> <span class="s1">&#39;FLIPKART_CREDIT&#39;</span><span class="o">],</span>
+<span class="n">paymentInstrument</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;CREDIT&#39;</span> <span class="n">or</span> <span class="s1">&#39;DEBIT&#39;</span> <span class="n">or</span> <span class="s1">&#39;EMI&#39;</span> <span class="n">or</span> <span class="s1">&#39;NET&#39;</span> <span class="n">or</span> <span class="s1">&#39;PAYZIPPY&#39;</span> <span class="n">or</span> <span class="s1">&#39;NET_OPTIONS&#39;</span> <span class="n">or</span> <span class="s1">&#39;EMI_OPTIONS&#39;</span> <span class="n">or</span> <span class="s1">&#39;PHONEPE&#39;</span> <span class="n">or</span> <span class="s1">&#39;FLIPKART_CREDIT&#39;</span><span class="o">],</span>
+<span class="n">emiMonths</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">bankName</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">emiScheme</span> <span class="o">(</span><span class="n">EmiScheme</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">fraudAction</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">fraudDecision</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">fraudDetails</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">fraudSource</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgMID</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgTrackId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgName</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">bankTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">terminalId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgAuthCode</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">accountType</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">subventionPercentage</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">cardBrand</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;VISA&#39;</span> <span class="n">or</span> <span class="s1">&#39;MASTERCARD&#39;</span> <span class="n">or</span> <span class="s1">&#39;AMEX&#39;</span> <span class="n">or</span> <span class="s1">&#39;MAESTRO&#39;</span> <span class="n">or</span> <span class="s1">&#39;DINERS&#39;</span> <span class="n">or</span> <span class="s1">&#39;RUPAY&#39;</span> <span class="n">or</span> <span class="s1">&#39;DEFAULT&#39;</span> <span class="n">or</span> <span class="s1">&#39;DISCOVER&#39;</span> <span class="n">or</span> <span class="s1">&#39;BAJAJ&#39;</span><span class="o">],</span>
+<span class="n">cardBin</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">orderId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">relatedRecords</span> <span class="o">(</span><span class="n">Array</span><span class="o">[</span><span class="n">RelatedRecord</span><span class="o">],</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">primaryAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantAdjustments</span> <span class="o">(</span><span class="n">Array</span><span class="o">[</span><span class="n">MerchantAdjustment</span><span class="o">],</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">queryTransactionStatus</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">metadata</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">saleTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">confirmedFraud</span> <span class="o">(</span><span class="n">boolean</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">international</span> <span class="o">(</span><span class="n">boolean</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">riskyInstrument</span> <span class="o">(</span><span class="n">boolean</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">RefundSla</span> <span class="o">{</span>
+<span class="n">minSla</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">maxSla</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">EmiScheme</span> <span class="o">{</span>
+<span class="n">emiTenureInMonths</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">interestValue</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">interestType</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">RelatedRecord</span> <span class="o">{</span>
+<span class="n">adjustmentTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">relation</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">MerchantAdjustment</span> <span class="o">{</span>
+<span class="n">transactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">offerId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">offerUnitPrice</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">amountApplied</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">amountRequested</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">promiseDate</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">actualSubventionAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">effectiveSubventionAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentResponseCode</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;EXPIRED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INVALID&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED_BY_TIME&#39;</span> <span class="n">or</span> <span class="s1">&#39;REJECTED_BY_WHITELIST&#39;</span> <span class="n">or</span> <span class="s1">&#39;REJECTED_BY_BLACKLIST&#39;</span> <span class="n">or</span> <span class="s1">&#39;REJECTED_BY_RULE&#39;</span> <span class="n">or</span> <span class="s1">&#39;REJECTED_LOW_PRIORITY&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_TXNID&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_EMAIL&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_ACCOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_PHONE&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_IP&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_ACCID&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_MID&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_GLOBAL&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXHAUSTED_BY_CARD&#39;</span> <span class="n">or</span> <span class="s1">&#39;MISSING_PAYMENT_INFO&#39;</span> <span class="n">or</span> <span class="s1">&#39;ELIGIBLE&#39;</span> <span class="n">or</span> <span class="s1">&#39;NOT_ELIGIBLE&#39;</span> <span class="n">or</span> <span class="s1">&#39;OFFER_NOT_APPLIED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REJECTED_DUE_TO_PAYMENT_WARNING&#39;</span><span class="o">],</span>
+<span class="n">adjustmentType</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;INSTANT_DISCOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;CASHBACK_ON_CARD&#39;</span> <span class="n">or</span> <span class="s1">&#39;CASHBACK_IN_BANK&#39;</span> <span class="n">or</span> <span class="s1">&#39;CASHBACK_IN_WALLET&#39;</span> <span class="n">or</span> <span class="s1">&#39;INSTANT_CASHBACK&#39;</span> <span class="n">or</span> <span class="s1">&#39;DOWN_PAYMENT&#39;</span><span class="o">],</span>
+<span class="n">metadata</span> <span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Sample Request
 {
-  "merchantCredential": {
-    "name": "Enter name here",
-    "password": "Enter hash here"
+  &quot;merchantCredential&quot;: {
+    &quot;name&quot;: &quot;Enter name here&quot;,
+    &quot;password&quot;: &quot;Enter hash here&quot;
   },
-  "forcePgQuery": true,
-  "merchantTransactionId": "transaction1",
-  "paymentTransactionId": "PZT1712211056FQM0400"
-}</p>
+  &quot;forcePgQuery&quot;: true,
+  &quot;merchantTransactionId&quot;: &quot;transaction1&quot;,
+  &quot;paymentTransactionId&quot;: &quot;PZT1712211056FQM0400&quot;
+}
+</pre></div>
+
+
 <h3 id="refund">Refund</h3>
-<p>Path: 1/payment/query</p>
-<p>Method: POST
-Body: RefundRequest 
-RefundRequest {
-merchantCredential(MerchantCredential),
-merchantTransactionId (string),
-payzippySaleTrasactionId (string),
-refundAmount (long),
-refundReason (string),
-refundedBy (string),
-merchantRefundTransactionId(string, optional),
-idempotencyId (string, optional),
-metadata (string, optional)
-}
-MerchantCredential {
-name (string),
-password (string)
-}
-Response : RefundResponse
-RefundResponse {
-bankArn (string, optional),
-pgMID (string, optional),
-pgTrackId (string, optional),
-pgId (string, optional),
-pgName (string, optional),
-bankTransactionId (string, optional),
-terminalId (string, optional),
-cardBrand (string, optional) = ['VISA' or 'MASTERCARD' or 'AMEX' or 'MAESTRO' or 'DINERS' or 'RUPAY' or 'DEFAULT' or 'DISCOVER' or 'BAJAJ'],
-cardBin (string, optional),
-adjustmentTransactionIds (string, optional),
-adjustmentRelations (string, optional),
-adjustmentIds (string, optional),
-adjustmentAmounts (string, optional),
-refundAmount (long, optional),
-merchantTransactionId (string, optional),
-payzippyTransactionId (string, optional),
-refundCurrency (string, optional),
-transactionTime (long, optional),
-refundSla (RefundSla, optional),
-refundStatus (string, optional) = ['REFUND_REQUEST_RECEIVED' or 'REFUND_REQUEST_SUBMITTED' or 'SUCCESS' or 'FAILED' or 'REFUNDED' or 'PENDING'],
-refundResponseCode (string, optional) = ['SUCCESS' or 'REFUND_REQUEST_ACCEPTED' or 'REFUND_REQUEST_SENT' or 'REFUNDED' or 'REFUND_VOID_SUCCESS' or 'TXNID_NOT_FOUND' or 'REFUND_NOT_SUPPORTED' or 'REFUND_WINDOW_EXPIRED' or 'SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED' or 'SALE_TRANSACTION_UNSUCCESSFUL' or 'SALE_TRANSACTION_VOID' or 'PARTIAL_REFUNDS_UNSUPPORTED' or 'INSUFFICIENT_BALANCE' or 'DUPLICATE_REFUND_REQUEST' or 'EXCESS_REFUND_AMOUNT' or 'SALE_TRANSACTION_REFUNDED' or 'MULTIPLE_REFUNDS_UNSUPPORTED' or 'PAYZIPPY_TECHNICAL_ERROR' or 'ACQUIRER_TECHNICAL_ERROR' or 'REFUND_TEMPORARILY_UNAVAILABLE' or 'VISA_DIRECT_TIMEOUT' or 'PENDING_ON_REFUND_REQUERY' or 'FAILED_ON_REFUND_REQUERY' or 'COULD_NOT_ACQUIRE_LOCK' or 'UPI_EXTERNAL_VPA_UNSUPPORTED'],
-refundResponseMessage (string, optional),
-metaData (string, optional)
-}
-RefundSla {
-minSla (long, optional),
-maxSla (long, optional)
-}
-Sample Request
+<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">query</span>
+
+<span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
+<span class="n">Body</span><span class="o">:</span> <span class="n">RefundRequest</span> 
+<span class="n">RefundRequest</span> <span class="o">{</span>
+<span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
+<span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">payzippySaleTrasactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">refundAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">),</span>
+<span class="n">refundReason</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">refundedBy</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">merchantRefundTransactionId</span><span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">idempotencyId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">metadata</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">MerchantCredential</span> <span class="o">{</span>
+<span class="n">name</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
+<span class="n">password</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">Response</span> <span class="o">:</span> <span class="n">RefundResponse</span>
+<span class="n">RefundResponse</span> <span class="o">{</span>
+<span class="n">bankArn</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgMID</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgTrackId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">pgName</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">bankTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">terminalId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">cardBrand</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;VISA&#39;</span> <span class="n">or</span> <span class="s1">&#39;MASTERCARD&#39;</span> <span class="n">or</span> <span class="s1">&#39;AMEX&#39;</span> <span class="n">or</span> <span class="s1">&#39;MAESTRO&#39;</span> <span class="n">or</span> <span class="s1">&#39;DINERS&#39;</span> <span class="n">or</span> <span class="s1">&#39;RUPAY&#39;</span> <span class="n">or</span> <span class="s1">&#39;DEFAULT&#39;</span> <span class="n">or</span> <span class="s1">&#39;DISCOVER&#39;</span> <span class="n">or</span> <span class="s1">&#39;BAJAJ&#39;</span><span class="o">],</span>
+<span class="n">cardBin</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentTransactionIds</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentRelations</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentIds</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">adjustmentAmounts</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">refundAmount</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">payzippyTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">refundCurrency</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">transactionTime</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">refundSla</span> <span class="o">(</span><span class="n">RefundSla</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">refundStatus</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;REFUND_REQUEST_RECEIVED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_REQUEST_SUBMITTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING&#39;</span><span class="o">],</span>
+<span class="n">refundResponseCode</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_REQUEST_ACCEPTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_REQUEST_SENT&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_VOID_SUCCESS&#39;</span> <span class="n">or</span> <span class="s1">&#39;TXNID_NOT_FOUND&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_NOT_SUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_WINDOW_EXPIRED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_UNSUCCESSFUL&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_VOID&#39;</span> <span class="n">or</span> <span class="s1">&#39;PARTIAL_REFUNDS_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;INSUFFICIENT_BALANCE&#39;</span> <span class="n">or</span> <span class="s1">&#39;DUPLICATE_REFUND_REQUEST&#39;</span> <span class="n">or</span> <span class="s1">&#39;EXCESS_REFUND_AMOUNT&#39;</span> <span class="n">or</span> <span class="s1">&#39;SALE_TRANSACTION_REFUNDED&#39;</span> <span class="n">or</span> <span class="s1">&#39;MULTIPLE_REFUNDS_UNSUPPORTED&#39;</span> <span class="n">or</span> <span class="s1">&#39;PAYZIPPY_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;ACQUIRER_TECHNICAL_ERROR&#39;</span> <span class="n">or</span> <span class="s1">&#39;REFUND_TEMPORARILY_UNAVAILABLE&#39;</span> <span class="n">or</span> <span class="s1">&#39;VISA_DIRECT_TIMEOUT&#39;</span> <span class="n">or</span> <span class="s1">&#39;PENDING_ON_REFUND_REQUERY&#39;</span> <span class="n">or</span> <span class="s1">&#39;FAILED_ON_REFUND_REQUERY&#39;</span> <span class="n">or</span> <span class="s1">&#39;COULD_NOT_ACQUIRE_LOCK&#39;</span> <span class="n">or</span> <span class="s1">&#39;UPI_EXTERNAL_VPA_UNSUPPORTED&#39;</span><span class="o">],</span>
+<span class="n">refundResponseMessage</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">metaData</span> <span class="o">(</span><span class="n">string</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="n">RefundSla</span> <span class="o">{</span>
+<span class="n">minSla</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
+<span class="n">maxSla</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Sample Request
 {
-  "merchantCredential": {
-    "name": "Enter name here",
-    "password": "Enter hash here"
+  &quot;merchantCredential&quot;: {
+    &quot;name&quot;: &quot;Enter name here&quot;,
+    &quot;password&quot;: &quot;Enter hash here&quot;
   },
-  "merchantTransactionId": "transaction1",
-  "payzippySaleTrasactionId": "PZT1712211056FQM0400",
-  "refundAmount": 100,
-  "refundReason": "testing",
-  "refundedBy": "Anvay",
-  "merchantRefundTransactionId": "transaction1-refund1"
-}</p>
+  &quot;merchantTransactionId&quot;: &quot;transaction1&quot;,
+  &quot;payzippySaleTrasactionId&quot;: &quot;PZT1712211056FQM0400&quot;,
+  &quot;refundAmount&quot;: 100,
+  &quot;refundReason&quot;: &quot;testing&quot;,
+  &quot;refundedBy&quot;: &quot;Anvay&quot;,
+  &quot;merchantRefundTransactionId&quot;: &quot;transaction1-refund1&quot;
+}
+</pre></div>
+
+
 <h2 id="oms">OMS</h2>
 <h3 id="oms-insert">OMS Insert</h3>
-<p>Path: /1/oms/insert
+<div class="codehilite"><pre><span></span>Path: /1/oms/insert
 Method: POST
 Body: RefundRequest 
 OMSPayload {
@@ -862,7 +914,7 @@ amount (double),
 disbursalText (string),
 secondaryDisbursalText (string),
 identityToken (string),
-state (string) ['INITIATED' or 'SUCCESSFUL' or 'FAILED'],
+state (string) [&#39;INITIATED&#39; or &#39;SUCCESSFUL&#39; or &#39;FAILED&#39;],
 items (Array[OMSItem]),
 offers (Array[OMSOffers], optional),
 timestamp (long)
@@ -878,42 +930,51 @@ offerId (string),
 title (string),
 source (string)
 }
-Response: String</p>
-<p>Sample Request
+Response: String
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Sample Request
 {
-    "orderId":"dummyOrder1",
-    "imageUrl": "http://www.google.com/img/test",
-    "description":"This is an order id",
-    "amount": 220.14,
-    "disbursalText":"You order has been recharged",
-    "secondaryDisbursalText":"Recharge is already done, Go get a life",
-    "identityToken":"IDTKNE4783BAFB3B54713A46EC4B9EB5D59DEKNG",
-    "state":"DUMMY",
-    "timestamp": 1523960011000,
-    "items": [
+    &quot;orderId&quot;:&quot;dummyOrder1&quot;,
+    &quot;imageUrl&quot;: &quot;http://www.google.com/img/test&quot;,
+    &quot;description&quot;:&quot;This is an order id&quot;,
+    &quot;amount&quot;: 220.14,
+    &quot;disbursalText&quot;:&quot;You order has been recharged&quot;,
+    &quot;secondaryDisbursalText&quot;:&quot;Recharge is already done, Go get a life&quot;,
+    &quot;identityToken&quot;:&quot;IDTKNE4783BAFB3B54713A46EC4B9EB5D59DEKNG&quot;,
+    &quot;state&quot;:&quot;DUMMY&quot;,
+    &quot;timestamp&quot;: 1523960011000,
+    &quot;items&quot;: [
         {
-            "itemId" : "dummyItemId1",
-            "title" : "This is the recharge product you just purchased",
-            "amount" : 220.14,
-            "category" : "recharge"
+            &quot;itemId&quot; : &quot;dummyItemId1&quot;,
+            &quot;title&quot; : &quot;This is the recharge product you just purchased&quot;,
+            &quot;amount&quot; : 220.14,
+            &quot;category&quot; : &quot;recharge&quot;
         }
     ],
-    "offers": [
+    &quot;offers&quot;: [
         {
-            "offerId" : "dummyOfferId",
-            "title" : "Get everything for free",
-            "source" : "merchant"
+            &quot;offerId&quot; : &quot;dummyOfferId&quot;,
+            &quot;title&quot; : &quot;Get everything for free&quot;,
+            &quot;source&quot; : &quot;merchant&quot;
         }
     ]
-}</p>
+}
+</pre></div>
+
+
 <h3 id="oms-state-update">OMS State update</h3>
-<p>Path: /1/oms/update/state
+<div class="codehilite"><pre><span></span>Path: /1/oms/update/state
 Method: PUT
 Query: 
 orderId : String
-state : String  ['INITIATED' or 'SUCCESSFUL' or 'FAILED']</p>
+state : String  [&#39;INITIATED&#39; or &#39;SUCCESSFUL&#39; or &#39;FAILED&#39;]
+</pre></div>
+
+
 <h3 id="oms-refund">OMS Refund</h3>
-<p>Path: /1/oms/create/refund
+<div class="codehilite"><pre><span></span>Path: /1/oms/create/refund
 Method: PUT
 Body: 
 RefundPayload {
@@ -923,16 +984,22 @@ amount (double),
 source (string),
 title (string),
 refundId (string)
-}</p>
-<p>Sample Request
+}
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Sample Request
 {
-    "orderId" : "dummyOrder1",
-    "transactionId" : "dummyRefundTransactionId",
-    "amount" : 20.12,
-    "source" : "merchant",
-    "title" : "Refund because merchant says so",
-    "refundId" : "dummyRefundId"
-}</p>
+    &quot;orderId&quot; : &quot;dummyOrder1&quot;,
+    &quot;transactionId&quot; : &quot;dummyRefundTransactionId&quot;,
+    &quot;amount&quot; : 20.12,
+    &quot;source&quot; : &quot;merchant&quot;,
+    &quot;title&quot; : &quot;Refund because merchant says so&quot;,
+    &quot;refundId&quot; : &quot;dummyRefundId&quot;
+}
+</pre></div>
+
+
 <h2 id="security">Security</h2>
 <p>All production endpoints will be over https.
 We will validate Client’s identity using JWT.

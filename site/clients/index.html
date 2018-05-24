@@ -179,6 +179,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../onboarding/" title="Onboarding" class="md-nav__link">
+      Onboarding
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../userguide/" title="User guide" class="md-nav__link">
       User guide
     </a>
@@ -493,54 +505,60 @@ All the methods are asynchronous in nature and will always return a promise that
 <h3 id="integration-steps">Integration steps:</h3>
 <h3 id="step-1">Step 1)</h3>
 <p>If using node, add this repository as an npm package</p>
-<pre><code>npm install --save fk-platform-sdk
-</code></pre>
+<div class="codehilite"><pre><span></span>npm install --save fk-platform-sdk
+</pre></div>
+
 
 <p>Alternatively, you can also include the following script directly:</p>
 <p><code>http://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.1.5.js (Version 0.1.5)</code></p>
 <h3 id="step-2">Step 2)</h3>
 <p>Import SDK and create a new platform instance. You will need to provide clientId given to you by Flipkart.</p>
 <p>In Node Environment:</p>
-<pre><code class="js">import FKPlatform from &quot;fk-platform-sdk&quot;
-let fkPlatform = new FKPlatform(clientId);
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">FKPlatform</span> <span class="nx">from</span> <span class="s2">&quot;fk-platform-sdk&quot;</span>
+<span class="kd">let</span> <span class="nx">fkPlatform</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FKPlatform</span><span class="p">(</span><span class="nx">clientId</span><span class="p">);</span>
+</pre></div>
+
 
 <p>In Browser:</p>
-<pre><code class="js">var fkPlatform = FKExtension.newPlatformInstance(clientID);
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">fkPlatform</span> <span class="o">=</span> <span class="nx">FKExtension</span><span class="p">.</span><span class="nx">newPlatformInstance</span><span class="p">(</span><span class="nx">clientID</span><span class="p">);</span>
+</pre></div>
+
 
 <p>Post this you can start using modules.</p>
 <p>Note: You should call <code>FKPlatform.isPlatformAvailable()</code> or, <code>window.FKExtension &amp;&amp; FKExtension.isPlatformAvailable()</code> to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code.</p>
 <h2 id="modules">Modules</h2>
 <h3 id="permissions-module">Permissions Module</h3>
-<pre><code class="js">let permissionsModule = fkPlatform.getModuleHelper().getPermissionsModule()
+<div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">permissionsModule</span> <span class="o">=</span> <span class="nx">fkPlatform</span><span class="p">.</span><span class="nx">getModuleHelper</span><span class="p">().</span><span class="nx">getPermissionsModule</span><span class="p">()</span>
 
-//To get scopes:
-const SCOPES = permissionsModule.getScopes();
-</code></pre>
+<span class="c1">//To get scopes:</span>
+<span class="kr">const</span> <span class="nx">SCOPES</span> <span class="o">=</span> <span class="nx">permissionsModule</span><span class="p">.</span><span class="nx">getScopes</span><span class="p">();</span>
+</pre></div>
+
 
 <p><strong>Available Scopes:</strong></p>
-<pre><code>SCOPES.USER_EMAIL,
+<div class="codehilite"><pre><span></span>SCOPES.USER_EMAIL,
 SCOPES.USER_MOBILE,
 SCOPES.USER_NAME
-</code></pre>
+</pre></div>
+
 
 <p><strong>Methods:</strong></p>
 <p><code>getToken: (permissions: ScopeAccessRequest[]) =&gt; Promise&lt;NativeModuleResponse&lt;PermissionsManagerResponse&gt;&gt;</code></p>
 <p>Relevant interfaces:</p>
-<pre><code class="js">interface ScopeAccessRequest {
-    scope: Scopes;
-    isMandatory?: boolean;
-    shouldVerify?: boolean;
-}
+<div class="codehilite"><pre><span></span><span class="kr">interface</span> <span class="nx">ScopeAccessRequest</span> <span class="p">{</span>
+    <span class="nx">scope</span><span class="o">:</span> <span class="nx">Scopes</span><span class="p">;</span>
+    <span class="nx">isMandatory</span><span class="o">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nx">shouldVerify</span><span class="o">?:</span> <span class="kr">boolean</span><span class="p">;</span>
+<span class="p">}</span>
 
-interface NativeModuleResponse&lt;T&gt; {
-    result: T,
-    grantToken?: string | null
-}
+<span class="kr">interface</span> <span class="nx">NativeModuleResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="o">:</span> <span class="nx">T</span><span class="p">,</span>
+    <span class="nx">grantToken</span><span class="o">?:</span> <span class="nx">string</span> <span class="o">|</span> <span class="kc">null</span>
+<span class="p">}</span>
 
-interface PermissionsManagerResponse { [key: Scopes]: boolean; }
-</code></pre>
+<span class="kr">interface</span> <span class="nx">PermissionsManagerResponse</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span><span class="o">:</span> <span class="nx">Scopes</span><span class="p">]</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+
 
 <p><code>isMandatory</code> is a boolean which says whether you want the scope to be mandatorily filled by the user</p>
 <p>additionally <code>shouldVerify</code> is boolean which says whether you want the scope to be mandatorily verified as well</p>
@@ -556,18 +574,20 @@ Hence all the denials as well as accepts will still be treated as success from a
 If you want to check if user denied a permission, you can check the <code>NativeModuleResponse</code> result to see if the permissions are granted or not.</p>
 <p>If the promise fails, Catch block function is invoked with an object which has <code>message</code> and <code>code</code>.
 Possible errors are : </p>
-<pre><code>ERROR_CODE_UNKNOWN = 0;
+<div class="codehilite"><pre><span></span>ERROR_CODE_UNKNOWN = 0;
 ERROR_CODE_NETWORK_ERROR = 1001;
 ERROR_CODE_JSON_PARSE_ERROR = 1002;
 ERROR_CODE_INVALID_PERMISSIONS = 1003;
 ERROR_CODE_USER_DISMISS = 1004;
 ERROR_CODE_BAD_PERMISSION_REQUEST = 1005;
-</code></pre>
+</pre></div>
+
 
 <h3 id="navigation-module">Navigation Module</h3>
 <p>Common methods will enabled application to control their exit behaviour and deeplink into other parts of the app.</p>
-<pre><code class="js">let navigationModule = fkPlatform.getModuleHelper().getNavigationModule()
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">navigationModule</span> <span class="o">=</span> <span class="nx">fkPlatform</span><span class="p">.</span><span class="nx">getModuleHelper</span><span class="p">().</span><span class="nx">getNavigationModule</span><span class="p">()</span>
+</pre></div>
+
 
 <p><strong>Methods:</strong></p>
 <p><code>exitSession(): void</code></p>
@@ -580,8 +600,9 @@ ERROR_CODE_BAD_PERMISSION_REQUEST = 1005;
 <p>Clears both forward and backward history such that only the existing page remains.</p>
 <h3 id="contacts-module-from-flipkart-app-v63-ultra-v141">Contacts Module (from flipkart app v6.3, ultra v1.4.1)</h3>
 <p>Helps in launching a UI that allows user to select a contact from his address book.</p>
-<pre><code class="js">let contactModule = fkPlatform.getModuleHelper().getContactsModule()
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">contactModule</span> <span class="o">=</span> <span class="nx">fkPlatform</span><span class="p">.</span><span class="nx">getModuleHelper</span><span class="p">().</span><span class="nx">getContactsModule</span><span class="p">()</span>
+</pre></div>
+
 
 <p><strong>Methods:</strong></p>
 <p><code>pickPhoneNumber(): Promise&lt;NativeModuleResponse&lt;Contact&gt;&gt;</code></p>
@@ -589,28 +610,30 @@ ERROR_CODE_BAD_PERMISSION_REQUEST = 1005;
 <p><code>getContactInfo(phoneNumbers: string[]): Promise&lt;NativeModuleResponse&lt;{[key: string]: Contact;}&gt;&gt;</code></p>
 <p>Fetches names and other info against given list of phone numbers. Keys of the returned map will be given phone numbers. </p>
 <p>Relevant types:</p>
-<pre><code class="js">interface NativeModuleResponse&lt;T&gt; {
-    result: T,
-    grantToken?: string | null
-}
+<div class="codehilite"><pre><span></span><span class="kr">interface</span> <span class="nx">NativeModuleResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="o">:</span> <span class="nx">T</span><span class="p">,</span>
+    <span class="nx">grantToken</span><span class="o">?:</span> <span class="nx">string</span> <span class="o">|</span> <span class="kc">null</span>
+<span class="p">}</span>
 
-interface Contact {
-    name: string
-    phoneNumber: string
-}
-</code></pre>
+<span class="kr">interface</span> <span class="nx">Contact</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="nx">phoneNumber</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h3 id="handling-errors">Handling Errors</h3>
 <p>Every promise reject contains an error code and a message:
 Type:</p>
-<pre><code class="js">interface NativeModuleError {
-    message: string;
-    errorCode: number;
-}
+<div class="codehilite"><pre><span></span><span class="kr">interface</span> <span class="nx">NativeModuleError</span> <span class="p">{</span>
+    <span class="nx">message</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nx">errorCode</span><span class="o">:</span> <span class="nx">number</span><span class="p">;</span>
+<span class="p">}</span>
 
-Codes:
-0: Unknown error
-</code></pre>
+<span class="nx">Codes</span><span class="o">:</span>
+<span class="mi">0</span><span class="o">:</span> <span class="nx">Unknown</span> <span class="nx">error</span>
+</pre></div>
+
 
 <h3 id="detecting-flipkart-environment">Detecting flipkart environment</h3>
 <p>If you want to detect if your webpage is running within Flipkart's ultra environment, you have three ways.

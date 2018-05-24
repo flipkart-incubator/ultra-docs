@@ -7,24 +7,27 @@ Prod endpoint: `https://platform.flipkart.net`
 ##Access token flow
 Using the grantToken from the SDK, you have to fetch the accessToken before querying for any resources.
 Get Auth token flow
+```
 Path: /1/authorization/auth
 
 Method: GET
-Query parameters: 
 
+Query parameters: 
 grantToken : String
 clientId : String
 clientSecret : String
+
 Response :
 AuthTokenResponse {
 identityToken (string),
 accessToken (string)
 }
-
+```
 
 ##Resource fetching flow
 Resources like user.mobile, user.email can be fetched with this API
 fetch bulk data
+```
 Path: /1/resource/bulk
 
 Method: POST
@@ -40,10 +43,12 @@ user.email{
 mobileNumber(string)
 isVerified(boolean)
 }
+```
 
 ##Payment flow.
 ###Payment Token
 
+```
 Path: 1/payment/token
 
 Method: POST
@@ -103,6 +108,8 @@ Response : PaymentToken
 PaymentToken {
 token (string)
 }
+```
+```
 Sample Request
 {
   "merchantCredential": {
@@ -133,9 +140,10 @@ Sample Request
     ]
   }
 }
+```
 
 ###Callback after PGResponse
-
+```
 Request (will be sent as form parameters)
 
 {
@@ -186,14 +194,16 @@ Request (will be sent as form parameters)
 "card_bin": "",
 }
 
-
+```
+```
 Form Data
 
 transaction_status=""&account_type=""&pg_trackid=""&merchant_adjustments=[ {'offer_id':'', 'offer_unit_price':0, 'amount_applied':0, 'amount_requested':0, 'actual_subvention_amount':0, 'effective_subvention_amount':0, ent_response_code':'', 'metadata':{'paymentSystem':'', 'offerId':'', 'discountType':''}} ]transaction_amount=""&emi_months=""&merchant_id=""&transaction_response_code=""&payzippy_transaction_id=""&having_multiple_transactions=""&bank_name=""&card_brand=""&hash_method=""&transaction_time=""&transaction_currency=""&payment_method=""&timestamp=""&merchant_key_id=""&primary_record={'transaction_id': '', 'primary_amount': ''}merchant_transaction_id=""&bank_transaction_id=""&payment_instrument=""&transaction_response_message=""&pg_mid=""&pg_name=""&pg_authcode=""&pg_id=""&is_international=""&fraud_action=""&is_risky_instrument=""&transaction_auth_state=""&hash=""&masked_card_number=""&transaction_status=""&account_type=""&pg_trackid=""&merchant_adjustments=""&transaction_amount=""&emi_months=""&merchant_id=""&transaction_response_code=""&payzippy_transaction_id=""&having_multiple_transactions=""&bank_name=""&card_brand=""&hash_method=""&transaction_time=""&transaction_currency=""&payment_method=""&timestamp=""&merchant_key_id=""&primary_record=""&merchant_transaction_id=""&bank_transaction_id=""&payment_instrument=""&transaction_response_message=""&pg_mid=""&pg_name=""&pg_authcode=""&pg_id=""&is_international=""&fraud_action=""&is_risky_instrument=""&transaction_auth_state=""&hash=""&masked_card_number=""
-
+```
 
 
 ###Query
+```
 Path: 1/payment/query
 
 Method: POST
@@ -300,6 +310,8 @@ adjustmentResponseCode (string, optional) = ['EXPIRED' or 'INVALID' or 'FAILED_B
 adjustmentType (string, optional) = ['INSTANT_DISCOUNT' or 'CASHBACK_ON_CARD' or 'CASHBACK_IN_BANK' or 'CASHBACK_IN_WALLET' or 'INSTANT_CASHBACK' or 'DOWN_PAYMENT'],
 metadata (object, optional)
 }
+```
+```
 Sample Request
 {
   "merchantCredential": {
@@ -310,8 +322,10 @@ Sample Request
   "merchantTransactionId": "transaction1",
   "paymentTransactionId": "PZT1712211056FQM0400"
 }
+```
 
 ###Refund
+```
 Path: 1/payment/query
 
 Method: POST
@@ -361,6 +375,8 @@ RefundSla {
 minSla (long, optional),
 maxSla (long, optional)
 }
+```
+```
 Sample Request
 {
   "merchantCredential": {
@@ -374,13 +390,14 @@ Sample Request
   "refundedBy": "Anvay",
   "merchantRefundTransactionId": "transaction1-refund1"
 }
-
+```
 
 
 
 
 ##OMS
 ###OMS Insert
+```
 Path: /1/oms/insert
 Method: POST
 Body: RefundRequest 
@@ -409,7 +426,8 @@ title (string),
 source (string)
 }
 Response: String
-
+```
+```
 Sample Request
 {
 	"orderId":"dummyOrder1",
@@ -437,16 +455,18 @@ Sample Request
 		}
 	]
 }
-
+```
 ###OMS State update
+```
 Path: /1/oms/update/state
 Method: PUT
 Query: 
 orderId : String
 state : String  ['INITIATED' or 'SUCCESSFUL' or 'FAILED']
-
+```
 
 ###OMS Refund
+```
 Path: /1/oms/create/refund
 Method: PUT
 Body: 
@@ -458,7 +478,8 @@ source (string),
 title (string),
 refundId (string)
 }
-
+```
+```
 Sample Request
 {
 	"orderId" : "dummyOrder1",
@@ -468,7 +489,7 @@ Sample Request
 	"title" : "Refund because merchant says so",
 	"refundId" : "dummyRefundId"
 }
-
+```
 
 ##Security
 All production endpoints will be over https.
