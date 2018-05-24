@@ -1,44 +1,29 @@
-# Infixum est summa mansit refringit
+##Integration steps on Client Side
+###Step 1
+Paste this within your HTML's head tag.
 
-## Vittas cognoscere quae animos
+`<script src="https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.0.8.js" type="text/javascript"></script>`
 
-Lorem markdownum mediamque longis rudente fragosis fides, viam caput Panchaia.
-Aethere non volunt contemptor altore fieres? Sequi tempora. Ait quae admonitus
-[mollem](http://www.dixit.com/) spectata tempora posses ad inridet mota Dauno
-tolluntur. Grave lenta esset dira vestras?
+###Step 2
+Initialized the SDK with your clientId. Contact flipkart to generate a clientId and secret.
 
-1. Vana invenit parsque pio illo condit iuvenes
-2. Infelix quem fertur Pelopeiadesque
-3. Cedentes pedibus
-4. Hospes de cana sidera germanaeque meritis
-5. Idem litoream prosit istis pennis moti monte
+`<script type="text/javascript">
+var clientId = "playground";
+var fkPlatform = FKExtension.newPlatformInstance(clientId);
+</script>`
+Copy
+###Step 3
+Call getToken to get a grant token
 
-## Armos novas obliquo faciesque et miserata laudat
+`var scopeReq = [{"scope":"user.email","isMandatory":true,"shouldVerify":false},{"scope":"user.mobile","isMandatory":false,"shouldVerify":false},{"scope":"user.name","isMandatory":false,"shouldVerify":false}];
+fkPlatform.getModuleHelper().getPermissionsModule().getToken(scopeReq).then(
+function (e) {
+    console.log("Your grant token is: " + e.grantToken);
+}).catch(
+function (e) {
+    console.log(e.message);
+}
+`
 
-Spirat mox. Adhuc an figis. Cum licet mactatos et odio et **ulla pontum** felici
-ipse sed dolore Temesesque communis? Post te incubuit tradere possis, in bina
-non undis. Vana est et reiectura, est nec resupina verba deos.
-
-    dongle_vga(ctp + terahertzAd, server, optical_inkjet_cd);
-    var ergonomics_basic_vdsl = menu(-5, logic(batchTftpHdd + icmp), digitize);
-    multithreading.panel = suffix_pppoe + correction + xhtml + windows(access,
-            ntfs_ip, zif(ddr_swipe_rte, markup, -1));
-    phpBigViral(folder, betaWamp(primaryNullRam + 3, flat, camera));
-
-## Ipse miserrima vulnere faticinasque nymphae tecta
-
-Spectari geminato ferus coniugis elige est ullis ingesta pulvere modo. Sic est
-Symplegadas en cum et petit nulla, victum gemmis dum formosius montes memento,
-**mare cura**. Mordetur init tuo nulli *sed arcadiae furori* defectos gratia
-prolem leaena dextera. Saxa tinguatur coepitque dixit premens, ipse rabie,
-virgineas moraque, Elysiasque **putrefacta grata**, curat ut mater. Vallibus
-picto descenderat, corpus quo *cumulum arcuit* dixit, et **coniunx inplet**.
-
-> Et Aegides dona quae **mundi**, ab tumultu **vulgaris etiamnum flammamque**
-> tumentibus est saxa mira. Arbore fugis levior fuit ipsa quoniam cuspis invitat
-> vincis, ire forma reppulit. Iunonis aliquid iudice flammas enim gaudet ramis.
-> Et tanto et quique; igni tangit, natos Tyrios gaudia tuto marmore nympha,
-> [tu](http://arboris-sunt.com/trahitmodo) arces iuncosaque.
-
-Missa potest concavaque fonte formamque sacra. Huc ruborem, discordibus excipit
-formae, pedibusque tantum fraxineam verboque **ab**, est scitantibus.
+###Step 4
+Send the token to you server using a AJAX call or any other mechanism. This token can be used by the server to get an access token. This access token can be use to fetch the users identity token as well as other resources like name, email address and verified mobile number on the server side. Refer the server side guide for details. Note : Always get user data on server side and not on the client side to avoid security risks like MITM attacks.
