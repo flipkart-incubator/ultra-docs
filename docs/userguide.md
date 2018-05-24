@@ -3,7 +3,7 @@
 Paste this within your HTML's head tag.
 
 ```javascript
-<script src="https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.0.8.js" type="text/javascript"></script>
+<script src="https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.1.5.js" type="text/javascript"></script>
 ```
 
 ###Step 2

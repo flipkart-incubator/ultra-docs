@@ -20,7 +20,11 @@ npm install --save fk-platform-sdk
 
 Alternatively, you can also include the following script directly:
 
-`http://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.1.5.js (Version 0.1.5)`
+```
+http://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@0.1.5.js 
+
+(Version 0.1.5)
+```
 
 ### Step 2)
 Import SDK and create a new platform instance. You will need to provide clientId given to you by Flipkart.
@@ -58,7 +62,9 @@ SCOPES.USER_NAME
 ```
 **Methods:**
 
-`getToken: (permissions: ScopeAccessRequest[]) => Promise<NativeModuleResponse<PermissionsManagerResponse>>`
+```
+getToken: (permissions: ScopeAccessRequest[]) => Promise<NativeModuleResponse<PermissionsManagerResponse>>
+```
 
 Relevant interfaces:
 
