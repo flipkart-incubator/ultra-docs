@@ -191,6 +191,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../flows/" title="Flow diagrams" class="md-nav__link">
+      Flow diagrams
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../userguide/" title="User guide" class="md-nav__link">
       User guide
     </a>
@@ -566,7 +578,10 @@ isVerified(boolean)
 
 
 <h2 id="payment-flow">Payment flow.</h2>
+<p>This section describes FKPG (Flipkart payment gateway) APIs which can be used to initiate payments and for receiving refunds.
+Contact Flipkart team to get the merchant credentials required to access this API. The merchant credentials are different from <code>clientId</code> and <code>secret</code> used for Ultra APIs</p>
 <h3 id="payment-token">Payment Token</h3>
+<p>This is the first step in initiating payments. Use this API to generate a payment token which can be used to show the FKPG payment options screen, this screen can be shown via Ultra's client SDK. This will open FKPG outside of Ultra container.</p>
 <div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">token</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
@@ -663,6 +678,9 @@ isVerified(boolean)
 
 
 <h3 id="callback-after-pgresponse">Callback after PGResponse</h3>
+<p>Once a user pays, a <code>POST</code> call is made to the <code>successfulCallBackUrl</code> specified in payment token request. The payload of the FORM data is present below.
+You can then issue a HTTP redirect to the <code>fapp:</code> URL to redirect back to ultra container and also specify the order confirmation page url to open in the same format.
+This will open your order confirmation page within ultra container (payment happens outside of it). Its mandatory to redirect to ultra container via <code>fapp:</code>. Do not open any UI outside of ultra container.</p>
 <div class="codehilite"><pre><span></span>Request (will be sent as form parameters)
 
 {
@@ -914,6 +932,9 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 
 
 <h2 id="oms">OMS</h2>
+<p>OMS stands for <a href="https://en.wikipedia.org/wiki/Order_management_system">Order Management System</a>. Its the system which handles post order flows and its primary job is to power the <code>My Orders</code> screen on the flipkart apps.
+When your system knows that an order has got placed or updated, you can call the following APIs to let Flipkart OMS know about the change.
+This information will be rendered on the user's <code>My orders</code> screen with all the details you provide.</p>
 <h3 id="oms-insert">OMS Insert</h3>
 <div class="codehilite"><pre><span></span>Path: /1/oms/insert
 Method: POST
