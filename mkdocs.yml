@@ -2,6 +2,7 @@ site_name: Ultra documentation
 pages:
     - Home: index.md
     - Onboarding: onboarding.md
+    - Flow diagrams : flows.md
     - User guide : userguide.md
     - Client Side API: clients.md
     - Server Side API: backend.md

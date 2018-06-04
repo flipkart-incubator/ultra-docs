@@ -46,7 +46,12 @@ isVerified(boolean)
 ```
 
 ##Payment flow.
+
+This section describes FKPG (Flipkart payment gateway) APIs which can be used to initiate payments and for receiving refunds.
+Contact Flipkart team to get the merchant credentials required to access this API. The merchant credentials are different from `clientId` and `secret` used for Ultra APIs
+
 ###Payment Token
+This is the first step in initiating payments. Use this API to generate a payment token which can be used to show the FKPG payment options screen, this screen can be shown via Ultra's client SDK. This will open FKPG outside of Ultra container.
 
 ```
 Path: 1/payment/token
@@ -143,6 +148,9 @@ Sample Request
 ```
 
 ###Callback after PGResponse
+Once a user pays, a `POST` call is made to the `successfulCallBackUrl` specified in payment token request. The payload of the FORM data is present below.
+You can then issue a HTTP redirect to the `fapp:` URL to redirect back to ultra container and also specify the order confirmation page url to open in the same format.
+This will open your order confirmation page within ultra container (payment happens outside of it). Its mandatory to redirect to ultra container via `fapp:`. Do not open any UI outside of ultra container.
 ```
 Request (will be sent as form parameters)
 
@@ -396,6 +404,10 @@ Sample Request
 
 
 ##OMS
+OMS stands for [Order Management System](https://en.wikipedia.org/wiki/Order_management_system). Its the system which handles post order flows and its primary job is to power the `My Orders` screen on the flipkart apps.
+When your system knows that an order has got placed or updated, you can call the following APIs to let Flipkart OMS know about the change.
+This information will be rendered on the user's `My orders` screen with all the details you provide.
+
 ###OMS Insert
 ```
 Path: /1/oms/insert

@@ -83,6 +83,19 @@ interface NativeModuleResponse<T> {
 interface PermissionsManagerResponse { [key: Scopes]: boolean; }
 ```
 
+**Sample**
+
+```javascript
+var scopeReq = [{"scope":"user.email","isMandatory":true,"shouldVerify":false},{"scope":"user.mobile","isMandatory":false,"shouldVerify":false},{"scope":"user.name","isMandatory":false,"shouldVerify":false}];
+fkPlatform.getModuleHelper().getPermissionsModule().getToken(scopeReq).then(
+function (e) {
+    console.log("Your grant token is: " + e.grantToken);
+}).catch(
+function (e) {
+    console.log(e.message);
+}
+```
+
 `isMandatory` is a boolean which says whether you want the scope to be mandatorily filled by the user
 
 additionally `shouldVerify` is boolean which says whether you want the scope to be mandatorily verified as well

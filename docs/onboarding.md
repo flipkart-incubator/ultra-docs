@@ -1,5 +1,6 @@
 # Onboarding process
 Today integration with a new partner requires us to take following steps.
+
 * Closure on **Legal Contracts** and **Business Agreement** with partners.
 
 * **Information security** review and privacy policy Agreement.
