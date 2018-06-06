@@ -16,6 +16,51 @@
             "title": "What is Ultra?"
         }, 
         {
+            "location": "/tutorial/", 
+            "text": "Tutorial\n\n\nThis tutorial will help you integrate your service into the Ultra platform. If you dont like to read instructions and want to tinker around first, head over to the \ndemo\n to open the playground app. You can open it on your browser to understand how the APIs are implemented.\n\n\nStep 1 - Decide your UI platform\n\n\nTo start building an app on Ultra, lets first decide whether you want to build it on \nReact native platform\n or on HTML/PWA.\nUltra supports both containers. Here's a brief comparison of the platforms.\n\n\n\n\n\n\n\n\nReact native\n\n\nHTML\n\n\n\n\n\n\n\n\n\n\nCode in JS\n\n\nCode in JS\n\n\n\n\n\n\nAwesome performance\n\n\nDecent performance\n\n\n\n\n\n\nVery optimized for mobile\n\n\nNot highly optimized\n\n\n\n\n\n\n\n\nIf you choose React native, Ultra will pull in your react native bundle from your github repository, and then deliver it to Flipkart app over-the-air. The only catch is that you cannot use any other extra native bridges which are not exposed by Flipkart. Your react native experience will be loaded within a React Fragment and from there on you can navigate to other pages accordingly.\n\n\nIf you choose to build via HTML/PWA, then ultra will launch your webpage inside Android's webview. If you have your existing mobile website, you can choose to reuse it for Ultra, by only choosing to make small changes.\n\n\nEither way, you have to \nadd the Ultra Javascript SDK to your HTML/React-native app\n. This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to \ninitialize the SDK with your clientId\n.\n\n\nContact flipkart\n to generate a \nclientId\n and \nsecret\n needed to access Ultra APIs. For playing around with the APIs you can use \nour test credentials\n.\n\n\nStep 2 - Integrate Client SDK\n\n\nMost apps require its users to enter their email address and name before proceeding. We all know that asking the user to login to your app even if he is logged in on Flipkart app is not a good idea. Hence Ultra encourages apps to automatically login the user with their consent.\n\n\nIn this step we will learn how to fetch user details from flipkart securely by asking the user to grant permissions to their data.\n\n\nThis section will also introduce you to terms which are common in the Oauth world like \nGranted Scopes\n  and \nGrant tokens\n.\n\n\nThe first step in fetching user data is to \ncall \ngetToken\n and supply the list of user resources you like to fetch. This will render the Allow/Deny permission prompt to user, once allowed, the \nPromise\n which contains the \ntoken\n is resolved.\n\n\nWhen you call \ngetToken\n the following bottomsheet is shown to the user.\n\n\n\nUse flags like \nshouldVerify\n and \nisMandatory\n (\ndetails here\n to control whether you want the permission mandatorily and also whether the resources like email and phone should be OTP verfied on Flipkart's end. Most phone numbers on Flipkart systems are OTP verified, so they would not need to verify their phone number within the \ngetToken\n flow. For users who arent OTP verified, they will be shown a screen to verify their phone numbers before the control comes back to you. \n\n\nStep 3 - Fetch user data\n\n\nSend the token to you server using a AJAX call or any other mechanism you prefer. This token can be used by the server to get an access token which we will learn in the next step.\n\n\nOn your server side, use this grant token and fetch the access token by making a call to \n/1/authorization/auth\n. More details \nhere\n.\nUse the access token and fetch resources like \nuser.email\n and \nuser.mobile\n. More details \nhere\n.\n\n\nNote\n : Although the APIs to fetch user data are available on client side also (since they are REST APIs), make sure you always fetch user data on server side and not on the client side to avoid security risks like MITM attacks.\n\n\nStep 4 - Auto login the user\n\n\nUse the value of \nmobileNumber\n in combination with the \nisVerified\n flag to automatically log the user in. You could now set a cookie which prevents calls to \ngetToken\n from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.\n\n\nStep 5 - Payment\n\n\nFollow steps in \npayment flow\n to create a payment token and to \nstartPayment\n and once payment is successful, redirect the user to your own order confirmation page.\n\n\nThe following screen is shown when you call \nstartPayment\n :\n\n\n\n\nAlso integrate with \nrefund API\n as per your business requirements.\n\n\nStep 6 - Post payment flow\n\n\nNow that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.\nTo do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info \nhere\n. These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.\n\n\nDemo\n\n\nCheckout the \ndemo page\n to see this flow in action.", 
+            "title": "Tutorial"
+        }, 
+        {
+            "location": "/tutorial/#tutorial", 
+            "text": "This tutorial will help you integrate your service into the Ultra platform. If you dont like to read instructions and want to tinker around first, head over to the  demo  to open the playground app. You can open it on your browser to understand how the APIs are implemented.", 
+            "title": "Tutorial"
+        }, 
+        {
+            "location": "/tutorial/#step-1-decide-your-ui-platform", 
+            "text": "To start building an app on Ultra, lets first decide whether you want to build it on  React native platform  or on HTML/PWA.\nUltra supports both containers. Here's a brief comparison of the platforms.     React native  HTML      Code in JS  Code in JS    Awesome performance  Decent performance    Very optimized for mobile  Not highly optimized     If you choose React native, Ultra will pull in your react native bundle from your github repository, and then deliver it to Flipkart app over-the-air. The only catch is that you cannot use any other extra native bridges which are not exposed by Flipkart. Your react native experience will be loaded within a React Fragment and from there on you can navigate to other pages accordingly.  If you choose to build via HTML/PWA, then ultra will launch your webpage inside Android's webview. If you have your existing mobile website, you can choose to reuse it for Ultra, by only choosing to make small changes.  Either way, you have to  add the Ultra Javascript SDK to your HTML/React-native app . This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to  initialize the SDK with your clientId .  Contact flipkart  to generate a  clientId  and  secret  needed to access Ultra APIs. For playing around with the APIs you can use  our test credentials .", 
+            "title": "Step 1 - Decide your UI platform"
+        }, 
+        {
+            "location": "/tutorial/#step-2-integrate-client-sdk", 
+            "text": "Most apps require its users to enter their email address and name before proceeding. We all know that asking the user to login to your app even if he is logged in on Flipkart app is not a good idea. Hence Ultra encourages apps to automatically login the user with their consent.  In this step we will learn how to fetch user details from flipkart securely by asking the user to grant permissions to their data.  This section will also introduce you to terms which are common in the Oauth world like  Granted Scopes   and  Grant tokens .  The first step in fetching user data is to  call  getToken  and supply the list of user resources you like to fetch. This will render the Allow/Deny permission prompt to user, once allowed, the  Promise  which contains the  token  is resolved.  When you call  getToken  the following bottomsheet is shown to the user.  Use flags like  shouldVerify  and  isMandatory  ( details here  to control whether you want the permission mandatorily and also whether the resources like email and phone should be OTP verfied on Flipkart's end. Most phone numbers on Flipkart systems are OTP verified, so they would not need to verify their phone number within the  getToken  flow. For users who arent OTP verified, they will be shown a screen to verify their phone numbers before the control comes back to you.", 
+            "title": "Step 2 - Integrate Client SDK"
+        }, 
+        {
+            "location": "/tutorial/#step-3-fetch-user-data", 
+            "text": "Send the token to you server using a AJAX call or any other mechanism you prefer. This token can be used by the server to get an access token which we will learn in the next step.  On your server side, use this grant token and fetch the access token by making a call to  /1/authorization/auth . More details  here .\nUse the access token and fetch resources like  user.email  and  user.mobile . More details  here .  Note  : Although the APIs to fetch user data are available on client side also (since they are REST APIs), make sure you always fetch user data on server side and not on the client side to avoid security risks like MITM attacks.", 
+            "title": "Step 3 - Fetch user data"
+        }, 
+        {
+            "location": "/tutorial/#step-4-auto-login-the-user", 
+            "text": "Use the value of  mobileNumber  in combination with the  isVerified  flag to automatically log the user in. You could now set a cookie which prevents calls to  getToken  from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.", 
+            "title": "Step 4 - Auto login the user"
+        }, 
+        {
+            "location": "/tutorial/#step-5-payment", 
+            "text": "Follow steps in  payment flow  to create a payment token and to  startPayment  and once payment is successful, redirect the user to your own order confirmation page.  The following screen is shown when you call  startPayment  :   Also integrate with  refund API  as per your business requirements.", 
+            "title": "Step 5 - Payment"
+        }, 
+        {
+            "location": "/tutorial/#step-6-post-payment-flow", 
+            "text": "Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.\nTo do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info  here . These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.", 
+            "title": "Step 6 - Post payment flow"
+        }, 
+        {
+            "location": "/tutorial/#demo", 
+            "text": "Checkout the  demo page  to see this flow in action.", 
+            "title": "Demo"
+        }, 
+        {
             "location": "/onboarding/", 
             "text": "Onboarding process\n\n\nToday integration with a new partner requires us to take following steps.\n\n\n\n\n\n\nClosure on \nLegal Contracts\n and \nBusiness Agreement\n with partners.\n\n\n\n\n\n\nInformation security\n review and privacy policy Agreement.\n\n\n\n\n\n\nAPI Integration\n with\n\n\n\n\n\n\nLogin\n as a service which\n\n\n\n\n\n\nIntegrates partners user service with oAuth2.0 built by Flipkart Authn Service.\n\n\n\n\n\n\nCreates and Provides IdentityToken so that merchants have accountId equivalent, but yet user\u2019s flipkart flow is not compromised.\n\n\n\n\n\n\nPrompts user for data sharing permissions when partner requests user\u2019s data like email/phone number.\n\n\n\n\n\n\nSolicits missing data when a new use case arises at partners and in return enriches Flipkart data.\n\n\n\n\n\n\nPrompts email verification/phone verification flows within native app so that merchants don\u2019t have to do verification on their end.\n\n\n\n\n\n\n\n\n\n\nPayment\n as a service which\n\n\n\n\n\n\nLets partner configure their nodal account and MIDS to power payments completion via flipkart payment gateway.\n\n\n\n\n\n\nLets partner decide the allowed payment options for a user.\n\n\n\n\n\n\nLets partner Run payment bank offers.\n\n\n\n\n\n\nLets partner configure expiry timer, convenience/ other fees.\n\n\n\n\n\n\nLets partner take the benefits of Fintech constructs like EMI, BNPL etc in future.\n\n\n\n\n\n\nLets partner share order and payment details like payment status.\n\n\n\n\n\n\nLets partner issue refunds and cancellations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProcess Agreement and Semi automated integration with\n\n\n\n\n\n\nCustomer experience\n\n\n\n\n\n\nwhich solves for Visibility of orders on My Orders\n\n\n\n\n\n\nwhich solves for Discovery of help in Help Centre\n\n\n\n\n\n\nwhich solves for Communication on inbound and outbound calls\n\n\n\n\n\n\n\n\n\n\nAccounting\n\n\n\n\nWhich solves for reconciliation, Taxes, etc\n\n\n\n\n\n\n\n\nReporting\n\n\n\n\nWhich solves for visibility of business metrics periodically at both ends.", 
             "title": "Onboarding"
@@ -59,56 +104,6 @@
             "location": "/flows/#legend", 
             "text": "Client UI / Partner UI : The HTML / React-native UI which renders your experience within flipkart app.  SDK : The Javascript client SDK which exposes all Ultra client side APIs.  Client server : Your backend server.  Ultra API : Public API exposed by Ultra ( platform.flipkart.net )", 
             "title": "Legend"
-        }, 
-        {
-            "location": "/userguide/", 
-            "text": "Integration steps\n\n\nStep 1\n\n\nAdd the Ultra Javascript SDK to your HTML/React-native app. More details \nhere\n.\n\n\nInitialize the SDK with your clientId. More details \nhere\n.\n\n\nContact flipkart to generate a \nclientId\n and \nsecret\n needs to access Ultra APIs. \n\n\nStep 2\n\n\nCall \ngetToken\n on the client SDK to get a grant token. This will render the Allow/Deny permission prompt to user. More details \nhere\n.\n\n\nStep 3\n\n\nSend the token to you server using a AJAX call or any other mechanism. This token can be used by the server to get an access token. \n\n\nStep 4\n\n\nUse this grant token and fetch the access token by making a call to \n/1/authorization/auth\n. More details \nhere\n.\nUse the access token and fetch the resources like \nuser.email\n and \nuser.mobile\n. More details \nhere\n.\n\n\nNote : Although the APIs to fetch user data is available on client side also, make sure you always get user data on server side and not on the client side to avoid security risks like MITM attacks.\n\n\nStep 5\n\n\nUse the value of \nmobileNumber\n in combination with \nisVerified\n of \nuser.mobile\n to automatically log the user in. You could now set a cookie which prevent call to \ngetToken\n from happening each time. This completes the Login flow.\n\n\nStep 6\n\n\nFollow steps in \npayment flow\n to initiate payments and once successful redirect to your own order confirmation page. Also integrate with \nrefund API\n as per your business requirements.\n\n\nStep 7\n\n\nIntegrate with Flipkart OMS APIs. More info \nhere\n.\n\n\nStep 8\n\n\nCheckout the \ndemo page\n to see this flow in action.", 
-            "title": "User guide"
-        }, 
-        {
-            "location": "/userguide/#integration-steps", 
-            "text": "", 
-            "title": "Integration steps"
-        }, 
-        {
-            "location": "/userguide/#step-1", 
-            "text": "Add the Ultra Javascript SDK to your HTML/React-native app. More details  here .  Initialize the SDK with your clientId. More details  here .  Contact flipkart to generate a  clientId  and  secret  needs to access Ultra APIs.", 
-            "title": "Step 1"
-        }, 
-        {
-            "location": "/userguide/#step-2", 
-            "text": "Call  getToken  on the client SDK to get a grant token. This will render the Allow/Deny permission prompt to user. More details  here .", 
-            "title": "Step 2"
-        }, 
-        {
-            "location": "/userguide/#step-3", 
-            "text": "Send the token to you server using a AJAX call or any other mechanism. This token can be used by the server to get an access token.", 
-            "title": "Step 3"
-        }, 
-        {
-            "location": "/userguide/#step-4", 
-            "text": "Use this grant token and fetch the access token by making a call to  /1/authorization/auth . More details  here .\nUse the access token and fetch the resources like  user.email  and  user.mobile . More details  here .  Note : Although the APIs to fetch user data is available on client side also, make sure you always get user data on server side and not on the client side to avoid security risks like MITM attacks.", 
-            "title": "Step 4"
-        }, 
-        {
-            "location": "/userguide/#step-5", 
-            "text": "Use the value of  mobileNumber  in combination with  isVerified  of  user.mobile  to automatically log the user in. You could now set a cookie which prevent call to  getToken  from happening each time. This completes the Login flow.", 
-            "title": "Step 5"
-        }, 
-        {
-            "location": "/userguide/#step-6", 
-            "text": "Follow steps in  payment flow  to initiate payments and once successful redirect to your own order confirmation page. Also integrate with  refund API  as per your business requirements.", 
-            "title": "Step 6"
-        }, 
-        {
-            "location": "/userguide/#step-7", 
-            "text": "Integrate with Flipkart OMS APIs. More info  here .", 
-            "title": "Step 7"
-        }, 
-        {
-            "location": "/userguide/#step-8", 
-            "text": "Checkout the  demo page  to see this flow in action.", 
-            "title": "Step 8"
         }, 
         {
             "location": "/clients/", 
@@ -267,18 +262,28 @@
         }, 
         {
             "location": "/demo/", 
-            "text": "Ultra playground\n\n\nTo play around with the API's first install Flipkart Android app and then clicking on \nthis link\n on your android phone will open Ultra playground within flipkart app.\nThis process will open \nthis page\n within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.\n\n\nDemo Video", 
+            "text": "Ultra playground\n\n\nTo play around with the API's first install Flipkart Android app and then clicking on \nthis link\n on your android phone will open Ultra playground within flipkart app.\nThis process will open \nthis page\n within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.\n\n\nTo see the code running behind the hood, open the \nplayground app\n on your browser and use Chrome inspect to see the code.\n\n\nDemo Video", 
             "title": "Demo"
         }, 
         {
             "location": "/demo/#ultra-playground", 
-            "text": "To play around with the API's first install Flipkart Android app and then clicking on  this link  on your android phone will open Ultra playground within flipkart app.\nThis process will open  this page  within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.", 
+            "text": "To play around with the API's first install Flipkart Android app and then clicking on  this link  on your android phone will open Ultra playground within flipkart app.\nThis process will open  this page  within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.  To see the code running behind the hood, open the  playground app  on your browser and use Chrome inspect to see the code.", 
             "title": "Ultra playground"
         }, 
         {
             "location": "/demo/#demo-video", 
             "text": "", 
             "title": "Demo Video"
+        }, 
+        {
+            "location": "/contact/", 
+            "text": "Contact us\n\n\nMail us at \nfk-ultra-all@flipkart.com", 
+            "title": "Contact Us"
+        }, 
+        {
+            "location": "/contact/#contact-us", 
+            "text": "Mail us at  fk-ultra-all@flipkart.com", 
+            "title": "Contact us"
         }
     ]
 }
