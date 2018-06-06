@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-06-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,15 @@
     
     <url>
      <loc>/onboarding/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-06-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/flows/</loc>
+     <lastmod>2018-06-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +28,7 @@
     
     <url>
      <loc>/userguide/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-06-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +36,7 @@
     
     <url>
      <loc>/clients/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-06-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +44,7 @@
     
     <url>
      <loc>/backend/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-06-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -44,7 +52,7 @@
     
     <url>
      <loc>/demo/</loc>
-     <lastmod>2018-05-24</lastmod>
+     <lastmod>2018-06-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

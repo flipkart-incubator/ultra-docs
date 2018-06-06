@@ -191,6 +191,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../flows/" title="Flow diagrams" class="md-nav__link">
+      Flow diagrams
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../userguide/" title="User guide" class="md-nav__link">
       User guide
     </a>
@@ -577,6 +589,18 @@ SCOPES.USER_NAME
 <span class="p">}</span>
 
 <span class="kr">interface</span> <span class="nx">PermissionsManagerResponse</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span><span class="o">:</span> <span class="nx">Scopes</span><span class="p">]</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Sample</strong></p>
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">scopeReq</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;scope&quot;</span><span class="o">:</span><span class="s2">&quot;user.email&quot;</span><span class="p">,</span><span class="s2">&quot;isMandatory&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span><span class="s2">&quot;shouldVerify&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">},{</span><span class="s2">&quot;scope&quot;</span><span class="o">:</span><span class="s2">&quot;user.mobile&quot;</span><span class="p">,</span><span class="s2">&quot;isMandatory&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span><span class="s2">&quot;shouldVerify&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">},{</span><span class="s2">&quot;scope&quot;</span><span class="o">:</span><span class="s2">&quot;user.name&quot;</span><span class="p">,</span><span class="s2">&quot;isMandatory&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span><span class="s2">&quot;shouldVerify&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">}];</span>
+<span class="nx">fkPlatform</span><span class="p">.</span><span class="nx">getModuleHelper</span><span class="p">().</span><span class="nx">getPermissionsModule</span><span class="p">().</span><span class="nx">getToken</span><span class="p">(</span><span class="nx">scopeReq</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+<span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Your grant token is: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">grantToken</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span>
+<span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
 

@@ -1,12 +1,13 @@
 site_name: Ultra documentation
 pages:
     - Home: index.md
+    - Tutorial : tutorial.md
     - Onboarding: onboarding.md
     - Flow diagrams : flows.md
-    - User guide : userguide.md
     - Client Side API: clients.md
     - Server Side API: backend.md
     - Demo: demo.md
+    - Contact Us : contact.md
 theme:
   name: 'material'
 markdown_extensions:
