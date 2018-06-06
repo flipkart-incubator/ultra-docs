@@ -32,7 +32,7 @@ The first step in fetching user data is to [call `getToken`](clients.md#permissi
 When you call `getToken` the following bottomsheet is shown to the user.
 ![Permission prompt](img/permissions.png)
 
-Use flags like `shouldVerify` and `isMandatory` ([details here](clients.md#permissions-module) to control whether you want the permission mandatorily and also whether the resources like email and phone should be OTP verfied on Flipkart's end. Most phone numbers on Flipkart systems are OTP verified, so they would not need to verify their phone number within the `getToken` flow. For users who arent OTP verified, they will be shown a screen to verify their phone numbers before the control comes back to you. 
+Use flags like `shouldVerify` and `isMandatory` ([details here](clients.md#permissions-module)) to control whether you want the permission mandatorily and also whether the resources like email and phone should be OTP verfied on Flipkart's end. Most phone numbers on Flipkart systems are OTP verified, so they would not need to verify their phone number within the `getToken` flow. For users who arent OTP verified, they will be shown a screen to verify their phone numbers before the control comes back to you. 
 
 ###Step 3 - Fetch user data
 Send the token to you server using a AJAX call or any other mechanism you prefer. This token can be used by the server to get an access token which we will learn in the next step.
