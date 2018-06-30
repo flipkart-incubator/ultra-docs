@@ -5,6 +5,7 @@ The public link is https://flipkart-incubator.github.io/ultra-docs/
 
 Making changes :
 * Install MkDocs python plugin : http://www.mkdocs.org/
+* Install themes : pip install mkdocs-material
 * `mkdocs.yml` in the root folder of this repo contains the website structure. Make changes to `mkdocs.yml` if you want to add a new page.
 * `index.md` inside the docs folder is the index page, similarly other pages have the .md extension. Adding a new page means adding a new .md file and editing the `mkdocs.yml` to contain this path.
 * Once changes are made run `mkdocs serve` to test it locally. `mkdocs build` to convert the md files to html files.
