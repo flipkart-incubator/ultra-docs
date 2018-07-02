@@ -503,6 +503,16 @@ Sample Request
 }
 ```
 
+##Offers
+Flipkart might have some offers. These Apis let you interact with them.
+
+###Get offers list
+```
+Path: /1/offers/active
+Method: GET
+```
+ 
+
 ##Security
 All production endpoints will be over https.
 We will validate Client’s identity using JWT.
