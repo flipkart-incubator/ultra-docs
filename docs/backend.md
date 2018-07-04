@@ -12,7 +12,7 @@ Path: /1/authorization/auth
 
 Method: GET
 
-Query parameters: 
+Query parameters:
 grantToken : String
 clientId : String
 clientSecret : String
@@ -31,7 +31,7 @@ fetch bulk data
 Path: /1/resource/bulk
 
 Method: POST
-Query parameters: 
+Query parameters:
 accessToken : String
 Body: List<String> //where each string is scope for which data is to be fetched.
 Response : Map<String,Object> // String the scope and Object for each scope is defined below
@@ -57,7 +57,7 @@ This is the first step in initiating payments. Use this API to generate a paymen
 Path: 1/payment/token
 
 Method: POST
-Body: PaymentTokenRequest 
+Body: PaymentTokenRequest
 PaymentTokenRequest {
 merchantCredential(MerchantCredential),
 amountPaise (long),
@@ -158,7 +158,7 @@ Request (will be sent as form parameters)
       "transaction_status": "",	//	SUCCESS, FAILED
       "account_type": "NODAL",
       "pg_trackid": "",		
-      "merchant_adjustments": 
+      "merchant_adjustments":
       "[
       {"offer_id":"",
       "offer_unit_price":0,
@@ -183,7 +183,7 @@ Request (will be sent as form parameters)
       "payment_method": "",		//	Appendix
       "timestamp": "",
       "merchant_key_id": "",
-      "primary_record": 
+      "primary_record":
       "{"transaction_id": "", "primary_amount": ""}",
       "merchant_transaction_id": "",
       "bank_transaction_id": "",
@@ -215,7 +215,7 @@ transaction_status=""&account_type=""&pg_trackid=""&merchant_adjustments=[ {'off
 Path: 1/payment/query
 
 Method: POST
-Body: QueryRequest 
+Body: QueryRequest
 QueryRequest {
 merchantCredential(MerchantCredential),
 forcePgQuery (boolean, optional),
@@ -337,7 +337,7 @@ Sample Request
 Path: 1/payment/query
 
 Method: POST
-Body: RefundRequest 
+Body: RefundRequest
 RefundRequest {
 merchantCredential(MerchantCredential),
 merchantTransactionId (string),
@@ -405,101 +405,126 @@ Sample Request
 
 ##OMS
 OMS stands for [Order Management System](https://en.wikipedia.org/wiki/Order_management_system). Its the system which handles post order flows and its primary job is to power the `My Orders` screen on the flipkart apps.
-When your system knows that an order has got placed or updated, you can call the following APIs to let Flipkart OMS know about the change.
-This information will be rendered on the user's `My orders` screen with all the details you provide.
-
-###OMS Insert
+When your system knows that an order has got placed or updated, you can call the following API to let Flipkart OMS know about the change.
+This information will be rendered on the user's `My orders` screen with all the details you provide. We will also use this information for powering our CX agents for better experience.
+###OMS Upsert
 ```
-Path: /1/oms/insert
+Path: /2/oms
 Method: POST
-Body: RefundRequest 
-OMSPayload {
+Body:
+Order {
 orderId (string),
 imageUrl (string),
 description (string),
-amount (double),
-disbursalText (string),
-secondaryDisbursalText (string),
 identityToken (string),
-state (string) ['INITIATED' or 'SUCCESSFUL' or 'FAILED'],
-items (Array[OMSItem]),
-offers (Array[OMSOffers], optional),
-timestamp (long)
+orderTimestamp (long),
+items (Array[Item]),
+forwardTransactions (Array[ForwardTransaction], optional),
+reverseTransactions (Array[ReverseTransaction], optional),
+merchantAdjustments (Array[MerchantAdjustment], optional),
+flipkartAdjustments (Array[FlipkartAdjustment], optional),
+cancellationCharges (Array[CancellationCharges], optional)
 }
-OMSItem {
+Item {
 itemId (string),
 title (string),
-amount (long),
-category (string)
+basePrice (double),
+finalPrice (double, optional),
+category (string),
+fulfillmentDate (long),
+itemState (string, optional) = ['INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING']
 }
-OMSOffers {
-offerId (string),
-title (string),
-source (string)
-}
-Response: String
-```
-```
-Sample Request
-{
-	"orderId":"dummyOrder1",
-	"imageUrl": "http://www.google.com/img/test",
-	"description":"This is an order id",
-	"amount": 220.14,
-	"disbursalText":"You order has been recharged",
-	"secondaryDisbursalText":"Recharge is already done, Go get a life",
-	"identityToken":"IDTKNE4783BAFB3B54713A46EC4B9EB5D59DEKNG",
-	"state":"DUMMY",
-	"timestamp": 1523960011000,
-	"items": [
-		{
-			"itemId" : "dummyItemId1",
-			"title" : "This is the recharge product you just purchased",
-			"amount" : 220.14,
-			"category" : "recharge"
-		}
-	],
-	"offers": [
-		{
-			"offerId" : "dummyOfferId",
-			"title" : "Get everything for free",
-			"source" : "merchant"
-		}
-	]
-}
-```
-###OMS State update
-```
-Path: /1/oms/update/state
-Method: PUT
-Query: 
-orderId : String
-state : String  ['INITIATED' or 'SUCCESSFUL' or 'FAILED']
-```
-
-###OMS Refund
-```
-Path: /1/oms/create/refund
-Method: PUT
-Body: 
-RefundPayload {
-orderId (string),
+ForwardTransaction {
 transactionId (string),
 amount (double),
-source (string),
-title (string),
-refundId (string)
+description (string),
+timestamp (long)
+}
+ReverseTransaction {
+forwardTransactionId (string),
+reverseTransactionId (string),
+amount (double),
+description (string),
+timestamp (long)
+}
+MerchantAdjustment {
+adjustmentId (string),
+amount (double),
+title (string)
+}
+FlipkartAdjustment {
+adjustmentId (string),
+amount (double)
+}
+CancellationCharges {
+itemId (string),
+reason (string),
+amount (double)
 }
 ```
 ```
 Sample Request
 {
-	"orderId" : "dummyOrder1",
-	"transactionId" : "dummyRefundTransactionId",
-	"amount" : 20.12,
-	"source" : "merchant",
-	"title" : "Refund because merchant says so",
-	"refundId" : "dummyRefundId"
+  "orderId": "DummyOrderId",
+  "imageUrl": "dummyImageUrl",
+  "description": "This is a dummy description",
+  "identityToken": "someIdentityToken",
+  "orderTimestamp": 1530622713945,
+  "items": [
+    {
+      "itemId": "Product 1",
+      "title": "This is a product",
+      "basePrice": 120,
+      "finalPrice": 100,
+      "category": "test",
+      "fulfillmentDate": 1530622713946,
+      "itemState": "SUCCESSFUL"
+    },
+    {
+      "itemId": "Product 2",
+      "title": "This is a product",
+      "basePrice": 120,
+      "finalPrice": 100,
+      "category": "test",
+      "fulfillmentDate": 1530622713946,
+      "itemState": "SUCCESSFUL"
+    }
+  ],
+  "forwardTransactions": [
+    {
+      "transactionId": "transaction1",
+      "amount": 100,
+      "description": "Paid via FKPG",
+      "timestamp": 1530622713956
+    }
+  ],
+  "reverseTransactions": [
+    {
+      "forwardTransactionId": "transaction1",
+      "reverseTransactionId": "rev_transaction1",
+      "amount": 10,
+      "description": "Refund for cancellation",
+      "timestamp": 1530622714957
+    }
+  ],
+  "merchantAdjustments": [
+    {
+      "adjustmentId": "Dummy merchant adjustment id",
+      "title": "This is some title",
+      "amount": 20
+    }
+  ],
+  "flipkartAdjustments": [
+    {
+      "adjustmentId": "dummyAdjustmentId",
+      "amount": 20
+    }
+  ],
+  "cancellationCharges": {
+    "itemId": "Product 1",
+    "reason": "Cancellation costs are sometimes deducted",
+    "amount": 10
+  }
 }
 ```
 
@@ -511,7 +536,7 @@ Flipkart might have some offers. These Apis let you interact with them.
 Path: /1/offers/active
 Method: GET
 ```
- 
+
 
 ##Security
 All production endpoints will be over https.
