@@ -387,6 +387,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../oms/" title="OMS" class="md-nav__link">
+      OMS
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../demo/" title="Demo" class="md-nav__link">
       Demo
     </a>
@@ -966,7 +978,6 @@ Method: POST
 Body:
 Order {
 orderId (string),
-imageUrl (string),
 description (string),
 identityToken (string),
 orderTimestamp (long),
@@ -980,11 +991,12 @@ cancellationCharges (Array[CancellationCharges], optional)
 Item {
 itemId (string),
 title (string),
+image (string),
 basePrice (double),
 finalPrice (double, optional),
 category (string),
 fulfillmentDate (long),
-itemState (string, optional) = [&#39;INIT&#39; or &#39;SUCCESSFUL&#39; or &#39;CANCELLED&#39; or &#39;PENDING&#39;]
+itemState (string) = [&#39;INIT&#39; or &#39;SUCCESSFUL&#39; or &#39;CANCELLED&#39; or &#39;PENDING&#39;]
 }
 ForwardTransaction {
 transactionId (string),
@@ -1019,7 +1031,6 @@ amount (double)
 <div class="codehilite"><pre><span></span>Sample Request
 {
   &quot;orderId&quot;: &quot;DummyOrderId&quot;,
-  &quot;imageUrl&quot;: &quot;dummyImageUrl&quot;,
   &quot;description&quot;: &quot;This is a dummy description&quot;,
   &quot;identityToken&quot;: &quot;someIdentityToken&quot;,
   &quot;orderTimestamp&quot;: 1530622713945,
@@ -1027,6 +1038,7 @@ amount (double)
     {
       &quot;itemId&quot;: &quot;Product 1&quot;,
       &quot;title&quot;: &quot;This is a product&quot;,
+      &quot;image&quot;: &quot;image.url&quot;,
       &quot;basePrice&quot;: 120,
       &quot;finalPrice&quot;: 100,
       &quot;category&quot;: &quot;test&quot;,
@@ -1036,6 +1048,7 @@ amount (double)
     {
       &quot;itemId&quot;: &quot;Product 2&quot;,
       &quot;title&quot;: &quot;This is a product&quot;,
+      &quot;image&quot;: &quot;image.url&quot;,
       &quot;basePrice&quot;: 120,
       &quot;finalPrice&quot;: 100,
       &quot;category&quot;: &quot;test&quot;,
@@ -1141,13 +1154,13 @@ Response:  Will be HTTP 200 if secureToken is valid otherwise response code will
           </a>
         
         
-          <a href="../demo/" title="Demo" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../oms/" title="OMS" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Demo
+                OMS
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
