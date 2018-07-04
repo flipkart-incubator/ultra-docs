@@ -325,22 +325,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#oms-insert" title="OMS Insert" class="md-nav__link">
-    OMS Insert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oms-state-update" title="OMS State update" class="md-nav__link">
-    OMS State update
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oms-refund" title="OMS Refund" class="md-nav__link">
-    OMS Refund
+  <a href="#oms-upsert" title="OMS Upsert" class="md-nav__link">
+    OMS Upsert
   </a>
   
 </li>
@@ -510,22 +496,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#oms-insert" title="OMS Insert" class="md-nav__link">
-    OMS Insert
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oms-state-update" title="OMS State update" class="md-nav__link">
-    OMS State update
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oms-refund" title="OMS Refund" class="md-nav__link">
-    OMS Refund
+  <a href="#oms-upsert" title="OMS Upsert" class="md-nav__link">
+    OMS Upsert
   </a>
   
 </li>
@@ -596,7 +568,7 @@ Get Auth token flow</p>
 
 Method: GET
 
-Query parameters: 
+Query parameters:
 grantToken : String
 clientId : String
 clientSecret : String
@@ -615,7 +587,7 @@ fetch bulk data</p>
 <div class="codehilite"><pre><span></span>Path: /1/resource/bulk
 
 Method: POST
-Query parameters: 
+Query parameters:
 accessToken : String
 Body: List&lt;String&gt; //where each string is scope for which data is to be fetched.
 Response : Map&lt;String,Object&gt; // String the scope and Object for each scope is defined below
@@ -638,7 +610,7 @@ Contact Flipkart team to get the merchant credentials required to access this AP
 <div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">token</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
-<span class="n">Body</span><span class="o">:</span> <span class="n">PaymentTokenRequest</span> 
+<span class="n">Body</span><span class="o">:</span> <span class="n">PaymentTokenRequest</span>
 <span class="n">PaymentTokenRequest</span> <span class="o">{</span>
 <span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
 <span class="n">amountPaise</span> <span class="o">(</span><span class="n">long</span><span class="o">),</span>
@@ -740,7 +712,7 @@ This will open your order confirmation page within ultra container (payment happ
       &quot;transaction_status&quot;: &quot;&quot;, //  SUCCESS, FAILED
       &quot;account_type&quot;: &quot;NODAL&quot;,
       &quot;pg_trackid&quot;: &quot;&quot;,     
-      &quot;merchant_adjustments&quot;: 
+      &quot;merchant_adjustments&quot;:
       &quot;[
       {&quot;offer_id&quot;:&quot;&quot;,
       &quot;offer_unit_price&quot;:0,
@@ -765,7 +737,7 @@ This will open your order confirmation page within ultra container (payment happ
       &quot;payment_method&quot;: &quot;&quot;,     //  Appendix
       &quot;timestamp&quot;: &quot;&quot;,
       &quot;merchant_key_id&quot;: &quot;&quot;,
-      &quot;primary_record&quot;: 
+      &quot;primary_record&quot;:
       &quot;{&quot;transaction_id&quot;: &quot;&quot;, &quot;primary_amount&quot;: &quot;&quot;}&quot;,
       &quot;merchant_transaction_id&quot;: &quot;&quot;,
       &quot;bank_transaction_id&quot;: &quot;&quot;,
@@ -796,7 +768,7 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 <div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">query</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
-<span class="n">Body</span><span class="o">:</span> <span class="n">QueryRequest</span> 
+<span class="n">Body</span><span class="o">:</span> <span class="n">QueryRequest</span>
 <span class="n">QueryRequest</span> <span class="o">{</span>
 <span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
 <span class="n">forcePgQuery</span> <span class="o">(</span><span class="n">boolean</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
@@ -919,7 +891,7 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 <div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">query</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
-<span class="n">Body</span><span class="o">:</span> <span class="n">RefundRequest</span> 
+<span class="n">Body</span><span class="o">:</span> <span class="n">RefundRequest</span>
 <span class="n">RefundRequest</span> <span class="o">{</span>
 <span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
 <span class="n">merchantTransactionId</span> <span class="o">(</span><span class="n">string</span><span class="o">),</span>
@@ -986,102 +958,126 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 
 <h2 id="oms">OMS</h2>
 <p>OMS stands for <a href="https://en.wikipedia.org/wiki/Order_management_system">Order Management System</a>. Its the system which handles post order flows and its primary job is to power the <code>My Orders</code> screen on the flipkart apps.
-When your system knows that an order has got placed or updated, you can call the following APIs to let Flipkart OMS know about the change.
-This information will be rendered on the user's <code>My orders</code> screen with all the details you provide.</p>
-<h3 id="oms-insert">OMS Insert</h3>
-<div class="codehilite"><pre><span></span>Path: /1/oms/insert
+When your system knows that an order has got placed or updated, you can call the following API to let Flipkart OMS know about the change.
+This information will be rendered on the user's <code>My orders</code> screen with all the details you provide. We will also use this information for powering our CX agents for better experience.</p>
+<h3 id="oms-upsert">OMS Upsert</h3>
+<div class="codehilite"><pre><span></span>Path: /2/oms
 Method: POST
-Body: RefundRequest 
-OMSPayload {
+Body:
+Order {
 orderId (string),
 imageUrl (string),
 description (string),
-amount (double),
-disbursalText (string),
-secondaryDisbursalText (string),
 identityToken (string),
-state (string) [&#39;INITIATED&#39; or &#39;SUCCESSFUL&#39; or &#39;FAILED&#39;],
-items (Array[OMSItem]),
-offers (Array[OMSOffers], optional),
-timestamp (long)
+orderTimestamp (long),
+items (Array[Item]),
+forwardTransactions (Array[ForwardTransaction], optional),
+reverseTransactions (Array[ReverseTransaction], optional),
+merchantAdjustments (Array[MerchantAdjustment], optional),
+flipkartAdjustments (Array[FlipkartAdjustment], optional),
+cancellationCharges (Array[CancellationCharges], optional)
 }
-OMSItem {
+Item {
 itemId (string),
 title (string),
-amount (long),
-category (string)
+basePrice (double),
+finalPrice (double, optional),
+category (string),
+fulfillmentDate (long),
+itemState (string, optional) = [&#39;INIT&#39; or &#39;SUCCESSFUL&#39; or &#39;CANCELLED&#39; or &#39;PENDING&#39;]
 }
-OMSOffers {
-offerId (string),
-title (string),
-source (string)
-}
-Response: String
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>Sample Request
-{
-    &quot;orderId&quot;:&quot;dummyOrder1&quot;,
-    &quot;imageUrl&quot;: &quot;http://www.google.com/img/test&quot;,
-    &quot;description&quot;:&quot;This is an order id&quot;,
-    &quot;amount&quot;: 220.14,
-    &quot;disbursalText&quot;:&quot;You order has been recharged&quot;,
-    &quot;secondaryDisbursalText&quot;:&quot;Recharge is already done, Go get a life&quot;,
-    &quot;identityToken&quot;:&quot;IDTKNE4783BAFB3B54713A46EC4B9EB5D59DEKNG&quot;,
-    &quot;state&quot;:&quot;DUMMY&quot;,
-    &quot;timestamp&quot;: 1523960011000,
-    &quot;items&quot;: [
-        {
-            &quot;itemId&quot; : &quot;dummyItemId1&quot;,
-            &quot;title&quot; : &quot;This is the recharge product you just purchased&quot;,
-            &quot;amount&quot; : 220.14,
-            &quot;category&quot; : &quot;recharge&quot;
-        }
-    ],
-    &quot;offers&quot;: [
-        {
-            &quot;offerId&quot; : &quot;dummyOfferId&quot;,
-            &quot;title&quot; : &quot;Get everything for free&quot;,
-            &quot;source&quot; : &quot;merchant&quot;
-        }
-    ]
-}
-</pre></div>
-
-
-<h3 id="oms-state-update">OMS State update</h3>
-<div class="codehilite"><pre><span></span>Path: /1/oms/update/state
-Method: PUT
-Query: 
-orderId : String
-state : String  [&#39;INITIATED&#39; or &#39;SUCCESSFUL&#39; or &#39;FAILED&#39;]
-</pre></div>
-
-
-<h3 id="oms-refund">OMS Refund</h3>
-<div class="codehilite"><pre><span></span>Path: /1/oms/create/refund
-Method: PUT
-Body: 
-RefundPayload {
-orderId (string),
+ForwardTransaction {
 transactionId (string),
 amount (double),
-source (string),
-title (string),
-refundId (string)
+description (string),
+timestamp (long)
+}
+ReverseTransaction {
+forwardTransactionId (string),
+reverseTransactionId (string),
+amount (double),
+description (string),
+timestamp (long)
+}
+MerchantAdjustment {
+adjustmentId (string),
+amount (double),
+title (string)
+}
+FlipkartAdjustment {
+adjustmentId (string),
+amount (double)
+}
+CancellationCharges {
+itemId (string),
+reason (string),
+amount (double)
 }
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span>Sample Request
 {
-    &quot;orderId&quot; : &quot;dummyOrder1&quot;,
-    &quot;transactionId&quot; : &quot;dummyRefundTransactionId&quot;,
-    &quot;amount&quot; : 20.12,
-    &quot;source&quot; : &quot;merchant&quot;,
-    &quot;title&quot; : &quot;Refund because merchant says so&quot;,
-    &quot;refundId&quot; : &quot;dummyRefundId&quot;
+  &quot;orderId&quot;: &quot;DummyOrderId&quot;,
+  &quot;imageUrl&quot;: &quot;dummyImageUrl&quot;,
+  &quot;description&quot;: &quot;This is a dummy description&quot;,
+  &quot;identityToken&quot;: &quot;someIdentityToken&quot;,
+  &quot;orderTimestamp&quot;: 1530622713945,
+  &quot;items&quot;: [
+    {
+      &quot;itemId&quot;: &quot;Product 1&quot;,
+      &quot;title&quot;: &quot;This is a product&quot;,
+      &quot;basePrice&quot;: 120,
+      &quot;finalPrice&quot;: 100,
+      &quot;category&quot;: &quot;test&quot;,
+      &quot;fulfillmentDate&quot;: 1530622713946,
+      &quot;itemState&quot;: &quot;SUCCESSFUL&quot;
+    },
+    {
+      &quot;itemId&quot;: &quot;Product 2&quot;,
+      &quot;title&quot;: &quot;This is a product&quot;,
+      &quot;basePrice&quot;: 120,
+      &quot;finalPrice&quot;: 100,
+      &quot;category&quot;: &quot;test&quot;,
+      &quot;fulfillmentDate&quot;: 1530622713946,
+      &quot;itemState&quot;: &quot;SUCCESSFUL&quot;
+    }
+  ],
+  &quot;forwardTransactions&quot;: [
+    {
+      &quot;transactionId&quot;: &quot;transaction1&quot;,
+      &quot;amount&quot;: 100,
+      &quot;description&quot;: &quot;Paid via FKPG&quot;,
+      &quot;timestamp&quot;: 1530622713956
+    }
+  ],
+  &quot;reverseTransactions&quot;: [
+    {
+      &quot;forwardTransactionId&quot;: &quot;transaction1&quot;,
+      &quot;reverseTransactionId&quot;: &quot;rev_transaction1&quot;,
+      &quot;amount&quot;: 10,
+      &quot;description&quot;: &quot;Refund for cancellation&quot;,
+      &quot;timestamp&quot;: 1530622714957
+    }
+  ],
+  &quot;merchantAdjustments&quot;: [
+    {
+      &quot;adjustmentId&quot;: &quot;Dummy merchant adjustment id&quot;,
+      &quot;title&quot;: &quot;This is some title&quot;,
+      &quot;amount&quot;: 20
+    }
+  ],
+  &quot;flipkartAdjustments&quot;: [
+    {
+      &quot;adjustmentId&quot;: &quot;dummyAdjustmentId&quot;,
+      &quot;amount&quot;: 20
+    }
+  ],
+  &quot;cancellationCharges&quot;: {
+    &quot;itemId&quot;: &quot;Product 1&quot;,
+    &quot;reason&quot;: &quot;Cancellation costs are sometimes deducted&quot;,
+    &quot;amount&quot;: 10
+  }
 }
 </pre></div>
 
