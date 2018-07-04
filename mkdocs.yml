@@ -6,6 +6,7 @@ pages:
     - Flow diagrams : flows.md
     - Client Side API: clients.md
     - Server Side API: backend.md
+    - OMS: oms.md
     - Demo: demo.md
     - Contact Us : contact.md
 theme:

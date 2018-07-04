@@ -414,7 +414,6 @@ Method: POST
 Body:
 Order {
 orderId (string),
-imageUrl (string),
 description (string),
 identityToken (string),
 orderTimestamp (long),
@@ -428,11 +427,12 @@ cancellationCharges (Array[CancellationCharges], optional)
 Item {
 itemId (string),
 title (string),
+image (string),
 basePrice (double),
 finalPrice (double, optional),
 category (string),
 fulfillmentDate (long),
-itemState (string, optional) = ['INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING']
+itemState (string) = ['INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING']
 }
 ForwardTransaction {
 transactionId (string),
@@ -466,7 +466,6 @@ amount (double)
 Sample Request
 {
   "orderId": "DummyOrderId",
-  "imageUrl": "dummyImageUrl",
   "description": "This is a dummy description",
   "identityToken": "someIdentityToken",
   "orderTimestamp": 1530622713945,
@@ -474,6 +473,7 @@ Sample Request
     {
       "itemId": "Product 1",
       "title": "This is a product",
+      "image": "image.url",
       "basePrice": 120,
       "finalPrice": 100,
       "category": "test",
@@ -483,6 +483,7 @@ Sample Request
     {
       "itemId": "Product 2",
       "title": "This is a product",
+      "image": "image.url",
       "basePrice": 120,
       "finalPrice": 100,
       "category": "test",
