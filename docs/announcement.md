@@ -1,3 +1,48 @@
+## Root Cause Analysis of Order failures on MMT (07/07/2018)
+
+### Summary
+From approximately 2pm to 9pm on 7 July even if users made the payment for ticket, order was not getting confirmed. There was 100% failure and no successful order were placed in this time.
+
+### Event Description
+Ultra's offers were configured using a json config file. There was a planned activity going on to move offers from this file to a database fronted with UI, so that the offers can be edited by business and be exposed to merchants using Offer API. The changes were coded and merged tested on local and then deployed on master. To ensure that double offer is not applied, Offer DB was populated to be a copy of config that was live. Post this console was expected to go live and exposed to business. However due to various reasons, the console go live was delayed. Because of which the transition period where both Offer database and Offer Config we appending offers was extended over weekend. All of this was done on 4th July. There was no impact on production because both config and database were appending the same offers.
+
+On 7th July at 2pm business changed the config to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.
+
+### Chronology of Events/Timeline
+* 4 July :
+    * Offer DB deployed to prod with offers in sync with Offers Config.
+* 5 July :
+    * Offer Console was not deployed due to tech issues. Offers DB was not disabled.
+    * Offers on both sources are in sync, hence production is stable.
+* 7 July :
+    * 2:00 pm: Offers changed in config. Leading to double offers. MMT not confirming any orders because of this.
+    * 5:30 pm: MMT informs flipkart that none of the orders are getting confirmed.
+    * 8:37 pm: Tech team was notified about the issue.
+    * 9:00 pm: After investigation Flipkart tech realises that the issue is with offer DB being out of sync. Offer DB was disabled. Production was stabilised.
+
+### Findings
+**Q** Why was transition period long.
+
+**A** The console deployment had some issues. Because of which switchover was blocked.
+
+**Q** How could the transition period have been shortened.
+
+**A** Rather than keeping the config in sync, we should have disabled offer DB, till console was not deployed.
+
+**Q** Why did it take 3 hours + for flipkart to debug.
+
+**A** Tech was involved very late. We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.
+
+### Corrective Action
+* Expose on call email to merchants.
+* Offer configuration should happen before hand and it should be discouraged to change production parameters over weekend.
+* There will be no deployments in ultra from friday to sunday apart from patching prod issues.
+* Changes in ultra will be broadcasted beforehand internally for other's FYI.
+
+### Open Tickets
+* **Ulta-33** : Create an alias for ultra-oncall
+
+
 ## Root Cause Analysis of Ultra Outage (24/06/2018-25/06/2018)
 
 ### Summary
