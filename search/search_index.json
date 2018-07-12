@@ -339,6 +339,81 @@
             "location": "/contact/#contact-us", 
             "text": "Mail us at  fk-ultra-all@flipkart.com", 
             "title": "Contact us"
+        }, 
+        {
+            "location": "/announcement/", 
+            "text": "Root Cause Analysis of Order failures on MMT (07/07/2018)\n\n\nSummary\n\n\nFrom approximately 2pm to 9pm on 7 July even if users made the payment for ticket, order was not getting confirmed. There was 100% failure and no successful order were placed in this time.\n\n\nEvent Description\n\n\nUltra's offers were configured using a json config file. There was a planned activity going on to move offers from this file to a database fronted with UI, so that the offers can be edited by business and be exposed to merchants using Offer API. The changes were coded and merged tested on local and then deployed on master. To ensure that double offer is not applied, Offer DB was populated to be a copy of config that was live. Post this console was expected to go live and exposed to business. However due to various reasons, the console go live was delayed. Because of which the transition period where both Offer database and Offer Config we appending offers was extended over weekend. All of this was done on 4th July. There was no impact on production because both config and database were appending the same offers.\n\n\nOn 7th July at 2pm business changed the config to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.\n\n\nChronology of Events/Timeline\n\n\n\n\n4 July :\n\n\nOffer DB deployed to prod with offers in sync with Offers Config.\n\n\n\n\n\n\n5 July :\n\n\nOffer Console was not deployed due to tech issues. Offers DB was not disabled.\n\n\nOffers on both sources are in sync, hence production is stable.\n\n\n\n\n\n\n7 July :\n\n\n2:00 pm: Offers changed in config. Leading to double offers. MMT not confirming any orders because of this.\n\n\n5:30 pm: MMT informs flipkart that none of the orders are getting confirmed.\n\n\n8:37 pm: Tech team was notified about the issue.\n\n\n9:00 pm: After investigation Flipkart tech realises that the issue is with offer DB being out of sync. Offer DB was disabled. Production was stabilised.\n\n\n\n\n\n\n\n\nFindings\n\n\nQ\n Why was transition period long.\n\n\nA\n The console deployment had some issues. Because of which switchover was blocked.\n\n\nQ\n How could the transition period have been shortened.\n\n\nA\n Rather than keeping the config in sync, we should have disabled offer DB, till console was not deployed.\n\n\nQ\n Why did it take 3 hours + for flipkart to debug.\n\n\nA\n Tech was involved very late. We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.\n\n\nCorrective Action\n\n\n\n\nExpose on call email to merchants.\n\n\nOffer configuration should happen before hand and it should be discouraged to change production parameters over weekend.\n\n\nThere will be no deployments in ultra from friday to sunday apart from patching prod issues.\n\n\nChanges in ultra will be broadcasted beforehand internally for other's FYI.\n\n\n\n\nOpen Tickets\n\n\n\n\nUlta-33\n : Create an alias for ultra-oncall\n\n\n\n\nRoot Cause Analysis of Ultra Outage (24/06/2018-25/06/2018)\n\n\nSummary\n\n\nUltra api\u2019s were throwing internal server error from 24th Jul 2018 (2:20 am) to 25th Jul 2018(10:40am). Preventing new user\u2019s to come onboard ultra platform as well as transacting.\n\n\nEvent Description\n\n\nOn 24th Jun 2018 at about 2:20am an ultra API deployment was done to patch a bug for feature being developed right now. The patch was small and only for on of internal APIs. However along with above mentioned patch, rate limiting which was merged to master was also deployed. Since the config for rate limiting was only set for our test app, after deployment MMT and Phonepe api\u2019s were throttled to 0.\nThe issue was observed on 25th 10:19am after MMT notified that APIs are not working correctly. The issue was patched by adding proper config in config service and the issue was rectified by 10:40 am.\n\n\nChronology of Events/Timeline\n\n\n\n\n11th Jun 2018: Rate limiting implemented and tested for playground app. Merged to master.\n\n\n22th Jun 2018\n\n\n5:00pm : Patched a bug for an internal API, merged to master after code review and testing.\n\n\n5:10pm : Deployment failed due to bug in deployment service. Raised a ticket and informed\ninternal team that deployment will be done asap.\n\n\n\n\n\n\n24th Jun 2018\n\n\n1:00 am: Verified that deployment service bug is fixed and started deployment to preprod.\n\n\n2:00 am: Verified the internal API on preprod and propagated the changes to prod.\n\n\n2:20 am: Prod deployment completed.\n\n\n\n\n\n\n25th Jun 2018\n\n\n12:25 am: MMT notified on slack that the API is not working.\n\n\n10:21 am: Ultra team noticed the bug and started debugging. * 10:40 am: Correct config updated for both Phonepe and MMT.\n\n\n\n\n\n\n\n\nFindings and Root Cause\n\n\nQ\n Why did the APIs fail?\n\n\nA\n The APIs failed because rate limiting was deployed without correct config.\n\n\nQ\n Why was Config not present for rate limiting?\n\n\nA\n We consider this as a miss during the code review and testing process. Config should have been propagated for all merchant\u2019s before the code was merged to master.\n\n\nQ\n Why was the issue not detected earlier?\n\n\nA\n There was a dip in QPS numbers. And Alerts were not triggered.\n\n\nQ\n Are the alerts working?\n\n\nA\n While figuring out this issue we have figured out that our alerting are not working and will be fixed asap.\n\n\nCorrective Action\n\n\nWe will take the following corrective actions.\n\n Fix and test alerting.\n\n Ensure that deployments don\u2019t happen over weekend.\n\n Post every deployment test all API\u2019s thoroughly.\n\n Have regular deployments so that testing the delta is manageable.\n* Solve open tickets.\n\n\nOpen Tickets\n\n\nUltra-5\n : Figure out how to add alerts on QPS and HTTP response codes. (\nResolved\n)\n\n\nUltra-4\n : Investigate why error log growth did not cause an alert. (\nResolved\n)", 
+            "title": "Annonucements"
+        }, 
+        {
+            "location": "/announcement/#root-cause-analysis-of-order-failures-on-mmt-07072018", 
+            "text": "", 
+            "title": "Root Cause Analysis of Order failures on MMT (07/07/2018)"
+        }, 
+        {
+            "location": "/announcement/#summary", 
+            "text": "From approximately 2pm to 9pm on 7 July even if users made the payment for ticket, order was not getting confirmed. There was 100% failure and no successful order were placed in this time.", 
+            "title": "Summary"
+        }, 
+        {
+            "location": "/announcement/#event-description", 
+            "text": "Ultra's offers were configured using a json config file. There was a planned activity going on to move offers from this file to a database fronted with UI, so that the offers can be edited by business and be exposed to merchants using Offer API. The changes were coded and merged tested on local and then deployed on master. To ensure that double offer is not applied, Offer DB was populated to be a copy of config that was live. Post this console was expected to go live and exposed to business. However due to various reasons, the console go live was delayed. Because of which the transition period where both Offer database and Offer Config we appending offers was extended over weekend. All of this was done on 4th July. There was no impact on production because both config and database were appending the same offers.  On 7th July at 2pm business changed the config to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.", 
+            "title": "Event Description"
+        }, 
+        {
+            "location": "/announcement/#chronology-of-eventstimeline", 
+            "text": "4 July :  Offer DB deployed to prod with offers in sync with Offers Config.    5 July :  Offer Console was not deployed due to tech issues. Offers DB was not disabled.  Offers on both sources are in sync, hence production is stable.    7 July :  2:00 pm: Offers changed in config. Leading to double offers. MMT not confirming any orders because of this.  5:30 pm: MMT informs flipkart that none of the orders are getting confirmed.  8:37 pm: Tech team was notified about the issue.  9:00 pm: After investigation Flipkart tech realises that the issue is with offer DB being out of sync. Offer DB was disabled. Production was stabilised.", 
+            "title": "Chronology of Events/Timeline"
+        }, 
+        {
+            "location": "/announcement/#findings", 
+            "text": "Q  Why was transition period long.  A  The console deployment had some issues. Because of which switchover was blocked.  Q  How could the transition period have been shortened.  A  Rather than keeping the config in sync, we should have disabled offer DB, till console was not deployed.  Q  Why did it take 3 hours + for flipkart to debug.  A  Tech was involved very late. We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.", 
+            "title": "Findings"
+        }, 
+        {
+            "location": "/announcement/#corrective-action", 
+            "text": "Expose on call email to merchants.  Offer configuration should happen before hand and it should be discouraged to change production parameters over weekend.  There will be no deployments in ultra from friday to sunday apart from patching prod issues.  Changes in ultra will be broadcasted beforehand internally for other's FYI.", 
+            "title": "Corrective Action"
+        }, 
+        {
+            "location": "/announcement/#open-tickets", 
+            "text": "Ulta-33  : Create an alias for ultra-oncall", 
+            "title": "Open Tickets"
+        }, 
+        {
+            "location": "/announcement/#root-cause-analysis-of-ultra-outage-24062018-25062018", 
+            "text": "", 
+            "title": "Root Cause Analysis of Ultra Outage (24/06/2018-25/06/2018)"
+        }, 
+        {
+            "location": "/announcement/#summary_1", 
+            "text": "Ultra api\u2019s were throwing internal server error from 24th Jul 2018 (2:20 am) to 25th Jul 2018(10:40am). Preventing new user\u2019s to come onboard ultra platform as well as transacting.", 
+            "title": "Summary"
+        }, 
+        {
+            "location": "/announcement/#event-description_1", 
+            "text": "On 24th Jun 2018 at about 2:20am an ultra API deployment was done to patch a bug for feature being developed right now. The patch was small and only for on of internal APIs. However along with above mentioned patch, rate limiting which was merged to master was also deployed. Since the config for rate limiting was only set for our test app, after deployment MMT and Phonepe api\u2019s were throttled to 0.\nThe issue was observed on 25th 10:19am after MMT notified that APIs are not working correctly. The issue was patched by adding proper config in config service and the issue was rectified by 10:40 am.", 
+            "title": "Event Description"
+        }, 
+        {
+            "location": "/announcement/#chronology-of-eventstimeline_1", 
+            "text": "11th Jun 2018: Rate limiting implemented and tested for playground app. Merged to master.  22th Jun 2018  5:00pm : Patched a bug for an internal API, merged to master after code review and testing.  5:10pm : Deployment failed due to bug in deployment service. Raised a ticket and informed\ninternal team that deployment will be done asap.    24th Jun 2018  1:00 am: Verified that deployment service bug is fixed and started deployment to preprod.  2:00 am: Verified the internal API on preprod and propagated the changes to prod.  2:20 am: Prod deployment completed.    25th Jun 2018  12:25 am: MMT notified on slack that the API is not working.  10:21 am: Ultra team noticed the bug and started debugging. * 10:40 am: Correct config updated for both Phonepe and MMT.", 
+            "title": "Chronology of Events/Timeline"
+        }, 
+        {
+            "location": "/announcement/#findings-and-root-cause", 
+            "text": "Q  Why did the APIs fail?  A  The APIs failed because rate limiting was deployed without correct config.  Q  Why was Config not present for rate limiting?  A  We consider this as a miss during the code review and testing process. Config should have been propagated for all merchant\u2019s before the code was merged to master.  Q  Why was the issue not detected earlier?  A  There was a dip in QPS numbers. And Alerts were not triggered.  Q  Are the alerts working?  A  While figuring out this issue we have figured out that our alerting are not working and will be fixed asap.", 
+            "title": "Findings and Root Cause"
+        }, 
+        {
+            "location": "/announcement/#corrective-action_1", 
+            "text": "We will take the following corrective actions.  Fix and test alerting.  Ensure that deployments don\u2019t happen over weekend.  Post every deployment test all API\u2019s thoroughly.  Have regular deployments so that testing the delta is manageable.\n* Solve open tickets.", 
+            "title": "Corrective Action"
+        }, 
+        {
+            "location": "/announcement/#open-tickets_1", 
+            "text": "Ultra-5  : Figure out how to add alerts on QPS and HTTP response codes. ( Resolved )  Ultra-4  : Investigate why error log growth did not cause an alert. ( Resolved )", 
+            "title": "Open Tickets"
         }
     ]
 }
