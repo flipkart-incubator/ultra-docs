@@ -6,17 +6,17 @@ From approximately 2pm to 9pm on 7 July even if users made the payment for ticke
 ### Event Description
 Ultra's offers were configured using a json config file. There was a planned activity going on to move offers from this file to a database fronted with UI, so that the offers can be edited by business and be exposed to merchants using Offer API. The changes were coded and merged tested on local and then deployed on master. To ensure that double offer is not applied, Offer DB was populated to be a copy of config that was live. Post this console was expected to go live and exposed to business. However due to various reasons, the console go live was delayed. Because of which the transition period where both Offer database and Offer Config we appending offers was extended over weekend. All of this was done on 4th July. There was no impact on production because both config and database were appending the same offers.
 
-On 7th July at 2pm business changed the config to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.
+On 7th July at 2pm the config was changed to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.
 
 ### Chronology of Events/Timeline
 * 4 July :
     * Offer DB deployed to prod with offers in sync with Offers Config.
 * 5 July :
-    * Offer Console was not deployed due to tech issues. Offers DB was not disabled.
+    * Offer Console was not deployed due to tech issues. **Offers DB was not disabled.**
     * Offers on both sources are in sync, hence production is stable.
 * 7 July :
-    * 2:00 pm: Offers changed in config. Leading to double offers. MMT not confirming any orders because of this.
-    * 5:30 pm: MMT informs flipkart that none of the orders are getting confirmed.
+    * 2:00 pm: Offers changed in config. Leading to double offers. MMT does not support multiple offers applied in a single transaction , it right fully stopped processing orders for these payment transaction.
+    * 5:30 pm: MMT informs Flipkart that none of the orders are getting confirmed.
     * 8:37 pm: Tech team was notified about the issue.
     * 9:00 pm: After investigation Flipkart tech realises that the issue is with offer DB being out of sync. Offer DB was disabled. Production was stabilised.
 
@@ -31,16 +31,18 @@ On 7th July at 2pm business changed the config to have new offers. Because of th
 
 **Q** Why did it take 3 hours + for flipkart to debug.
 
-**A** Tech was involved very late. We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.
+**A** There is no on-call email alias published for Ultra. By the time it came through to the engineering team 3 hours had elapsed.
 
 ### Corrective Action
-* Expose on call email to merchants.
-* Offer configuration should happen before hand and it should be discouraged to change production parameters over weekend.
-* There will be no deployments in ultra from friday to sunday apart from patching prod issues.
+* We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.
+* Define a play book for configuring offers and publish it. This playbook will include standard operating procedures around monitoring the health after an offer has been deployed
+* Have a weekly deployment cycles on Thursday of every week, allowing for one business day to notice and fix any issues. Hot fixes can still be done on Friday/Weekends with an on call support.
 * Changes in ultra will be broadcasted beforehand internally for other's FYI.
 
 ### Open Tickets
 * **Ulta-33** : Create an alias for ultra-oncall
+* **Ulta-34** : Create a playbook for configuring offers
+
 
 
 ## Root Cause Analysis of Ultra Outage (24/06/2018-25/06/2018)
