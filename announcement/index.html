@@ -571,7 +571,7 @@
 <p>From approximately 2pm to 9pm on 7 July even if users made the payment for ticket, order was not getting confirmed. There was 100% failure and no successful order were placed in this time.</p>
 <h3 id="event-description">Event Description</h3>
 <p>Ultra's offers were configured using a json config file. There was a planned activity going on to move offers from this file to a database fronted with UI, so that the offers can be edited by business and be exposed to merchants using Offer API. The changes were coded and merged tested on local and then deployed on master. To ensure that double offer is not applied, Offer DB was populated to be a copy of config that was live. Post this console was expected to go live and exposed to business. However due to various reasons, the console go live was delayed. Because of which the transition period where both Offer database and Offer Config we appending offers was extended over weekend. All of this was done on 4th July. There was no impact on production because both config and database were appending the same offers.</p>
-<p>On 7th July at 2pm business changed the config to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.</p>
+<p>On 7th July at 2pm the config was changed to have new offers. Because of this FKPG got 2 offers: one from db (the old one) and another from config(the new one). Because of this MMT was getting 2 offers in response. As a result of which they were not confirming the orders on their side. This was corrected at 9 pm when Offers DB was disabled.</p>
 <h3 id="chronology-of-eventstimeline">Chronology of Events/Timeline</h3>
 <ul>
 <li>4 July :<ul>
@@ -579,13 +579,13 @@
 </ul>
 </li>
 <li>5 July :<ul>
-<li>Offer Console was not deployed due to tech issues. Offers DB was not disabled.</li>
+<li>Offer Console was not deployed due to tech issues. <strong>Offers DB was not disabled.</strong></li>
 <li>Offers on both sources are in sync, hence production is stable.</li>
 </ul>
 </li>
 <li>7 July :<ul>
-<li>2:00 pm: Offers changed in config. Leading to double offers. MMT not confirming any orders because of this.</li>
-<li>5:30 pm: MMT informs flipkart that none of the orders are getting confirmed.</li>
+<li>2:00 pm: Offers changed in config. Leading to double offers. MMT does not support multiple offers applied in a single transaction , it right fully stopped processing orders for these payment transaction.</li>
+<li>5:30 pm: MMT informs Flipkart that none of the orders are getting confirmed.</li>
 <li>8:37 pm: Tech team was notified about the issue.</li>
 <li>9:00 pm: After investigation Flipkart tech realises that the issue is with offer DB being out of sync. Offer DB was disabled. Production was stabilised.</li>
 </ul>
@@ -597,17 +597,18 @@
 <p><strong>Q</strong> How could the transition period have been shortened.</p>
 <p><strong>A</strong> Rather than keeping the config in sync, we should have disabled offer DB, till console was not deployed.</p>
 <p><strong>Q</strong> Why did it take 3 hours + for flipkart to debug.</p>
-<p><strong>A</strong> Tech was involved very late. We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.</p>
+<p><strong>A</strong> There is no on-call email alias published for Ultra. By the time it came through to the engineering team 3 hours had elapsed.</p>
 <h3 id="corrective-action">Corrective Action</h3>
 <ul>
-<li>Expose on call email to merchants.</li>
-<li>Offer configuration should happen before hand and it should be discouraged to change production parameters over weekend.</li>
-<li>There will be no deployments in ultra from friday to sunday apart from patching prod issues.</li>
+<li>We are setting up an on call alias for ultra, which should be used by all merchants for any production issue. Every stakeholder of ultra will be a part of this on call so that all issues are broadcasted immediately.</li>
+<li>Define a play book for configuring offers and publish it. This playbook will include standard operating procedures around monitoring the health after an offer has been deployed</li>
+<li>Have a weekly deployment cycles on Thursday of every week, allowing for one business day to notice and fix any issues. Hot fixes can still be done on Friday/Weekends with an on call support.</li>
 <li>Changes in ultra will be broadcasted beforehand internally for other's FYI.</li>
 </ul>
 <h3 id="open-tickets">Open Tickets</h3>
 <ul>
 <li><strong>Ulta-33</strong> : Create an alias for ultra-oncall</li>
+<li><strong>Ulta-34</strong> : Create a playbook for configuring offers</li>
 </ul>
 <h2 id="root-cause-analysis-of-ultra-outage-24062018-25062018">Root Cause Analysis of Ultra Outage (24/06/2018-25/06/2018)</h2>
 <h3 id="summary_1">Summary</h3>
