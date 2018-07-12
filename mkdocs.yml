@@ -9,7 +9,7 @@ pages:
     - OMS: oms.md
     - Demo: demo.md
     - Contact Us : contact.md
-    - Annonucements : announcement.md
+    - Announcements : announcement.md
 theme:
   name: 'material'
 markdown_extensions:
