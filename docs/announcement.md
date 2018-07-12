@@ -40,8 +40,8 @@ On 7th July at 2pm the config was changed to have new offers. Because of this FK
 * Changes in ultra will be broadcasted beforehand internally for other's FYI.
 
 ### Open Tickets
-* **Ulta-33** : Create an alias for ultra-oncall
-* **Ulta-34** : Create a playbook for configuring offers
+* **Ultra-33** : Create an alias for ultra-oncall
+* **Ultra-34** : Create a playbook for configuring offers
 
 
 
