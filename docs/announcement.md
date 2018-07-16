@@ -1,3 +1,13 @@
+## OMS contracts updated
+_12/July/2018_
+
+After feedback from merchants we have decided to change the following in our v2 OMS contracts.
+
+* Addition of orderUrl in [Order](oms.md#order).
+* Addition of brand, product, customerName, quantity in [Item](item.md#item).
+
+----
+
 ## Root Cause Analysis of Order failures on MMT (07/07/2018)
 
 ### Summary
@@ -43,7 +53,7 @@ On 7th July at 2pm the config was changed to have new offers. Because of this FK
 * **Ultra-33** : Create an alias for ultra-oncall
 * **Ultra-34** : Create a playbook for configuring offers
 
-
+----
 
 ## Root Cause Analysis of Ultra Outage (24/06/2018-25/06/2018)
 

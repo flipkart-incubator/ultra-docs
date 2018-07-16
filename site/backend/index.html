@@ -993,6 +993,7 @@ orderId (string),
 description (string),
 identityToken (string),
 orderTimestamp (long),
+orderUrl (string),
 items (Array[Item]),
 forwardTransactions (Array[ForwardTransaction], optional),
 reverseTransactions (Array[ReverseTransaction], optional),
@@ -1008,7 +1009,11 @@ basePrice (double),
 finalPrice (double, optional),
 category (string),
 fulfillmentDate (long),
-itemState (string) = [&#39;INIT&#39; or &#39;SUCCESSFUL&#39; or &#39;CANCELLED&#39; or &#39;PENDING&#39;]
+itemState (string) = [&#39;INIT&#39; or &#39;SUCCESSFUL&#39; or &#39;CANCELLED&#39; or &#39;PENDING&#39;],
+brand (string),
+product (string),
+customerName (string),
+quantity (string)
 }
 ForwardTransaction {
 transactionId (string),
@@ -1046,6 +1051,7 @@ amount (double)
   &quot;description&quot;: &quot;This is a dummy description&quot;,
   &quot;identityToken&quot;: &quot;someIdentityToken&quot;,
   &quot;orderTimestamp&quot;: 1530622713945,
+  &quot;orderUrl&quot;: &quot;someURLToOrderPage&quot;,
   &quot;items&quot;: [
     {
       &quot;itemId&quot;: &quot;Product 1&quot;,
@@ -1055,7 +1061,11 @@ amount (double)
       &quot;finalPrice&quot;: 100,
       &quot;category&quot;: &quot;test&quot;,
       &quot;fulfillmentDate&quot;: 1530622713946,
-      &quot;itemState&quot;: &quot;SUCCESSFUL&quot;
+      &quot;itemState&quot;: &quot;SUCCESSFUL&quot;,
+      &quot;brand&quot;: &quot;Some brand&quot;,
+      &quot;product&quot;: &quot;modelNumber&quot;,
+      &quot;customerName&quot;: &quot;Lorem Ipsum&quot;,
+      &quot;quantity&quot;: 1
     },
     {
       &quot;itemId&quot;: &quot;Product 2&quot;,
@@ -1065,7 +1075,11 @@ amount (double)
       &quot;finalPrice&quot;: 100,
       &quot;category&quot;: &quot;test&quot;,
       &quot;fulfillmentDate&quot;: 1530622713946,
-      &quot;itemState&quot;: &quot;SUCCESSFUL&quot;
+      &quot;itemState&quot;: &quot;SUCCESSFUL&quot;,
+      &quot;brand&quot;: &quot;Some brand&quot;,
+      &quot;product&quot;: &quot;modelNumber&quot;,
+      &quot;customerName&quot;: &quot;Lorem Ipsum 2&quot;,
+      &quot;quantity&quot;: 1
     }
   ],
   &quot;forwardTransactions&quot;: [
@@ -1098,11 +1112,13 @@ amount (double)
       &quot;amount&quot;: 20
     }
   ],
-  &quot;cancellationCharges&quot;: {
-    &quot;itemId&quot;: &quot;Product 1&quot;,
-    &quot;reason&quot;: &quot;Cancellation costs are sometimes deducted&quot;,
-    &quot;amount&quot;: 10
-  }
+  &quot;cancellationCharges&quot;: [
+    {
+      &quot;itemId&quot;: &quot;Product 1&quot;,
+      &quot;reason&quot;: &quot;Cancellation costs are sometimes deducted&quot;,
+      &quot;amount&quot;: 10
+    }
+  ]
 }
 </pre></div>
 

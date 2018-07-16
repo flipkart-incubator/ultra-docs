@@ -417,6 +417,7 @@ orderId (string),
 description (string),
 identityToken (string),
 orderTimestamp (long),
+orderUrl (string),
 items (Array[Item]),
 forwardTransactions (Array[ForwardTransaction], optional),
 reverseTransactions (Array[ReverseTransaction], optional),
@@ -432,7 +433,11 @@ basePrice (double),
 finalPrice (double, optional),
 category (string),
 fulfillmentDate (long),
-itemState (string) = ['INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING']
+itemState (string) = ['INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING'],
+brand (string),
+product (string),
+customerName (string),
+quantity (string)
 }
 ForwardTransaction {
 transactionId (string),
@@ -469,6 +474,7 @@ Sample Request
   "description": "This is a dummy description",
   "identityToken": "someIdentityToken",
   "orderTimestamp": 1530622713945,
+  "orderUrl": "someURLToOrderPage",
   "items": [
     {
       "itemId": "Product 1",
@@ -478,7 +484,11 @@ Sample Request
       "finalPrice": 100,
       "category": "test",
       "fulfillmentDate": 1530622713946,
-      "itemState": "SUCCESSFUL"
+      "itemState": "SUCCESSFUL",
+      "brand": "Some brand",
+      "product": "modelNumber",
+      "customerName": "Lorem Ipsum",
+      "quantity": 1
     },
     {
       "itemId": "Product 2",
@@ -488,7 +498,11 @@ Sample Request
       "finalPrice": 100,
       "category": "test",
       "fulfillmentDate": 1530622713946,
-      "itemState": "SUCCESSFUL"
+      "itemState": "SUCCESSFUL",
+      "brand": "Some brand",
+      "product": "modelNumber",
+      "customerName": "Lorem Ipsum 2",
+      "quantity": 1
     }
   ],
   "forwardTransactions": [
@@ -521,11 +535,13 @@ Sample Request
       "amount": 20
     }
   ],
-  "cancellationCharges": {
-    "itemId": "Product 1",
-    "reason": "Cancellation costs are sometimes deducted",
-    "amount": 10
-  }
+  "cancellationCharges": [
+    {
+      "itemId": "Product 1",
+      "reason": "Cancellation costs are sometimes deducted",
+      "amount": 10
+    }
+  ]
 }
 ```
 

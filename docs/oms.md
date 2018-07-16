@@ -15,6 +15,7 @@ Merchant is expected to push for every state change in their OMS.
 |description|string|yes||
 |identityToken|string|yes|This identifies the user|
 |orderTimestamp|long|yes|The time when order was initialised|
+|orderUrl|string|yes|The url that will take us to this specific order.|
 |items|List of Item|yes|List of items which are a part of this order|
 |forwardTransactions|List of ForwardTransaction|no|These can be empty only if all items are in init state|
 |reverseTransactions|List of ReverseTransaction|no|Populate only if money has been reversed to customer|
@@ -32,7 +33,11 @@ name|type|mandatory|notes|
 |finalPrice|double|yes|price of an item after both merchantAdjustments and flipkartAdjustments have been applied. This can be null if state is INIT|
 |category|string|yes|Which category does the item belong to. The category will be provided by flipkart. Please do not put your own values here|
 |fulfillmentDate|long|yes|Date when the item will be fulfilled(delivery date, travel date, etc)|
-|itemState|enum('INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING')|yes|INIT: To be used when customer has not yet paid.<br /> PENDING: Payment successful however merchant yet to confirm the order.<br /> SUCCESSFUL: Atleast some part of item is confirmed. Partial cancellation will also be a part of this state. <br />CANCELLED: The entire item is cancelled. In this case the entire final price should either reflect in reverse transaction or cancellationCharges.|
+|itemState|enum('INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING')|yes|INIT: To be used when customer has not yet paid.<br /> PENDING: Payment successful however merchant yet to confirm the order.<br /> SUCCESSFUL: Atleast some part of item is confirmed. Partial cancellation will also be a part of this state. <br />CANCELLED: The entire item is cancelled. In this case the entire final price should either reflect in reverse transaction or cancellationCharges
+|brand|string|yes|Provider/Manufacturer of product|
+|product|string|yes|Description of product. For some scenarios can be similar to title (Eg: E-commerce product), so other scenarios can provide specific details like Flight number, Recharge type, etc.|
+|customerName|string|yes|Name of the person for which item is intended|
+|quantity|integer|yes|How many products are clubbed in this order. In case of travel this would be number of passengers. If a business does not have multiple items, they can send 1|
 
 ###ForwardTransaction
 name|type|mandatory|notes|

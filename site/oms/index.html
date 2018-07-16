@@ -541,6 +541,12 @@
 <td>The time when order was initialised</td>
 </tr>
 <tr>
+<td>orderUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The url that will take us to this specific order.</td>
+</tr>
+<tr>
 <td>items</td>
 <td>List of Item</td>
 <td>yes</td>
@@ -635,7 +641,31 @@
 <td>itemState</td>
 <td>enum('INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING')</td>
 <td>yes</td>
-<td>INIT: To be used when customer has not yet paid.<br /> PENDING: Payment successful however merchant yet to confirm the order.<br /> SUCCESSFUL: Atleast some part of item is confirmed. Partial cancellation will also be a part of this state. <br />CANCELLED: The entire item is cancelled. In this case the entire final price should either reflect in reverse transaction or cancellationCharges.</td>
+<td>INIT: To be used when customer has not yet paid.<br /> PENDING: Payment successful however merchant yet to confirm the order.<br /> SUCCESSFUL: Atleast some part of item is confirmed. Partial cancellation will also be a part of this state. <br />CANCELLED: The entire item is cancelled. In this case the entire final price should either reflect in reverse transaction or cancellationCharges</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>string</td>
+<td>yes</td>
+<td>Provider/Manufacturer of product</td>
+</tr>
+<tr>
+<td>product</td>
+<td>string</td>
+<td>yes</td>
+<td>Description of product. For some scenarios can be similar to title (Eg: E-commerce product), so other scenarios can provide specific details like Flight number, Recharge type, etc.</td>
+</tr>
+<tr>
+<td>customerName</td>
+<td>string</td>
+<td>yes</td>
+<td>Name of the person for which item is intended</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>integer</td>
+<td>yes</td>
+<td>How many products are clubbed in this order. In case of travel this would be number of passengers. If a business does not have multiple items, they can send 1</td>
 </tr>
 </tbody>
 </table>
