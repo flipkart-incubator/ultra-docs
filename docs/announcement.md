@@ -4,7 +4,7 @@ _12/July/2018_
 After feedback from merchants we have decided to change the following in our v2 OMS contracts.
 
 * Addition of orderUrl in [Order](oms.md#order).
-* Addition of brand, product, customerName, quantity in [Item](item.md#item).
+* Addition of brand, product, customerName, quantity in [Item](oms.md#item).
 
 ----
 
