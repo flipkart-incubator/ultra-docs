@@ -523,7 +523,8 @@ Use the access token and fetch resources like <code>user.email</code> and <code>
 <p>Also integrate with <a href="../backend/#refund">refund API</a> as per your business requirements.</p>
 <h3 id="step-6-post-payment-flow">Step 6 - Post payment flow</h3>
 <p>Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.
-To do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info <a href="../backend/#oms">here</a>. These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.</p>
+To do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info <a href="../oms/">here</a>. These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.</p>
+<p>This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.</p>
 <h3 id="demo">Demo</h3>
 <p>Checkout the <a href="../demo/">demo page</a> to see this flow in action.</p>
                 
