@@ -1,6 +1,8 @@
 ##Purpose
 OMS lite is a view layer maintained by flipkart for orders placed on ultra platform. The OMS lite layer will act as a data source for flipkart’s my order page as well as CX agents.
 
+More information on how to make the API calls to OMS is [here](backend.md#oms)
+
 The following diagram should explain the high level purpose of OMS lite.
 ![OMS HLD](img/oms_hld.png)
 

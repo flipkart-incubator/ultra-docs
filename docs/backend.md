@@ -440,6 +440,7 @@ Sample Request
 OMS stands for [Order Management System](https://en.wikipedia.org/wiki/Order_management_system). Its the system which handles post order flows and its primary job is to power the `My Orders` screen on the flipkart apps.
 When your system knows that an order has got placed or updated, you can call the following API to let Flipkart OMS know about the change.
 This information will be rendered on the user's `My orders` screen with all the details you provide. We will also use this information for powering our CX agents for better experience.
+For a better view of OMS, to understand its purpose and to understand the meaning of every field being uploaded refer [this page](oms.md) too
 ###OMS Upsert
 ```
 Path: /2/oms

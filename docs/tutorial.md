@@ -56,7 +56,9 @@ Also integrate with [refund API](backend.md#refund) as per your business require
 
 ###Step 6 - Post payment flow
 Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.
-To do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](backend.md#oms). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
+To do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](oms.md). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
+
+This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.
 
 ###Demo
 Checkout the [demo page](demo.md) to see this flow in action.
