@@ -15,6 +15,7 @@ Merchant is expected to push for every state change in their OMS.
 |description|string|yes||
 |identityToken|string|yes|This identifies the user|
 |orderTimestamp|long|yes|The time when order was initialised|
+|orderUpdatedTimestamp|long|yes|The time when order was last modified|
 |orderUrl|string|yes|The url that will take us to this specific order.|
 |items|List of Item|yes|List of items which are a part of this order|
 |forwardTransactions|List of ForwardTransaction|no|These can be empty only if all items are in init state|

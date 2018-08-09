@@ -1,3 +1,15 @@
+##New v2 Apis
+_09/Aug/2018_
+
+We have updated APIs for following
+
+* New way for generating [secureToken](backend.md#security). Earlier we used to just take company name as clientId. From now on `clientId = <companyName>.<appId>`
+* V2 for get active offers. [Active offers](backend.md#get-offers-list)
+* V2 for payment APIs
+    * [PaymentToken](backend.md#payment-token).  Added category in request.
+    * [Query](backend.md#query). Linked to new secureToken.
+    * [Refund](backend.md#refund). Linked to new secureToken.
+
 ## OMS contracts updated
 _12/July/2018_
 

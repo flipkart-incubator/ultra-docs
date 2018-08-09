@@ -262,6 +262,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#security" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" title="Header" class="md-nav__link">
+    Header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payload" title="Payload" class="md-nav__link">
+    Payload
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#access-token-flow" title="Access token flow" class="md-nav__link">
     Access token flow
   </a>
@@ -353,20 +380,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security" title="Security" class="md-nav__link">
-    Security
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-endpoint-for-secure-token" title="Test endpoint for secure token" class="md-nav__link">
-    Test endpoint for secure token
-  </a>
   
 </li>
       
@@ -457,6 +470,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#security" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header" title="Header" class="md-nav__link">
+    Header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payload" title="Payload" class="md-nav__link">
+    Payload
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#access-token-flow" title="Access token flow" class="md-nav__link">
     Access token flow
   </a>
@@ -551,20 +591,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#security" title="Security" class="md-nav__link">
-    Security
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-endpoint-for-secure-token" title="Test endpoint for secure token" class="md-nav__link">
-    Test endpoint for secure token
-  </a>
-  
-</li>
-      
       
       
       
@@ -585,6 +611,37 @@
                 <h1 id="ultra-backend-apis">Ultra Backend APIs</h1>
 <h2 id="endpoint-contracts">Endpoint Contracts</h2>
 <p>Prod endpoint: <code>https://platform.flipkart.net</code></p>
+<h2 id="security">Security</h2>
+<p>All production endpoints will be over https.
+We will validate Client’s identity using JWT.
+The JWT will be shared in every call in header as a ‘secureToken’
+Properties of secure token</p>
+<h3 id="header">Header</h3>
+<div class="codehilite"><pre><span></span>{
+  &quot;alg&quot;: &quot;RS256&quot;,
+  &quot;typ&quot;: &quot;JWT&quot;
+}
+</pre></div>
+
+
+<h3 id="payload">Payload</h3>
+<p>'Note:' clientId should be fetched from flipkart.</p>
+<div class="codehilite"><pre><span></span>{
+  &quot;iss&quot;: ≤clientId≥,
+  &quot;iat&quot;: &lt;unix timestamp in seconds&gt;, // Issued at. Should be in past.
+  &quot;exp&quot;: &lt;unix timestamp in seconds&gt; // Expiry of token. Should be in future. Also exp - iat should not be &gt; 100.
+}
+</pre></div>
+
+
+<p>The Public key should be shared with flipkart before hand.</p>
+<div class="codehilite"><pre><span></span>Path: /1/dummy
+Method: GET
+Header: secureToken
+Response:  Will be HTTP 200 if secureToken is valid otherwise response code will be self explanatory.
+</pre></div>
+
+
 <h2 id="access-token-flow">Access token flow</h2>
 <p>Using the grantToken from the SDK, you have to fetch the accessToken before querying for any resources.
 Get Auth token flow</p>
@@ -631,13 +688,15 @@ isVerified(boolean)
 Contact Flipkart team to get the merchant credentials required to access this API. The merchant credentials are different from <code>clientId</code> and <code>secret</code> used for Ultra APIs</p>
 <h3 id="payment-token">Payment Token</h3>
 <p>This is the first step in initiating payments. Use this API to generate a payment token which can be used to show the FKPG payment options screen, this screen can be shown via Ultra's client SDK. This will open FKPG outside of Ultra container.</p>
-<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">token</span>
+<p><code>Note</code>: Category should be fetched from flipkart.</p>
+<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">token</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
 <span class="n">Body</span><span class="o">:</span> <span class="n">PaymentTokenRequest</span>
 <span class="n">PaymentTokenRequest</span> <span class="o">{</span>
 <span class="n">merchantCredential</span><span class="o">(</span><span class="n">MerchantCredential</span><span class="o">),</span>
 <span class="n">amountPaise</span> <span class="o">(</span><span class="n">long</span><span class="o">),</span>
+<span class="n">category</span><span class="o">(</span><span class="n">string</span><span class="o">),</span>
 <span class="n">paymentExpiryMilliSeconds</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
 <span class="n">userInfo</span> <span class="o">(</span><span class="n">UserInfo</span><span class="o">),</span>
 <span class="n">adjustmentWrapper</span><span class="o">(</span><span class="n">AdjustmentWrapper</span><span class="o">,</span> <span class="n">optional</span><span class="o">),</span>
@@ -703,6 +762,7 @@ Contact Flipkart team to get the merchant credentials required to access this AP
   &quot;merchantReferenceId&quot;: &quot;order1&quot;,
   &quot;amountPaise&quot;: 200,
   &quot;paymentExpiryMilliSeconds&quot;: 100000,
+  &quot;category&quot;: &quot;test&quot;,
   &quot;userInfo&quot;: {
     &quot;identityToken&quot;: &quot;Actual ID token here&quot;
   },
@@ -789,7 +849,7 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 
 
 <h3 id="query">Query</h3>
-<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">query</span>
+<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">query</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
 <span class="n">Body</span><span class="o">:</span> <span class="n">QueryRequest</span>
@@ -912,7 +972,7 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 
 
 <h3 id="refund">Refund</h3>
-<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">1</span><span class="sr">/payment/</span><span class="n">query</span>
+<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">refund</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
 <span class="n">Body</span><span class="o">:</span> <span class="n">RefundRequest</span>
@@ -993,6 +1053,7 @@ orderId (string),
 description (string),
 identityToken (string),
 orderTimestamp (long),
+orderUpdatedTimestamp(long),
 orderUrl (string),
 items (Array[Item]),
 forwardTransactions (Array[ForwardTransaction], optional),
@@ -1051,6 +1112,7 @@ amount (double)
   &quot;description&quot;: &quot;This is a dummy description&quot;,
   &quot;identityToken&quot;: &quot;someIdentityToken&quot;,
   &quot;orderTimestamp&quot;: 1530622713945,
+  &quot;orderUpdatedTimestamp&quot;: 1530622713945,
   &quot;orderUrl&quot;: &quot;someURLToOrderPage&quot;,
   &quot;items&quot;: [
     {
@@ -1126,27 +1188,9 @@ amount (double)
 <h2 id="offers">Offers</h2>
 <p>Flipkart might have some offers. These Apis let you interact with them.</p>
 <h3 id="get-offers-list">Get offers list</h3>
-<div class="codehilite"><pre><span></span>Path: /1/offers/active
+<div class="codehilite"><pre><span></span>Path: /2/offers/active
 Method: GET
 </pre></div>
-
-
-<h2 id="security">Security</h2>
-<p>All production endpoints will be over https.
-We will validate Client’s identity using JWT.
-The JWT will be shared in every call in header as a ‘secureToken’</p>
-<p>Properties of secure token
-Algorithm RS256
-Fields to be present in payload
-iss -&gt; Issuer -&gt; which is equal to clientId
-iat -&gt; Issued At -&gt; Timestamp with seconds resolution when the token was generate. This will fail if in future.
-exp -&gt; Expiry At -&gt; Timestamp with seconds resolution when the token expires. exp-iat should not be more than 1000
-The Public key should be shared with flipkart before hand.</p>
-<h2 id="test-endpoint-for-secure-token">Test endpoint for secure token</h2>
-<p>Path: /1/dummy
-Method: GET
-Header: secureToken
-Response:  Will be HTTP 200 if secureToken is valid otherwise response code will be self explanatory.</p>
                 
                   
                 
