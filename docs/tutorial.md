@@ -10,11 +10,23 @@ Ultra supports both containers. Here's a brief comparison of the platforms.
 | Code in JS                | Code in JS           |
 | Awesome performance       | Decent performance   |
 | Very optimized for mobile | Not highly optimized |
+| Bundle is delivered from FK CDN, only differential components are downloaded, and is cached within the FK app | Bundle and assets follow cache-control headers and might be slower to render even from cache | 
 
+*React Native:*
 
-If you choose React native, Ultra will pull in your react native bundle from your github repository, and then deliver it to Flipkart app over-the-air. The only catch is that you cannot use any other extra native bridges which are not exposed by Flipkart. Your react native experience will be loaded within a React Fragment and from there on you can navigate to other pages accordingly.
+If you choose React native, Ultra will pull in your react native bundle from your github repository, and then deliver it to Flipkart app over-the-air. React native JS bundles are delivered to Flipkart app via [DUS](https://github.com/Flipkart/DUS). We highly encourage you to visit the github page to understand how it works.
 
-If you choose to build via HTML/PWA, then ultra will launch your webpage inside Android's webview. If you have your existing mobile website, you can choose to reuse it for Ultra, by only choosing to make small changes.
+The only limitations are :
+
+- You cannot use any other extra native bridges which are not exposed by Flipkart. 
+
+- You cannot use local assets like images/videos within the bundle since only JS is delivered over-the-air. All assets have to be uploaded to your CDN manually and referenced within the JS code.
+
+Once DUS fetches your bundle within the Flipkart app, your react native experience will be loaded within a React Fragment and from there on you can navigate to other pages accordingly.
+
+*Webview:*
+
+If you choose to build via HTML/PWA, then ultra will launch your webpage inside Android's webview. If you have your existing mobile website, you can choose to reuse it for Ultra, by only choosing to make small changes. The only catch is that you are not allowed to navigate away from your main domain.
 
 Either way, you have to [add the Ultra Javascript SDK to your HTML/React-native app](clients.md#step-1). This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to [initialize the SDK with your clientId](clients.md#step-2).
 
