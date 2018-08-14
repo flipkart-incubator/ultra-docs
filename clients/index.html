@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
     
     
       
@@ -40,8 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.ba0fd1a6.css">
-      
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
       
     
     
@@ -53,8 +52,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
   </head>
@@ -67,9 +66,9 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
       <a href="#ultra-client-side-sdk" tabindex="1" class="md-skip">
         Skip to content
@@ -87,7 +86,7 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
@@ -106,14 +105,14 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
+  <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
+      <label class="md-icon md-search__icon" for="search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
       </button>
@@ -151,7 +150,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
     <span class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
@@ -219,12 +218,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
+      <label class="md-nav__link md-nav__link--active" for="toc">
         Client Side API
       </label>
     
@@ -239,7 +238,7 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -327,15 +326,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#detecting-presence-of-a-certain-feature" title="Detecting presence of a certain feature" class="md-nav__link">
-    Detecting presence of a certain feature
+  <a href="#detecting-presence-of-a-certain-feature-webview-only" title="Detecting presence of a certain feature [WEBVIEW-ONLY]" class="md-nav__link">
+    Detecting presence of a certain feature [WEBVIEW-ONLY]
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#handling-file-uploads-and-downloads-from-flipkart-app-v63-ultra-v137" title="Handling file uploads and downloads (from flipkart app v6.3, ultra v1.3.7)" class="md-nav__link">
-    Handling file uploads and downloads (from flipkart app v6.3, ultra v1.3.7)
+  <a href="#handling-file-uploads-and-downloads-on-webview-from-flipkart-app-v63-ultra-v137" title="Handling file uploads and downloads on webview (from flipkart app v6.3, ultra v1.3.7)" class="md-nav__link">
+    Handling file uploads and downloads on webview (from flipkart app v6.3, ultra v1.3.7)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-webview" title="Debugging Webview" class="md-nav__link">
+    Debugging Webview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-react-native" title="Debugging React Native" class="md-nav__link">
+    Debugging React Native
   </a>
   
 </li>
@@ -433,7 +446,7 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -521,15 +534,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#detecting-presence-of-a-certain-feature" title="Detecting presence of a certain feature" class="md-nav__link">
-    Detecting presence of a certain feature
+  <a href="#detecting-presence-of-a-certain-feature-webview-only" title="Detecting presence of a certain feature [WEBVIEW-ONLY]" class="md-nav__link">
+    Detecting presence of a certain feature [WEBVIEW-ONLY]
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#handling-file-uploads-and-downloads-from-flipkart-app-v63-ultra-v137" title="Handling file uploads and downloads (from flipkart app v6.3, ultra v1.3.7)" class="md-nav__link">
-    Handling file uploads and downloads (from flipkart app v6.3, ultra v1.3.7)
+  <a href="#handling-file-uploads-and-downloads-on-webview-from-flipkart-app-v63-ultra-v137" title="Handling file uploads and downloads on webview (from flipkart app v6.3, ultra v1.3.7)" class="md-nav__link">
+    Handling file uploads and downloads on webview (from flipkart app v6.3, ultra v1.3.7)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-webview" title="Debugging Webview" class="md-nav__link">
+    Debugging Webview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-react-native" title="Debugging React Native" class="md-nav__link">
+    Debugging React Native
   </a>
   
 </li>
@@ -676,7 +703,15 @@ ERROR_CODE_BAD_PERMISSION_REQUEST = 1005;
 <p><code>exitToHomePage(): void</code></p>
 <p>Closes the application and takes user to Flipkart homepage.</p>
 <p><code>startPayment(paymentToken: string): void</code></p>
-<p>Launches Flipkart payment screen for given token.</p>
+<p>Launches Flipkart payment screen for given payment token. The payment token has to be generated by your server by hitting Flipkart PG server API. Once you call the startPayment() method on the client, the container will switch to Payments. Once payments is successful/failed the container switches back to ultra and you will get a callback.</p>
+<p>This callback will happen through a page load to the <code>successfulCallBackUrl</code> or <code>failureCallBackUrl</code> specified when payment token was generated. This URL will be opened within the payment container and is supposed to validate the payment response from FKPG (POST params are to be validated) and then do a container switch back to ultra. A container switch can be initiated by a HTTP redirect to the following URL</p>
+<div class="codehilite"><pre><span></span>fapp://action?value={&quot;screenType&quot;:&quot;ultra&quot;,&quot;params&quot;:{&quot;url&quot;:&quot;&lt;URLENCODED_URL_TO_OPEN_WITHIN_ULTRA&gt;&quot;,&quot;clientId&quot;:&quot;&lt;YOUR_CLIENT_ID&gt;&quot;,&quot;postPaymentFlow&quot;:true,&quot;success&quot;:&lt;TRUE_OR_FALSE&gt;}}
+</pre></div>
+
+
+<p>On Webview, once the container switches, the url specified in the params for <code>fapp://</code> will load as a regular page load. This loaded page should render the <code>Order confirmation</code> page for your service.</p>
+<p>On ReactNative, once the container switches, you will get a custom event which will be emitted via RN Event Emitter.
+The name of the event is <code>loadUri</code> which will contain the URL you specified as params in the above <code>fapp://</code> redirect.</p>
 <p><code>clearHistory()?: void</code></p>
 <p>Clears both forward and backward history such that only the existing page remains.</p>
 <h3 id="contacts-module-from-flipkart-app-v63-ultra-v141">Contacts Module (from flipkart app v6.3, ultra v1.4.1)</h3>
@@ -717,22 +752,34 @@ Type:</p>
 
 
 <h3 id="detecting-flipkart-environment">Detecting flipkart environment</h3>
-<p>If you want to detect if your webpage is running within Flipkart's ultra environment, you have three ways.
-1. [PREFERRED] Use JS SDK's <code>FKPlatform.isPlatformAvailable()</code> method.
-2. Use the user agent which contains "Ultra". This method is useful if you want to inject the JS SDK only when running within flipkart's ultra environment. An example user agent string 
+<p>If you want to detect if your webpage is running within Flipkart's ultra environment, you have three ways.</p>
+<ol>
+<li>
+<p>[PREFERRED] Use JS SDK's <code>FKPlatform.isPlatformAvailable()</code> method.</p>
+</li>
+<li>
+<p>[WEBVIEW-ONLY] Use the user agent which contains "Ultra". This method is useful if you want to inject the JS SDK only when running within flipkart's ultra environment. An example user agent string 
 <code>Mozilla/5.0 (Linux; Android 8.0.0; Android SDK built for x86 Build/OSR1.170901.008; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.125 Mobile Safari/537.36 [Flipkart/com.flipkart.android/850000/5.16/UltraSDK/4/1.4.2]</code>
-Note that if you have service workers making requests, this user agent will not be present.
-3. Use X-Requested-With header which will contain the value 'com.flipkart.android'. This will work for all requests including service workers. This is the least preferred method.</p>
-<h3 id="detecting-presence-of-a-certain-feature">Detecting presence of a certain feature</h3>
+Note that if you have service workers making requests, this user agent will not be present.</p>
+</li>
+<li>
+<p>[WEBVIEW-ONLY] Use X-Requested-With header which will contain the value 'com.flipkart.android'. This will work for all requests including service workers. This is the least preferred method.</p>
+</li>
+</ol>
+<h3 id="detecting-presence-of-a-certain-feature-webview-only">Detecting presence of a certain feature [WEBVIEW-ONLY]</h3>
 <p>User agent string in ultra is of the following format:
 <code>Mozilla/5.0 (Linux; Android 8.0.0; Android SDK built for x86 Build/OSR1.170901.008; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.125 Mobile Safari/537.36 [Flipkart/com.flipkart.android/850000/5.16/UltraSDK/4/1.4.2]</code>
 In the above user agent string, 5.16 is the version name and 850000 is version code for flipkart app, 1.4.2 is version name and 4 is version code for ultra SDK. </p>
 <p>Based on just the ultra version name (1.4.2) you can check if certain newly added modules are present or not.</p>
-<h3 id="handling-file-uploads-and-downloads-from-flipkart-app-v63-ultra-v137">Handling file uploads and downloads (from flipkart app v6.3, ultra v1.3.7)</h3>
+<h3 id="handling-file-uploads-and-downloads-on-webview-from-flipkart-app-v63-ultra-v137">Handling file uploads and downloads on webview (from flipkart app v6.3, ultra v1.3.7)</h3>
 <p>Starting with Flipkart app version 6.3, ultra version 1.3.7, file uploads and downloads are present.
 For downloads, ensure that 'download' attribute is not used. For e.g <code>&lt;a href='abcd.pdf' download='xyz.pdf' /&gt;</code> will not work.
 Also apis like FileSaver.js or blob based APIs dont work due to limitations in webview.
 For uploads, there are no restrictions.</p>
+<h3 id="debugging-webview">Debugging Webview</h3>
+<p>If you see API calls failing or images/page not loading issues, you can also debug ultra within Chrome debugger. The APK which is shared with partners have debugging enabled for webviews. This means you will able to connect to the chrome instance via Remote debugging. <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/">See here</a></p>
+<h3 id="debugging-react-native">Debugging React Native</h3>
+<p>The special APK shared with partners has a way to run your react native code within ultra by pointing to your IP address of your react native packager. This way you can actively develop as well as debug the code without any special tools. This mechanism runs your react native bundle without using <a href="https://github.com/Flipkart/DUS">Flipkart DUS</a>.</p>
                 
                   
                 
@@ -790,7 +837,7 @@ For uploads, there are no restrictions.</p>
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="http://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
@@ -804,9 +851,9 @@ For uploads, there are no restrictions.</p>
       
     </div>
     
-      <script src="../assets/javascripts/application.a59e2a89.js"></script>
+      <script src="../assets/javascripts/application.b438e6c5.js"></script>
       
-      <script>app.initialize({version:"0.17.5",url:{base:".."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
       
     
     
