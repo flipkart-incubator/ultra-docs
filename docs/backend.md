@@ -4,6 +4,35 @@
 
 Prod endpoint: `https://platform.flipkart.net`
 
+##Security
+All production endpoints will be over https.
+We will validate Client’s identity using JWT.
+The JWT will be shared in every call in header as a ‘secureToken’
+Properties of secure token
+### Header
+```
+{
+  "alg": "RS256",
+  "typ": "JWT"
+}
+```
+### Payload
+'Note:' clientId should be fetched from flipkart.
+```
+{
+  "iss": ≤clientId≥,
+  "iat": <unix timestamp in seconds>, // Issued at. Should be in past.
+  "exp": <unix timestamp in seconds> // Expiry of token. Should be in future. Also exp - iat should not be > 100.
+}
+```
+The Public key should be shared with flipkart before hand.
+```
+Path: /1/dummy
+Method: GET
+Header: secureToken
+Response:  Will be HTTP 200 if secureToken is valid otherwise response code will be self explanatory.
+```
+
 ##Access token flow
 Using the grantToken from the SDK, you have to fetch the accessToken before querying for any resources.
 Get Auth token flow
@@ -53,14 +82,17 @@ Contact Flipkart team to get the merchant credentials required to access this AP
 ###Payment Token
 This is the first step in initiating payments. Use this API to generate a payment token which can be used to show the FKPG payment options screen, this screen can be shown via Ultra's client SDK. This will open FKPG outside of Ultra container.
 
+`Note`: Category should be fetched from flipkart.
+
 ```
-Path: 1/payment/token
+Path: 2/payment/token
 
 Method: POST
 Body: PaymentTokenRequest
 PaymentTokenRequest {
 merchantCredential(MerchantCredential),
 amountPaise (long),
+category(string),
 paymentExpiryMilliSeconds (long, optional),
 userInfo (UserInfo),
 adjustmentWrapper(AdjustmentWrapper, optional),
@@ -125,6 +157,7 @@ Sample Request
   "merchantReferenceId": "order1",
   "amountPaise": 200,
   "paymentExpiryMilliSeconds": 100000,
+  "category": "test",
   "userInfo": {
     "identityToken": "Actual ID token here"
   },
@@ -212,7 +245,7 @@ transaction_status=""&account_type=""&pg_trackid=""&merchant_adjustments=[ {'off
 
 ###Query
 ```
-Path: 1/payment/query
+Path: 2/payment/query
 
 Method: POST
 Body: QueryRequest
@@ -334,7 +367,7 @@ Sample Request
 
 ###Refund
 ```
-Path: 1/payment/query
+Path: 2/payment/refund
 
 Method: POST
 Body: RefundRequest
@@ -418,6 +451,7 @@ orderId (string),
 description (string),
 identityToken (string),
 orderTimestamp (long),
+orderUpdatedTimestamp(long),
 orderUrl (string),
 items (Array[Item]),
 forwardTransactions (Array[ForwardTransaction], optional),
@@ -475,6 +509,7 @@ Sample Request
   "description": "This is a dummy description",
   "identityToken": "someIdentityToken",
   "orderTimestamp": 1530622713945,
+  "orderUpdatedTimestamp": 1530622713945,
   "orderUrl": "someURLToOrderPage",
   "items": [
     {
@@ -551,26 +586,6 @@ Flipkart might have some offers. These Apis let you interact with them.
 
 ###Get offers list
 ```
-Path: /1/offers/active
+Path: /2/offers/active
 Method: GET
 ```
-
-
-##Security
-All production endpoints will be over https.
-We will validate Client’s identity using JWT.
-The JWT will be shared in every call in header as a ‘secureToken’
-
-Properties of secure token
-Algorithm RS256
-Fields to be present in payload
-iss -> Issuer -> which is equal to clientId
-iat -> Issued At -> Timestamp with seconds resolution when the token was generate. This will fail if in future.
-exp -> Expiry At -> Timestamp with seconds resolution when the token expires. exp-iat should not be more than 1000
-The Public key should be shared with flipkart before hand.
-
-##Test endpoint for secure token
-Path: /1/dummy
-Method: GET
-Header: secureToken
-Response:  Will be HTTP 200 if secureToken is valid otherwise response code will be self explanatory.
