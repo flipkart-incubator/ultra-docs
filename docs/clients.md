@@ -177,6 +177,18 @@ The following URLs are supported.
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Flipkart plus coins page | `fapp://action?value={"params": {"screenName": "LOCKED_COINS","valid":true},"screenType": "multiWidgetPage","type":"NAVIGATION","url": "locked-coins"}` |
 
+#### Notify page location change [REACT-NATIVE-ONLY]
+
+For basic analytics, Flipkart tries to optimize the funnel. For this purpose, its important to understand your funnel using events whenever a page change happens. On webviews, a page change can be inferred using the change in URL. But on react native, there is no way to infer this. Hence you are required to call this method to let flipkart's analytics to know that the user has navigated to a page.
+
+Call this whenever the screen changes. For e.g once on homepage and then on search page and then on details page. Also call this if your screen changes when the back button is pressed.
+
+`notifyPageLocationChange(currentUri: string, isBackNavigation: boolean): void`
+
+currentUri : Some representation of the current page in the URI format. E.g : http://example.com/search
+
+isBackNavigation: true if the page opened due to a back navigation. 
+
 ### Contacts Module (from flipkart app v6.3, ultra v1.4.1)
 Helps in launching a UI that allows user to select a contact from his address book.
 

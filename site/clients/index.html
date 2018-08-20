@@ -340,6 +340,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#notify-page-location-change-react-native-only" title="Notify page location change [REACT-NATIVE-ONLY]" class="md-nav__link">
+    Notify page location change [REACT-NATIVE-ONLY]
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -589,6 +596,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#notify-page-location-change-react-native-only" title="Notify page location change [REACT-NATIVE-ONLY]" class="md-nav__link">
+    Notify page location change [REACT-NATIVE-ONLY]
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -819,6 +833,12 @@ The name of the event is <code>loadUri</code> which will contain the URL you spe
 </tr>
 </tbody>
 </table>
+<h4 id="notify-page-location-change-react-native-only">Notify page location change [REACT-NATIVE-ONLY]</h4>
+<p>For basic analytics, Flipkart tries to optimize the funnel. For this purpose, its important to understand your funnel using events whenever a page change happens. On webviews, a page change can be inferred using the change in URL. But on react native, there is no way to infer this. Hence you are required to call this method to let flipkart's analytics to know that the user has navigated to a page.</p>
+<p>Call this whenever the screen changes. For e.g once on homepage and then on search page and then on details page. Also call this if your screen changes when the back button is pressed.</p>
+<p><code>notifyPageLocationChange(currentUri: string, isBackNavigation: boolean): void</code></p>
+<p>currentUri : Some representation of the current page in the URI format. E.g : http://example.com/search</p>
+<p>isBackNavigation: true if the page opened due to a back navigation. </p>
 <h3 id="contacts-module-from-flipkart-app-v63-ultra-v141">Contacts Module (from flipkart app v6.3, ultra v1.4.1)</h3>
 <p>Helps in launching a UI that allows user to select a contact from his address book.</p>
 <div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">contactModule</span> <span class="o">=</span> <span class="nx">fkPlatform</span><span class="p">.</span><span class="nx">getModuleHelper</span><span class="p">().</span><span class="nx">getContactsModule</span><span class="p">()</span>
