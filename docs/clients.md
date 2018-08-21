@@ -175,7 +175,7 @@ The following URLs are supported.
 
 | Description              | URL                                                                                                                                                                          |
 |--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Flipkart plus coins page | `fapp://action?value={"params": {"screenName": "LOCKED_COINS","valid":true},"screenType": "multiWidgetPage","type":"NAVIGATION","url": "locked-coins"}` |
+| Flipkart plus coins page | `fapp://action?value={"params": {"screenName": "LOCKED_COINS","valid":true},"screenType": "multiWidgetPage","type":"NAVIGATION","url": "/locked-coins"}` |
 
 #### Notify page location change [REACT-NATIVE-ONLY]
 
