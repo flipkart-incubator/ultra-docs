@@ -70,7 +70,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#new-v2-apis" tabindex="1" class="md-skip">
+      <a href="#new-js-sdk-methods" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -226,22 +226,46 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="../backend/" title="Server Side API" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
       Server Side API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Server Side API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Basic APIs" class="md-nav__link">
+      Basic APIs
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="../oms/" title="OMS" class="md-nav__link">
       OMS
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -298,8 +322,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#new-v2-apis" title="New v2 Apis" class="md-nav__link">
-    New v2 Apis
+  <a href="#new-js-sdk-methods" title="New JS SDK Methods" class="md-nav__link">
+    New JS SDK Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-v2-server-side-apis" title="New v2 Server Side APIs" class="md-nav__link">
+    New v2 Server Side APIs
   </a>
   
 </li>
@@ -451,8 +482,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#new-v2-apis" title="New v2 Apis" class="md-nav__link">
-    New v2 Apis
+  <a href="#new-js-sdk-methods" title="New JS SDK Methods" class="md-nav__link">
+    New JS SDK Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-v2-server-side-apis" title="New v2 Server Side APIs" class="md-nav__link">
+    New v2 Server Side APIs
   </a>
   
 </li>
@@ -593,7 +631,14 @@
                 
                   <h1>Announcements</h1>
                 
-                <h2 id="new-v2-apis">New v2 Apis</h2>
+                <h2 id="new-js-sdk-methods">New JS SDK Methods</h2>
+<p><em>20/Aug/2018</em></p>
+<p>New JS SDK methods added in v1.0.0. Only available in v6.7 of FK app.</p>
+<ul>
+<li><a href="../clients/#navigate-to-flipkart">Navigate to Flipkart</a>: To navigate to any flipkart native page</li>
+<li><a href="../clients/#notify-page-location-change-react-native-only">Notify page location change</a>: To notify that your page location has changed (React native only)</li>
+</ul>
+<h2 id="new-v2-server-side-apis">New v2 Server Side APIs</h2>
 <p><em>09/Aug/2018</em></p>
 <p>We have updated APIs for following</p>
 <ul>
@@ -605,6 +650,7 @@
 <li><a href="../backend/#refund">Refund</a>. Linked to new secureToken.</li>
 </ul>
 </li>
+<li>Do not forget to update your clientId in post payment <a href="../clients/#start-payment">fapp:// redirect</a> too. </li>
 </ul>
 <h2 id="oms-contracts-updated">OMS contracts updated</h2>
 <p><em>12/July/2018</em></p>

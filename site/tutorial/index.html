@@ -214,11 +214,31 @@
     Step 1 - Decide your UI platform
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#react-native" title="React Native" class="md-nav__link">
+    React Native
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-integrate-client-sdk" title="Step 2 - Integrate Client SDK" class="md-nav__link">
-    Step 2 - Integrate Client SDK
+  <a href="#webview" title="Webview" class="md-nav__link">
+    Webview
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-integrate-js-sdk" title="Step 2 - Integrate JS SDK" class="md-nav__link">
+    Step 2 - Integrate JS SDK
   </a>
   
 </li>
@@ -245,8 +265,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-6-post-payment-flow" title="Step 6 - Post payment flow" class="md-nav__link">
-    Step 6 - Post payment flow
+  <a href="#step-6-oms-integration" title="Step 6 - OMS integration" class="md-nav__link">
+    Step 6 - OMS integration
   </a>
   
 </li>
@@ -315,22 +335,46 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="../backend/" title="Server Side API" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
       Server Side API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Server Side API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Basic APIs" class="md-nav__link">
+      Basic APIs
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="../oms/" title="OMS" class="md-nav__link">
       OMS
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -401,11 +445,31 @@
     Step 1 - Decide your UI platform
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#react-native" title="React Native" class="md-nav__link">
+    React Native
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-integrate-client-sdk" title="Step 2 - Integrate Client SDK" class="md-nav__link">
-    Step 2 - Integrate Client SDK
+  <a href="#webview" title="Webview" class="md-nav__link">
+    Webview
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-integrate-js-sdk" title="Step 2 - Integrate JS SDK" class="md-nav__link">
+    Step 2 - Integrate JS SDK
   </a>
   
 </li>
@@ -432,8 +496,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-6-post-payment-flow" title="Step 6 - Post payment flow" class="md-nav__link">
-    Step 6 - Post payment flow
+  <a href="#step-6-oms-integration" title="Step 6 - OMS integration" class="md-nav__link">
+    Step 6 - OMS integration
   </a>
   
 </li>
@@ -500,7 +564,7 @@ Ultra supports both containers. Here's a brief comparison of the platforms.</p>
 </tr>
 </tbody>
 </table>
-<p><em>React Native:</em></p>
+<h4 id="react-native"><em>React Native</em></h4>
 <p>If you choose React native, Ultra will pull in your react native bundle from your github repository, and then deliver it to Flipkart app over-the-air. React native JS bundles are delivered to Flipkart app via <a href="https://github.com/Flipkart/DUS">DUS</a>. We highly encourage you to visit the github page to understand how it works.</p>
 <p>The only limitations are :</p>
 <ul>
@@ -512,11 +576,11 @@ Ultra supports both containers. Here's a brief comparison of the platforms.</p>
 </li>
 </ul>
 <p>Once DUS fetches your bundle within the Flipkart app, your react native experience will be loaded within a React Fragment and from there on you can navigate to other pages accordingly.</p>
-<p><em>Webview:</em></p>
+<h4 id="webview"><em>Webview</em></h4>
 <p>If you choose to build via HTML/PWA, then ultra will launch your webpage inside Android's webview. If you have your existing mobile website, you can choose to reuse it for Ultra, by only choosing to make small changes. The only catch is that you are not allowed to navigate away from your main domain.</p>
-<p>Either way, you have to <a href="../clients/#step-1">add the Ultra Javascript SDK to your HTML/React-native app</a>. This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to <a href="../clients/#step-2">initialize the SDK with your clientId</a>.</p>
+<h3 id="step-2-integrate-js-sdk">Step 2 - Integrate JS SDK</h3>
+<p>Based on the platform you choose, you have to <a href="../clients/#step-1">add the Ultra Javascript SDK to your HTML/React-native app</a>. This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to <a href="../clients/#step-2">initialize the SDK with your clientId</a>.</p>
 <p><a href="../contact/">Contact flipkart</a> to generate a <code>clientId</code> and <code>secret</code> needed to access Ultra APIs. For playing around with the APIs you can use <a href="../demo/#test">our test credentials</a>.</p>
-<h3 id="step-2-integrate-client-sdk">Step 2 - Integrate Client SDK</h3>
 <p>Most apps require its users to enter their email address and name before proceeding. We all know that asking the user to login to your app even if he is logged in on Flipkart app is not a good idea. Hence Ultra encourages apps to automatically login the user with their consent.</p>
 <p>In this step we will learn how to fetch user details from flipkart securely by asking the user to grant permissions to their data.</p>
 <p>This section will also introduce you to terms which are common in the Oauth world like <code>Granted Scopes</code>  and <code>Grant tokens</code>.</p>
@@ -533,13 +597,16 @@ Use the access token and fetch resources like <code>user.email</code> and <code>
 <p>Use the value of <code>mobileNumber</code> in combination with the <code>isVerified</code> flag to automatically log the user in. You could now set a cookie which prevents calls to <code>getToken</code> from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.</p>
 <h3 id="step-5-payment">Step 5 - Payment</h3>
 <p>Follow steps in <a href="../backend/#payment-flow">payment flow</a> to create a payment token and to <code>startPayment</code> and once payment is successful, redirect the user to your own order confirmation page.</p>
+<p>The money will reach the MIDs which have to be configured. Contact Flipkart so that your MID onboarding is done before the integration starts. This process takes a significant amount of time.</p>
 <p>The following screen is shown when you call <code>startPayment</code> :</p>
 <p><img alt="Payment" src="../img/payments.jpg" /></p>
 <p>Also integrate with <a href="../backend/#refund">refund API</a> as per your business requirements.</p>
-<h3 id="step-6-post-payment-flow">Step 6 - Post payment flow</h3>
+<h3 id="step-6-oms-integration">Step 6 - OMS integration</h3>
 <p>Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.
-To do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info <a href="../oms/">here</a>. These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.</p>
+To do this you have to integrate with <a href="../oms/">Flipkart OMS APIs</a> to let us know the status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info <a href="../oms/">here</a>. These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.</p>
+<blockquote>
 <p>This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.</p>
+</blockquote>
 <h3 id="demo">Demo</h3>
 <p>Checkout the <a href="../demo/">demo page</a> to see this flow in action.</p>
                 

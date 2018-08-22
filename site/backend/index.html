@@ -36,7 +36,7 @@
     
     
       
-        <title>Server Side API - Ultra documentation</title>
+        <title>Basic APIs - Ultra documentation</title>
       
     
     
@@ -96,7 +96,7 @@
                 Ultra documentation
               </span>
               <span class="md-header-nav__topic">
-                Server Side API
+                Basic APIs
               </span>
             
           
@@ -228,6 +228,27 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Server Side API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Server Side API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
@@ -236,11 +257,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Server Side API
+        Basic APIs
       </label>
     
-    <a href="./" title="Server Side API" class="md-nav__link md-nav__link--active">
-      Server Side API
+    <a href="./" title="Basic APIs" class="md-nav__link md-nav__link--active">
+      Basic APIs
     </a>
     
       
@@ -392,16 +413,21 @@
     
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="../oms/" title="OMS" class="md-nav__link">
       OMS
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -610,41 +636,67 @@
                 <h1 id="ultra-backend-apis">Ultra Backend APIs</h1>
 <h2 id="endpoint-contracts">Endpoint Contracts</h2>
 <p>Prod endpoint: <code>https://platform.flipkart.net</code></p>
+<blockquote>
+<p>There is no staging endpoint for Ultra. You can do all development on Prod endpoint.</p>
+</blockquote>
 <h2 id="security">Security</h2>
 <p>All production endpoints will be over https.
 We will validate Client’s identity using JWT.
 The JWT will be shared in every call in header as a ‘secureToken’
 Properties of secure token</p>
 <h3 id="header">Header</h3>
-<div class="codehilite"><pre><span></span>{
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>{
   &quot;alg&quot;: &quot;RS256&quot;,
   &quot;typ&quot;: &quot;JWT&quot;
 }
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="payload">Payload</h3>
 <p>'Note:' clientId should be fetched from flipkart.</p>
-<div class="codehilite"><pre><span></span>{
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>{
   &quot;iss&quot;: ≤clientId≥,
   &quot;iat&quot;: &lt;unix timestamp in seconds&gt;, // Issued at. Should be in past.
   &quot;exp&quot;: &lt;unix timestamp in seconds&gt; // Expiry of token. Should be in future. Also exp - iat should not be &gt; 100.
 }
 </pre></div>
-
+</td></tr></table>
 
 <p>The Public key should be shared with flipkart before hand.</p>
-<div class="codehilite"><pre><span></span>Path: /1/dummy
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Path: /1/dummy
 Method: GET
 Header: secureToken
 Response:  Will be HTTP 200 if secureToken is valid otherwise response code will be self explanatory.
 </pre></div>
-
+</td></tr></table>
 
 <h2 id="access-token-flow">Access token flow</h2>
 <p>Using the grantToken from the SDK, you have to fetch the accessToken before querying for any resources.
 Get Auth token flow</p>
-<div class="codehilite"><pre><span></span>Path: /1/authorization/auth
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Path: /1/authorization/auth
 
 Method: GET
 
@@ -659,12 +711,26 @@ identityToken (string),
 accessToken (string)
 }
 </pre></div>
-
+</td></tr></table>
 
 <h2 id="resource-fetching-flow">Resource fetching flow</h2>
 <p>Resources like user.mobile, user.email can be fetched with this API
 fetch bulk data</p>
-<div class="codehilite"><pre><span></span>Path: /1/resource/bulk
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Path: /1/resource/bulk
 
 Method: POST
 Query parameters:
@@ -680,7 +746,7 @@ mobileNumber(string)
 isVerified(boolean)
 }
 </pre></div>
-
+</td></tr></table>
 
 <h2 id="payment-flow">Payment flow.</h2>
 <p>This section describes FKPG (Flipkart payment gateway) APIs which can be used to initiate payments and for receiving refunds.
@@ -688,7 +754,66 @@ Contact Flipkart team to get the merchant credentials required to access this AP
 <h3 id="payment-token">Payment Token</h3>
 <p>This is the first step in initiating payments. Use this API to generate a payment token which can be used to show the FKPG payment options screen, this screen can be shown via Ultra's client SDK. This will open FKPG outside of Ultra container.</p>
 <p><code>Note</code>: Category should be fetched from flipkart.</p>
-<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">token</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">token</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
 <span class="n">Body</span><span class="o">:</span> <span class="n">PaymentTokenRequest</span>
@@ -749,9 +874,39 @@ Contact Flipkart team to get the merchant credentials required to access this AP
 <span class="n">token</span> <span class="o">(</span><span class="n">string</span><span class="o">)</span>
 <span class="o">}</span>
 </pre></div>
+</td></tr></table>
 
-
-<div class="codehilite"><pre><span></span>Sample Request
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Sample Request
 {
   &quot;merchantCredential&quot;: {
     &quot;name&quot;: &quot;Enter name here&quot;,
@@ -783,13 +938,61 @@ Contact Flipkart team to get the merchant credentials required to access this AP
   }
 }
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="callback-after-pgresponse">Callback after PGResponse</h3>
 <p>Once a user pays, a <code>POST</code> call is made to the <code>successfulCallBackUrl</code> specified in payment token request. The payload of the FORM data is present below.
 You can then issue a HTTP redirect to the <code>fapp:</code> URL to redirect back to ultra container and also specify the order confirmation page url to open in the same format.
 This will open your order confirmation page within ultra container (payment happens outside of it). Its mandatory to redirect to ultra container via <code>fapp:</code>. Do not open any UI outside of ultra container.</p>
-<div class="codehilite"><pre><span></span>Request (will be sent as form parameters)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Request (will be sent as form parameters)
 
 {
       &quot;transaction_status&quot;: &quot;&quot;, //  SUCCESS, FAILED
@@ -839,16 +1042,123 @@ This will open your order confirmation page within ultra container (payment happ
 &quot;card_bin&quot;: &quot;&quot;,
 }
 </pre></div>
+</td></tr></table>
 
-
-<div class="codehilite"><pre><span></span>Form Data
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Form Data
 
 transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&quot;&quot;&amp;merchant_adjustments=[ {&#39;offer_id&#39;:&#39;&#39;, &#39;offer_unit_price&#39;:0, &#39;amount_applied&#39;:0, &#39;amount_requested&#39;:0, &#39;actual_subvention_amount&#39;:0, &#39;effective_subvention_amount&#39;:0, ent_response_code&#39;:&#39;&#39;, &#39;metadata&#39;:{&#39;paymentSystem&#39;:&#39;&#39;, &#39;offerId&#39;:&#39;&#39;, &#39;discountType&#39;:&#39;&#39;}} ]transaction_amount=&quot;&quot;&amp;emi_months=&quot;&quot;&amp;merchant_id=&quot;&quot;&amp;transaction_response_code=&quot;&quot;&amp;payzippy_transaction_id=&quot;&quot;&amp;having_multiple_transactions=&quot;&quot;&amp;bank_name=&quot;&quot;&amp;card_brand=&quot;&quot;&amp;hash_method=&quot;&quot;&amp;transaction_time=&quot;&quot;&amp;transaction_currency=&quot;&quot;&amp;payment_method=&quot;&quot;&amp;timestamp=&quot;&quot;&amp;merchant_key_id=&quot;&quot;&amp;primary_record={&#39;transaction_id&#39;: &#39;&#39;, &#39;primary_amount&#39;: &#39;&#39;}merchant_transaction_id=&quot;&quot;&amp;bank_transaction_id=&quot;&quot;&amp;payment_instrument=&quot;&quot;&amp;transaction_response_message=&quot;&quot;&amp;pg_mid=&quot;&quot;&amp;pg_name=&quot;&quot;&amp;pg_authcode=&quot;&quot;&amp;pg_id=&quot;&quot;&amp;is_international=&quot;&quot;&amp;fraud_action=&quot;&quot;&amp;is_risky_instrument=&quot;&quot;&amp;transaction_auth_state=&quot;&quot;&amp;hash=&quot;&quot;&amp;masked_card_number=&quot;&quot;&amp;transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&quot;&quot;&amp;merchant_adjustments=&quot;&quot;&amp;transaction_amount=&quot;&quot;&amp;emi_months=&quot;&quot;&amp;merchant_id=&quot;&quot;&amp;transaction_response_code=&quot;&quot;&amp;payzippy_transaction_id=&quot;&quot;&amp;having_multiple_transactions=&quot;&quot;&amp;bank_name=&quot;&quot;&amp;card_brand=&quot;&quot;&amp;hash_method=&quot;&quot;&amp;transaction_time=&quot;&quot;&amp;transaction_currency=&quot;&quot;&amp;payment_method=&quot;&quot;&amp;timestamp=&quot;&quot;&amp;merchant_key_id=&quot;&quot;&amp;primary_record=&quot;&quot;&amp;merchant_transaction_id=&quot;&quot;&amp;bank_transaction_id=&quot;&quot;&amp;payment_instrument=&quot;&quot;&amp;transaction_response_message=&quot;&quot;&amp;pg_mid=&quot;&quot;&amp;pg_name=&quot;&quot;&amp;pg_authcode=&quot;&quot;&amp;pg_id=&quot;&quot;&amp;is_international=&quot;&quot;&amp;fraud_action=&quot;&quot;&amp;is_risky_instrument=&quot;&quot;&amp;transaction_auth_state=&quot;&quot;&amp;hash=&quot;&quot;&amp;masked_card_number=&quot;&quot;
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="query">Query</h3>
-<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">query</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">query</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
 <span class="n">Body</span><span class="o">:</span> <span class="n">QueryRequest</span>
@@ -955,9 +1265,18 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 <span class="n">metadata</span> <span class="o">(</span><span class="n">object</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
 <span class="o">}</span>
 </pre></div>
+</td></tr></table>
 
-
-<div class="codehilite"><pre><span></span>Sample Request
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Sample Request
 {
   &quot;merchantCredential&quot;: {
     &quot;name&quot;: &quot;Enter name here&quot;,
@@ -968,10 +1287,58 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
   &quot;paymentTransactionId&quot;: &quot;PZT1712211056FQM0400&quot;
 }
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="refund">Refund</h3>
-<div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">refund</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Path</span><span class="o">:</span> <span class="mi">2</span><span class="sr">/payment/</span><span class="n">refund</span>
 
 <span class="n">Method</span><span class="o">:</span> <span class="n">POST</span>
 <span class="n">Body</span><span class="o">:</span> <span class="n">RefundRequest</span>
@@ -1021,9 +1388,21 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
 <span class="n">maxSla</span> <span class="o">(</span><span class="n">long</span><span class="o">,</span> <span class="n">optional</span><span class="o">)</span>
 <span class="o">}</span>
 </pre></div>
+</td></tr></table>
 
-
-<div class="codehilite"><pre><span></span>Sample Request
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Sample Request
 {
   &quot;merchantCredential&quot;: {
     &quot;name&quot;: &quot;Enter name here&quot;,
@@ -1037,7 +1416,7 @@ transaction_status=&quot;&quot;&amp;account_type=&quot;&quot;&amp;pg_trackid=&qu
   &quot;merchantRefundTransactionId&quot;: &quot;transaction1-refund1&quot;
 }
 </pre></div>
-
+</td></tr></table>
 
 <h2 id="oms">OMS</h2>
 <p>OMS stands for <a href="https://en.wikipedia.org/wiki/Order_management_system">Order Management System</a>. Its the system which handles post order flows and its primary job is to power the <code>My Orders</code> screen on the flipkart apps.
@@ -1045,7 +1424,64 @@ When your system knows that an order has got placed or updated, you can call the
 This information will be rendered on the user's <code>My orders</code> screen with all the details you provide. We will also use this information for powering our CX agents for better experience.
 For a better view of OMS, to understand its purpose and to understand the meaning of every field being uploaded refer <a href="../oms/">this page</a> too</p>
 <h3 id="oms-upsert">OMS Upsert</h3>
-<div class="codehilite"><pre><span></span>Path: /2/oms
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Path: /2/oms
 Method: POST
 Body:
 Order {
@@ -1104,9 +1540,84 @@ reason (string),
 amount (double)
 }
 </pre></div>
+</td></tr></table>
 
-
-<div class="codehilite"><pre><span></span>Sample Request
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Sample Request
 {
   &quot;orderId&quot;: &quot;DummyOrderId&quot;,
   &quot;description&quot;: &quot;This is a dummy description&quot;,
@@ -1183,14 +1694,16 @@ amount (double)
   ]
 }
 </pre></div>
-
+</td></tr></table>
 
 <h2 id="offers">Offers</h2>
 <p>Flipkart might have some offers. These Apis let you interact with them.</p>
 <h3 id="get-offers-list">Get offers list</h3>
-<div class="codehilite"><pre><span></span>Path: /2/offers/active
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Path: /2/offers/active
 Method: GET
 </pre></div>
+</td></tr></table>
                 
                   
                 
