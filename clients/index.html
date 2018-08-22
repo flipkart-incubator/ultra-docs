@@ -370,6 +370,26 @@
     Contacts Module
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picker" title="Picker" class="md-nav__link">
+    Picker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-contact-name" title="Get Contact Name" class="md-nav__link">
+    Get Contact Name
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -670,6 +690,26 @@
     Contacts Module
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picker" title="Picker" class="md-nav__link">
+    Picker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-contact-name" title="Get Contact Name" class="md-nav__link">
+    Get Contact Name
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -779,7 +819,10 @@ All the methods are asynchronous in nature and will always return a promise that
 </td></tr></table>
 
 <p>Post this you can start using modules.</p>
-<p>Note: You should call <code>FKPlatform.isPlatformAvailable()</code> or, <code>window.FKExtension &amp;&amp; FKExtension.isPlatformAvailable()</code> to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should call <code>FKPlatform.isPlatformAvailable()</code> or, <code>window.FKExtension &amp;&amp; FKExtension.isPlatformAvailable()</code> to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code. More details <a href="#detecting-flipkart-environment">here</a></p>
+</div>
 <h2 id="modules">Modules</h2>
 <h3 id="permissions-module">Permissions Module</h3>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -963,11 +1006,13 @@ The name of the event is <code>loadUri</code> which will contain the URL you spe
 </td></tr></table>
 
 <p><strong>Methods:</strong></p>
+<h4 id="picker">Picker</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">pickPhoneNumber</span><span class="p">()</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">NativeModuleResponse</span><span class="o">&lt;</span><span class="nx">Contact</span><span class="o">&gt;&gt;</span>
 </pre></div>
 </td></tr></table>
 
 <p>Launches UI to pick a phone number and returns the same.</p>
+<h4 id="get-contact-name">Get Contact Name</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">getContactInfo</span><span class="p">(</span><span class="nx">phoneNumbers</span><span class="o">:</span> <span class="nx">string</span><span class="p">[])</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">NativeModuleResponse</span><span class="o">&lt;</span><span class="p">{[</span><span class="nx">key</span><span class="o">:</span> <span class="nx">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">Contact</span><span class="p">;}</span><span class="o">&gt;&gt;</span>
 </pre></div>
 </td></tr></table>
