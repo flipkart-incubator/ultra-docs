@@ -44,7 +44,8 @@ var fkPlatform = FKExtension.newPlatformInstance(clientID);
 
 Post this you can start using modules.
 
-Note: You should call `FKPlatform.isPlatformAvailable()` or, `window.FKExtension && FKExtension.isPlatformAvailable()` to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code.
+!!!note
+    You should call `FKPlatform.isPlatformAvailable()` or, `window.FKExtension && FKExtension.isPlatformAvailable()` to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code. More details [here](#detecting-flipkart-environment)
 
 ## Modules
 ### Permissions Module
@@ -216,13 +217,14 @@ Helps in launching a UI that allows user to select a contact from his address bo
 let contactModule = fkPlatform.getModuleHelper().getContactsModule()
 ```
 **Methods:**
-
+#### Picker
 ```js
 pickPhoneNumber(): Promise<NativeModuleResponse<Contact>>
 ```
 
 Launches UI to pick a phone number and returns the same.
 
+#### Get Contact Name
 ```js
 getContactInfo(phoneNumbers: string[]): Promise<NativeModuleResponse<{[key: string]: Contact;}>>
 ```

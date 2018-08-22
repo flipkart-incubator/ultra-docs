@@ -53,7 +53,9 @@ Send the token to you server using a AJAX call or any other mechanism you prefer
 On your server side, use this grant token and fetch the access token by making a call to `/1/authorization/auth`. More details [here](backend.md#access-token-flow).
 Use the access token and fetch resources like `user.email` and `user.mobile`. More details [here](backend.md#resource-fetching-flow).
 
-**Note** : Although the APIs to fetch user data are available on client side also (since they are REST APIs), make sure you always fetch user data on server side and not on the client side to avoid security risks like MITM attacks.
+
+!!!note 
+	Although the APIs to fetch user data are available on client side also (since they are REST APIs), make sure you always fetch user data on server side and not on the client side to avoid security risks like MITM attacks.
 
 ###Step 4 - Auto login the user
 Use the value of `mobileNumber` in combination with the `isVerified` flag to automatically log the user in. You could now set a cookie which prevents calls to `getToken` from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.

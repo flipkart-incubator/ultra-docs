@@ -592,7 +592,10 @@ Ultra supports both containers. Here's a brief comparison of the platforms.</p>
 <p>Send the token to you server using a AJAX call or any other mechanism you prefer. This token can be used by the server to get an access token which we will learn in the next step.</p>
 <p>On your server side, use this grant token and fetch the access token by making a call to <code>/1/authorization/auth</code>. More details <a href="../backend/#access-token-flow">here</a>.
 Use the access token and fetch resources like <code>user.email</code> and <code>user.mobile</code>. More details <a href="../backend/#resource-fetching-flow">here</a>.</p>
-<p><strong>Note</strong> : Although the APIs to fetch user data are available on client side also (since they are REST APIs), make sure you always fetch user data on server side and not on the client side to avoid security risks like MITM attacks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the APIs to fetch user data are available on client side also (since they are REST APIs), make sure you always fetch user data on server side and not on the client side to avoid security risks like MITM attacks.</p>
+</div>
 <h3 id="step-4-auto-login-the-user">Step 4 - Auto login the user</h3>
 <p>Use the value of <code>mobileNumber</code> in combination with the <code>isVerified</code> flag to automatically log the user in. You could now set a cookie which prevents calls to <code>getToken</code> from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.</p>
 <h3 id="step-5-payment">Step 5 - Payment</h3>

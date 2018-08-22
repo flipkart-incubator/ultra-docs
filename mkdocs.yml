@@ -16,3 +16,5 @@ theme:
 markdown_extensions:
   - codehilite:
       linenums: true
+  - admonition:
+
