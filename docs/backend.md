@@ -3,6 +3,7 @@
 ##Endpoint Contracts
 
 Prod endpoint: `https://platform.flipkart.net`
+> There is no staging endpoint for Ultra. You can do all development on Prod endpoint.
 
 ##Security
 All production endpoints will be over https.

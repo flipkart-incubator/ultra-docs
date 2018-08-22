@@ -1,4 +1,13 @@
-##New v2 Apis
+##New JS SDK Methods
+_20/Aug/2018_
+
+New JS SDK methods added in v1.0.0. Only available in v6.7 of FK app.
+
+* [Navigate to Flipkart](clients.md#navigate-to-flipkart): To navigate to any flipkart native page
+* [Notify page location change](clients.md#notify-page-location-change-react-native-only): To notify that your page location has changed (React native only)
+
+
+##New v2 Server Side APIs
 _09/Aug/2018_
 
 We have updated APIs for following
@@ -9,6 +18,7 @@ We have updated APIs for following
     * [PaymentToken](backend.md#payment-token).  Added category in request.
     * [Query](backend.md#query). Linked to new secureToken.
     * [Refund](backend.md#refund). Linked to new secureToken.
+* Do not forget to update your clientId in post payment [fapp:// redirect](clients.md#start-payment) too. 
 
 ## OMS contracts updated
 _12/July/2018_

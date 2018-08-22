@@ -12,7 +12,7 @@ Ultra supports both containers. Here's a brief comparison of the platforms.
 | Very optimized for mobile | Not highly optimized |
 | Bundle is delivered from FK CDN, only differential components are downloaded, and is cached within the FK app | Bundle and assets follow cache-control headers and might be slower to render even from cache | 
 
-*React Native:*
+####*React Native*
 
 If you choose React native, Ultra will pull in your react native bundle from your github repository, and then deliver it to Flipkart app over-the-air. React native JS bundles are delivered to Flipkart app via [DUS](https://github.com/Flipkart/DUS). We highly encourage you to visit the github page to understand how it works.
 
@@ -24,15 +24,16 @@ The only limitations are :
 
 Once DUS fetches your bundle within the Flipkart app, your react native experience will be loaded within a React Fragment and from there on you can navigate to other pages accordingly.
 
-*Webview:*
+####*Webview*
 
 If you choose to build via HTML/PWA, then ultra will launch your webpage inside Android's webview. If you have your existing mobile website, you can choose to reuse it for Ultra, by only choosing to make small changes. The only catch is that you are not allowed to navigate away from your main domain.
 
-Either way, you have to [add the Ultra Javascript SDK to your HTML/React-native app](clients.md#step-1). This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to [initialize the SDK with your clientId](clients.md#step-2).
+###Step 2 - Integrate JS SDK
+
+Based on the platform you choose, you have to [add the Ultra Javascript SDK to your HTML/React-native app](clients.md#step-1). This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to [initialize the SDK with your clientId](clients.md#step-2).
 
 [Contact flipkart](contact.md) to generate a `clientId` and `secret` needed to access Ultra APIs. For playing around with the APIs you can use [our test credentials](demo.md#test).
 
-###Step 2 - Integrate Client SDK
 Most apps require its users to enter their email address and name before proceeding. We all know that asking the user to login to your app even if he is logged in on Flipkart app is not a good idea. Hence Ultra encourages apps to automatically login the user with their consent.
 
 In this step we will learn how to fetch user details from flipkart securely by asking the user to grant permissions to their data.
@@ -60,17 +61,19 @@ Use the value of `mobileNumber` in combination with the `isVerified` flag to aut
 ###Step 5 - Payment
 Follow steps in [payment flow](backend.md#payment-flow) to create a payment token and to `startPayment` and once payment is successful, redirect the user to your own order confirmation page.
 
+The money will reach the MIDs which have to be configured. Contact Flipkart so that your MID onboarding is done before the integration starts. This process takes a significant amount of time.
+
 The following screen is shown when you call `startPayment` :
 
 ![Payment](img/payments.jpg)
 
 Also integrate with [refund API](backend.md#refund) as per your business requirements.
 
-###Step 6 - Post payment flow
+###Step 6 - OMS integration
 Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.
-To do this you have to integrate with Flipkart OMS APIs to let us know teh status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](oms.md). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
+To do this you have to integrate with [Flipkart OMS APIs](oms.md) to let us know the status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](oms.md). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
 
-This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.
+>This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.
 
 ###Demo
 Checkout the [demo page](demo.md) to see this flow in action.

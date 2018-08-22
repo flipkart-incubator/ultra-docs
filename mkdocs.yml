@@ -5,12 +5,14 @@ pages:
     - Onboarding: onboarding.md
     - Flow diagrams : flows.md
     - Client Side API: clients.md
-    - Server Side API: backend.md
-    - OMS: oms.md
+    - Server Side API:
+        - Basic APIs: backend.md
+        - OMS: oms.md
     - Demo: demo.md
     - Contact Us : contact.md
     - Announcements : announcement.md
 theme:
   name: 'material'
 markdown_extensions:
-  - codehilite
+  - codehilite:
+      linenums: true
