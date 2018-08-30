@@ -40,5 +40,6 @@ The manifestation of the above issue cannot be noticed once payment is complete,
 !!!warning
 	To avoid clientId inconsistency, the changeover from old to new clientId has to be done simultaneously across systems which depend on clientId (for e.g SMS/Whatsapp, payment redirect, ultra landing page all of them should be in sync)
 
-
+!!!note
+	Newer apps which use the new `clientId` structure will be unaffected by this and can ignore this article.
 
