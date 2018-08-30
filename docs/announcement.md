@@ -1,4 +1,8 @@
 ##New JS SDK Methods
+_30/Aug/2018_
+
+Please go through the [migration plan for clientId change here](migrating-clientid.md)
+
 _20/Aug/2018_
 
 New JS SDK methods added in v1.0.0. Only available in v6.7 of FK app.
