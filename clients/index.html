@@ -997,7 +997,7 @@ The name of the event is <code>loadUri</code> which will contain the URL you spe
 </td></tr></table>
 
 <blockquote>
-<p>Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards</p>
+<p>Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards. Please make sure you <a href="../clients/#detecting-presence-of-a-certain-feature">do user-agent version check</a> before accessing this API.</p>
 </blockquote>
 <p>Navigates to a Flipkart page given the URL. The URL should be a <code>fapp://</code> URL.</p>
 <p>The following URLs are supported.</p>
@@ -1018,7 +1018,8 @@ The name of the event is <code>loadUri</code> which will contain the URL you spe
 <h4 id="notify-page-location-change">Notify page location change</h4>
 <blockquote>
 <p>This should be called only if you are using React Native.</p>
-<p>Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards</p>
+<p>Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards
+Please make sure you <a href="../clients/#detecting-presence-of-a-certain-feature">do user-agent version check</a> before accessing this API.</p>
 </blockquote>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">notifyPageLocationChange</span><span class="p">(</span><span class="nx">currentUri</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">isBackNavigation</span><span class="o">:</span> <span class="kr">boolean</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span>
 </pre></div>
