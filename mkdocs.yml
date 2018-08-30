@@ -10,7 +10,9 @@ pages:
         - OMS: oms.md
     - Demo: demo.md
     - Contact Us : contact.md
-    - Announcements : announcement.md
+    - Announcements :
+        - All Announcements : announcement.md
+        - Migrating ClientId : migrating-clientid.md
 theme:
   name: 'material'
 markdown_extensions:
