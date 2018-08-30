@@ -180,7 +180,7 @@ Clears both forward and backward history such that only the existing page remain
 ```js
 navigateToFlipkart(url : string): void
 ```
-> Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards
+> Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards. Please make sure you [do user-agent version check](clients/#detecting-presence-of-a-certain-feature) before accessing this API.
 
 Navigates to a Flipkart page given the URL. The URL should be a `fapp://` URL.
 
@@ -194,7 +194,7 @@ The following URLs are supported.
 > This should be called only if you are using React Native.
 
 > Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards
-
+Please make sure you [do user-agent version check](clients/#detecting-presence-of-a-certain-feature) before accessing this API.
 ```js
 notifyPageLocationChange(currentUri: string, isBackNavigation: boolean): void
 ```
