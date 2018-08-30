@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/tutorial/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>/onboarding/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +28,7 @@
     
     <url>
      <loc>/flows/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +36,7 @@
     
     <url>
      <loc>/clients/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -45,13 +45,13 @@
         
     <url>
      <loc>/backend/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/oms/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -60,7 +60,7 @@
     
     <url>
      <loc>/demo/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -68,17 +68,25 @@
     
     <url>
      <loc>/contact/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
+        
     <url>
      <loc>/announcement/</loc>
-     <lastmod>2018-08-22</lastmod>
+     <lastmod>2018-08-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/migrating-clientid/</loc>
+     <lastmod>2018-08-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>
