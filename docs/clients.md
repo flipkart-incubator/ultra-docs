@@ -282,13 +282,19 @@ Note that if you have service workers making requests, this user agent will not 
 ### Detecting presence of a certain feature
 > User Agent is available in both webview and react native.
 
+Certain APIs are only available on certain versions of the FK app.
+Every API mentioned above will have a note specifying which version of FK app contains it.
+For backward compatibility, you should parse the user agent string and figure out the app version.
+
+For webview, you can access user agent via `navigator.userAgent` and on react native you can use `FKPlatform.getUserAgent()`
+
 User agent string in ultra is of the following format:
 
 ```
 Mozilla/5.0 (Linux; Android 8.0.0; Android SDK built for x86 Build/OSR1.170901.008; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.125 Mobile Safari/537.36 [Flipkart/com.flipkart.android/850000/5.16/UltraSDK/4/1.4.2]
 ```
 
-In the above user agent string, if you focus on the last part, 5.16 is the version name and 850000 is version code for flipkart app, 1.4.2 is version name and 4 is version code for ultra SDK. 
+In the above user agent string, if you see the last part, 5.16 is the version name and 850000 is version code for flipkart app, 1.4.2 is version name and 4 is version code for ultra SDK. 
 
 Based on just the ultra version name (1.4.2) you can check if certain newly added modules are present or not.
 
