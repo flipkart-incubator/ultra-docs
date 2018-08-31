@@ -10,6 +10,8 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
+        <meta name="description" content="Documentation for building apps on Flipkart Ultra platform">
+      
       
       
       
@@ -32,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.3">
     
     
       
@@ -487,7 +489,11 @@ These deeplinks have to be updated to use the new clientId.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Newer apps which use the new <code>clientId</code> structure will be unaffected by this and can ignore this article.</p>
+<p>Newer apps which went live after this change and use the new <code>clientId</code> structure will be unaffected by this and can ignore this article.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Whenever you migrate to the new <code>clientId</code> format, just do not migrate the deeplinks and the <code>fapp://</code> redirect to it until all systems are ready to migrate , and this will avoid the UI inconsistency issues.</p>
 </div>
                 
                   
@@ -548,7 +554,7 @@ These deeplinks have to be updated to use the new clientId.</p>
     
       <script src="../assets/javascripts/application.b438e6c5.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
       
     
     
