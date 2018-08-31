@@ -1127,12 +1127,16 @@ Note that if you have service workers making requests, this user agent will not 
 <blockquote>
 <p>User Agent is available in both webview and react native.</p>
 </blockquote>
+<p>Certain APIs are only available on certain versions of the FK app.
+Every API mentioned above will have a note specifying which version of FK app contains it.
+For backward compatibility, you should parse the user agent string and figure out the app version.</p>
+<p>For webview, you can access user agent via <code>navigator.userAgent</code> and on react native you can use <code>FKPlatform.getUserAgent()</code></p>
 <p>User agent string in ultra is of the following format:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Mozilla/5.0 (Linux; Android 8.0.0; Android SDK built for x86 Build/OSR1.170901.008; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.125 Mobile Safari/537.36 [Flipkart/com.flipkart.android/850000/5.16/UltraSDK/4/1.4.2]
 </pre></div>
 </td></tr></table>
 
-<p>In the above user agent string, if you focus on the last part, 5.16 is the version name and 850000 is version code for flipkart app, 1.4.2 is version name and 4 is version code for ultra SDK. </p>
+<p>In the above user agent string, if you see the last part, 5.16 is the version name and 850000 is version code for flipkart app, 1.4.2 is version name and 4 is version code for ultra SDK. </p>
 <p>Based on just the ultra version name (1.4.2) you can check if certain newly added modules are present or not.</p>
 <h3 id="handling-file-uploads-and-downloads-on-webview">Handling file uploads and downloads on webview</h3>
 <blockquote>
