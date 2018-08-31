@@ -1,4 +1,5 @@
 site_name: Ultra documentation
+site_description: Documentation for building apps on Flipkart Ultra platform
 pages:
     - Home: index.md
     - Tutorial : tutorial.md
@@ -19,4 +20,3 @@ markdown_extensions:
   - codehilite:
       linenums: true
   - admonition:
-

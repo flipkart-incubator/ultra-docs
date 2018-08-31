@@ -21,7 +21,7 @@ Properties of secure token
 'Note:' clientId should be fetched from flipkart.
 ```
 {
-  "iss": ≤clientId≥,
+  "iss": <clientId>,
   "iat": <unix timestamp in seconds>, // Issued at. Should be in past.
   "exp": <unix timestamp in seconds> // Expiry of token. Should be in future. Also exp - iat should not be > 100.
 }

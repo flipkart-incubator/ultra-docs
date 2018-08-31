@@ -10,6 +10,8 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
+        <meta name="description" content="Documentation for building apps on Flipkart Ultra platform">
+      
       
       
       
@@ -32,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.3">
     
     
       
@@ -267,6 +269,26 @@
   <a href="#initialize-the-sdk" title="Initialize the SDK" class="md-nav__link">
     Initialize the SDK
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-webview" title="For WEBVIEW" class="md-nav__link">
+    For WEBVIEW
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-react-native" title="For REACT NATIVE" class="md-nav__link">
+    For REACT NATIVE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -624,6 +646,26 @@
     Initialize the SDK
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-webview" title="For WEBVIEW" class="md-nav__link">
+    For WEBVIEW
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-react-native" title="For REACT NATIVE" class="md-nav__link">
+    For REACT NATIVE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -843,18 +885,26 @@ All the methods are asynchronous in nature and will always return a promise that
 <h4 id="initialize-the-sdk">Initialize the SDK</h4>
 <p>Import SDK and create a new platform instance. You will need to provide clientId given to you by Flipkart.</p>
 <p>In Node Environment:</p>
+<h5 id="for-webview">For WEBVIEW</h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">FKPlatform</span> <span class="nx">from</span> <span class="s2">&quot;fk-platform-sdk/web&quot;</span>
+<span class="kd">let</span> <span class="nx">fkPlatform</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FKPlatform</span><span class="p">(</span><span class="nx">clientId</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<h5 id="for-react-native">For REACT NATIVE</h5>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">FKPlatform</span> <span class="nx">from</span> <span class="s2">&quot;fk-platform-sdk&quot;</span>
 <span class="kd">let</span> <span class="nx">fkPlatform</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FKPlatform</span><span class="p">(</span><span class="nx">clientId</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
-<p>In Browser:</p>
+<p>In Browser (Without using Node):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">fkPlatform</span> <span class="o">=</span> <span class="nx">FKExtension</span><span class="p">.</span><span class="nx">newPlatformInstance</span><span class="p">(</span><span class="nx">clientID</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
-<p>Post this you can start using modules.</p>
+<p>Once this is done you can start using modules.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You should call <code>FKPlatform.isPlatformAvailable()</code> or, <code>window.FKExtension &amp;&amp; FKExtension.isPlatformAvailable()</code> to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code. More details <a href="#detecting-flipkart-environment">here</a></p>
@@ -1223,7 +1273,7 @@ For uploads, there are no restrictions.</p>
     
       <script src="../assets/javascripts/application.b438e6c5.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
       
     
     

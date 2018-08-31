@@ -31,18 +31,27 @@ Import SDK and create a new platform instance. You will need to provide clientId
 
 In Node Environment:
 
-```js
-import FKPlatform from "fk-platform-sdk"
+
+##### For WEBVIEW
+``` js
+import FKPlatform from "fk-platform-sdk/web"
 let fkPlatform = new FKPlatform(clientId);
 ```
 
-In Browser:
+##### For REACT NATIVE
+``` js
+import FKPlatform from "fk-platform-sdk"
+let fkPlatform = new FKPlatform(clientId);
+
+```
+
+In Browser (Without using Node):
 
 ```js
 var fkPlatform = FKExtension.newPlatformInstance(clientID);
 ```
 
-Post this you can start using modules.
+Once this is done you can start using modules.
 
 !!!note
     You should call `FKPlatform.isPlatformAvailable()` or, `window.FKExtension && FKExtension.isPlatformAvailable()` to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code. More details [here](#detecting-flipkart-environment)

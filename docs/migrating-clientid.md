@@ -41,5 +41,7 @@ The manifestation of the above issue cannot be noticed once payment is complete,
 	To avoid clientId inconsistency, the changeover from old to new clientId has to be done simultaneously across systems which depend on clientId (for e.g SMS/Whatsapp, payment redirect, ultra landing page all of them should be in sync)
 
 !!!note
-	Newer apps which use the new `clientId` structure will be unaffected by this and can ignore this article.
+	Newer apps which went live after this change and use the new `clientId` structure will be unaffected by this and can ignore this article.
 
+!!!note 
+	Whenever you migrate to the new `clientId` format, just do not migrate the deeplinks and the `fapp://` redirect to it until all systems are ready to migrate , and this will avoid the UI inconsistency issues.
