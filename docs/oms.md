@@ -55,7 +55,7 @@ name|type|mandatory|notes|
 |---|---|---|---|
 |forwardTransactionId|string|yes|The forward transaction used to take money from customer|
 |reverseTransactionId|string|yes||
-|amount|long|yes|amount to be refunded|
+|amount|double|yes|amount to be refunded|
 |description|string|yes||
 |timestamp|long|yes|Time of transaction|
 
