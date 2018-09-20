@@ -1,3 +1,8 @@
+## Modification in OMS contract.
+_19/Sep/2018_
+
+There was a documentation error in [ReverseTransaction of OMS](oms.md#reversetransaction). The amount is of type double, not long as previously mentioned.
+
 ##New JS SDK Methods
 _30/Aug/2018_
 
@@ -22,7 +27,7 @@ We have updated APIs for following
     * [PaymentToken](backend.md#payment-token).  Added category in request.
     * [Query](backend.md#query). Linked to new secureToken.
     * [Refund](backend.md#refund). Linked to new secureToken.
-* Do not forget to update your clientId in post payment [fapp:// redirect](clients.md#start-payment) too. 
+* Do not forget to update your clientId in post payment [fapp:// redirect](clients.md#start-payment) too.
 
 ## OMS contracts updated
 _12/July/2018_
