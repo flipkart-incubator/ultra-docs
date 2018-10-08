@@ -1,0 +1,163 @@
+Ultra
+
+[[TOC]]
+
+**Copyright and Disclaimer**
+
+For all external documentation this is important and mandatory.
+
+# Overview
+
+## About this document
+
+The purpose of this document is to serve the needs of a partner who wants to integrate with Ultra on Flipkart Android App explaining the overall flow between different systems, procedures and steps to follow while implementation at partner’s end and calling of the APIs.
+
+## Target Audience
+
+The readers of this document must have some prior knowledge of developing applications or should have at least some familiarity with the product.
+
+## Prerequisites
+
+Software prerequisites (to be discussed)
+
+## Scope
+
+This document includes the entire procedure from onboarding of a partner with Ultra to integration and implementation of the respective partner application within Flipkart android application.
+
+## References
+
+[https://flipkart-incubator.github.i](https://flipkart-incubator.github.io/ultra-docs/)[o/ultra-docs/](https://flipkart-incubator.github.io/ultra-docs/)
+
+# Introduction
+
+The Ultra platform aims at providing Flipkart customers with shopping experiences on categories that Flipkart does not handle. It is an idea designed to pave new ways for users to interact with any external application within Flipkart application securely and with trust. With Flipkart having one of the largest user base in the country, building a distribution platform to host experiences or services (like booking tickets, bill payments) offered by other non-competing players (like MakeMyTrip, PhonePe and so on) can help customers get access to a single shopping destination and helping developers get wider access while Flipkart enjoys getting a greater share of the user’s wallet and hence enhancing its top of mind recall. 
+
+The process involves on-boarding partners who specialise in these categories. It redirects users to partner experiences within the Flipkart app and grants the entry into these experiences based on Flipkart user login and makes payments for these orders using Flipkart’s payment gateway. If users want to check the status of these orders, they can do that using Flipkart’s My Orders page.
+
+This will help partners and businesses by allowing them to integrate their applications within Flipkart’s android application using developer friendly APIs and open doors to over 100 million handhelds in the country. Also, developers would not want to miss a chance of working with Ultra platform as it supports a wide variety of technologies from the most basic web applications to very advanced experiences powered by React Native. This provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming. The vision of Ultra is to be a prestigious developer platform enabling cutting edge experiences to all.
+
+# About this version
+
+This is Ultra version 1. In this version, we have set up a minimal viable process required to onboard a partner keeping below ethos in check:
+
+* Swift onboarding
+
+* Data security
+
+* User privacy
+
+* Payment security
+
+* User experience
+
+* Customer experience
+
+* Developer experience
+
+* Application performance
+
+* Affordability
+
+We have also taken strategic product decisions which has shaped Ultra offering following services to partners:
+
+* The partner will build and own user experience over the purchase funnel.
+
+* Flipkart will control discovery of applications.
+
+* Only logged-in users can access partner applications.
+
+* Payments will occur through Flipkart Payment Gateway (FKPG).
+
+* Flipkart can run offers on partners purchase funnel.
+
+* The partner will also build and own fulfillment and post purchase experience.
+
+* Partner will answer all customer support related queries.
+
+* Money will reach the partner’s nodal account directly.
+
+# News and Announcements
+
+# What’s New in this version
+
+This section will be visible and updated for versions that are above version 1.
+
+# Onboarding a partner with Ultra
+
+For on-boarding of a partner with Ultra platform, Flipkart has to keep a checklist of below mentioned steps to ensure a smooth transition:
+
+* Put all legal contracts and business agreements with the partners to closure.
+
+* Review information security and privacy policy agreement.
+
+* Integrate API with both of the following services:
+
+    * **Login:**
+
+        * This service will integrate partner’s user service with oAuth2.0 built by Flipkart Authn service.
+
+        * It will create and provide an identity token so that merchants have an account id equivalent and are not compromising Flipkart’s flow.
+
+        * It will prompt a user for data sharing permissions when partner requests user’s data like email or phone number.
+
+        * It will solicit missing data when a new use case arises at partner’s side and in return enriches Flipkart data.
+
+        * It will also prompt email verification or phone verification flows within native application so that merchants don’t have to perform any verification on their end.
+
+    * **Payment:**
+
+        * This service will allow partners to configure their nodal account and MIDS to power payments completion via Flipkart payment gateway.
+
+        * It will allow partners to decide the number and type of payment options for a user.
+
+        * It will also allow partners to run bank offers on payments.
+
+        * It will permit the partner to configure session or payment expiry timer, convenience or other fees.
+
+        * The partners will take benefits of Fintech constructs like EMI, BNPL etc in the future.
+
+        * It allows the partner to share the order and payment details like payment status to the user.
+
+        * It will also help partners to issue refund and/or cancellation amount to the user.
+
+* Ensure that there is a process agreement and semi-automated integration with the partner on:
+
+    * **Customer experience:**
+
+        * This will allow the visibility of orders in "My Orders" section.
+
+        * It will enable the user to discover help in "Help Centre".
+
+        * It will solve for communication on inbound and outbound calls.
+
+    * **Accounting:**
+
+        * It will handle reconciliation, Taxes, etc.
+
+    * **Reporting:**
+
+        * This will allow visibility of business metrics at both ends.
+
+# Integration with Ultra
+
+# Interaction between Ultra and Partner applications
+
+# API Implementation
+
+## Client API
+
+## Server API
+
+## SDKs and Libraries
+
+# API References
+
+# Ultra Demo
+
+# Troubleshooting
+
+# Known issues and Resolution
+
+# Frequently Asked Questions
+
+# Contact Us
