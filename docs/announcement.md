@@ -1,4 +1,8 @@
 ## Modification in OMS contract.
+
+8th Oct:
+Sample announcement
+
 _19/Sep/2018_
 
 There was a documentation error in [ReverseTransaction of OMS](oms.md#reversetransaction). The amount is of type double, not long as previously mentioned.
