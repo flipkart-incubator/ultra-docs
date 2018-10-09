@@ -5,3 +5,5 @@ The Ultra platform aims at providing Flipkart customers with shopping experience
 The process involves on-boarding partners who specialise in these categories. It redirects users to partner experiences within the Flipkart app and grants the entry into these experiences based on Flipkart user login and makes payments for these orders using Flipkart’s payment gateway. If users want to check the status of these orders, they can do that using Flipkart’s My Orders page.
 
 This will help partners and businesses by allowing them to integrate their applications within Flipkart’s android application using developer friendly APIs and open doors to over 100 million handhelds in the country. Also, developers would not want to miss a chance of working with Ultra platform as it supports a wide variety of technologies from the most basic web applications to very advanced experiences powered by React Native. This provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming. The vision of Ultra is to be a prestigious developer platform enabling cutting edge experiences to all.
+
+More
