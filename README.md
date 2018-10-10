@@ -1,7 +1,7 @@
 # ultra-docs
 Documentation for Flipkart Ultra Platform published using MkDocs.
 
-The public link is https://flipkart-incubator.github.io/ultra-docs/
+The public link is https://ultra-docs.readthedocs.io/en/latest/
 
 Making changes :
 * Install MkDocs python plugin : http://www.mkdocs.org/
