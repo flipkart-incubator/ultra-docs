@@ -1,4 +1,6 @@
 # ultra-docs
+![ReadTheDocs](https://readthedocs.org/projects/pip/badge/)
+
 Documentation for Flipkart Ultra Platform published using MkDocs.
 
 The public link is https://ultra-docs.readthedocs.io/en/latest/
