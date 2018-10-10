@@ -1,5 +1,5 @@
 # ultra-docs
-<a href='https://ultra-docs.readthedocs.io/en/latest/'>![ReadTheDocs](https://readthedocs.org/projects/pip/badge/)</a>
+[![Documentation Status](https://readthedocs.org/projects/ultra-docs/badge/?version=latest)](https://ultra-docs.readthedocs.io/en/latest/?badge=latest)
 
 Documentation for Flipkart Ultra Platform published using MkDocs.
 
