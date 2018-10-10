@@ -1,57 +1,48 @@
+
 # Welcome to Ultra
-We are pleased to announce the launch of version 1 of Ultra Platform on Android App. With this launch, we take a leap forward towards a vision of becoming a single shopping destination for all customer needs. This effort also brings us to a place where we can enable faster learnings for us on not-so-known shopping categories like Travel & Food, as well as non-shopping categories like Video and Music. It’s an idea which is designed to pave new ways for users to interact with any 3rd party App within Flipkart App securely and with trust. Hence, Ultra and its meaning ( Revolution) has become synonymous and is consecrated by usage.
 
+Ultra is a platform that aims at providing Flipkart customers with shopping experiences on categories that Flipkart does not handle. It is an idea designed to pave new ways for users to interact with any external application within Flipkart with security and trust. With Flipkart having one of the largest user base in the country, building a distribution platform to host experiences or services (for example, booking tickets, bill payments) offered by other non-competing players (such as, MakeMyTrip, Phone Pe and so on) can help customers get access to a single shopping destination and helping developers get wider access while Flipkart enjoys getting a greater share of the user’s wallet and hence enhancing its top of mind recall.
 
-##**What is Ultra?**
+Ultra involves on-boarding partners who specialise in these categories. It redirects users to partner experiences within the Flipkart app and grants the entry into these experiences based on Flipkart user login and makes payments for these orders using Flipkart’s payment gateway. If users want to check the status of these orders, they can do that using Flipkart’s My Orders page.
 
-Ultra is a project name for all the efforts required to **onboard** other services ( like Travel tickets, Bill payments, etc) through **partners** like MakeMyTrip, PhonePe, etc on Flipkart Android App, keeping following ethos in mind with utmost sincerity. 
+Ultra will help partners and businesses by allowing them to integrate their applications within Flipkart’s android application using developer friendly APIs and open doors to over 100 million handhelds in the country. The developers do not want to miss a chance of working with Ultra platform as it supports a wide variety of technologies from the most basic web applications to very advanced experiences powered by React Native. This provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming. Ultra’s vision is to be a prestigious developer platform enabling cutting edge experiences to its users.
 
-1. Swift onboarding
+# About this version
 
-2. Data Security
+This is Ultra version 1. In this version, we have set up a minimal viable process required to onboard a partner keeping below ethos in check:
 
-3. User Privacy
+* Swift onboarding
 
-4. Payment Security
+* Data security
 
-5. User Experience
+* User privacy
 
-6. Customer Experience
+* Payment security
 
-7. Developer Experience
+* User experience
 
-8. App Performance
+* Customer experience
 
-9. Affordability
+* Developer experience
 
-**What is launched in Ultra V1?**
+* Application performance
 
-In Ultra V1, we have setup a minimal viable process required to onboard a partner keeping above ethos in check. We also took some strategic product decisions which has shaped Ultra as a service offering to partners, like following
+* Affordability
 
-1. User experience over purchase funnel will be built and owned by the partner.
+We have also taken strategic product decisions which has shaped Ultra offering following services to partners:
 
-2. Discovery of Applications will be controlled by Flipkart.
+* The partner will build and own user experience over the purchase funnel.
 
-3. Only Logged in Users can access partner applications.
+* Flipkart will control discovery of applications.
 
-4. Payments is powered by Flipkart Payment Gateway(FKPG).
+* Only logged-in users can access partner applications.
 
-5. Flipkart can run offers on partners purchase funnel.
+* Payments will occur through Flipkart Payment Gateway (FKPG).
 
-6. Fulfillment and post purchase experience will also be built and owned by the partner.
+* Flipkart can run offers on partners purchase funnel.
 
-7. All customer support related queries will be answered by the partner
+* The partner will also build and own fulfillment and post purchase experience.
 
-8. Money will reach partner’s nodal account directly.
+* Partner will answer all customer support related queries.
 
-You can read step by step approach to onboard a partner in the Onboarding section
-
-**What is in for Partners/Businesses?**
-
-Partners can integrate their Apps to Flipkart’s Android App using developer’s friendly API’s and use the benefit of being on more than 100 million handhelds in the country. 
-
-**What is in for Developers?**
-
-Ultra plans to become one of the most dominant channel that no business or, developer can afford to miss. Ultra platform is one of its kind which supports a wide variety of technologies from the most basic web apps to very advanced experiences powered by React Native. This provides ample room to grow and develop unique skills while keeping entry barrier low so that no one is overwhelmed. In near future we would want Ultra to be a prestigious developer platform enabling cutting edge experiences. Being great on Ultra should be synonymous with being a great developer.
-
-
+* Money will reach the partner’s nodal account directly.
