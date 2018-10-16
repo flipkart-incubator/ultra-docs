@@ -14,3 +14,4 @@ Making changes :
 * `mkdocs gh-deploy` to deploy it to github pages. Alternatively issue a pull request once you issue the `mkdocs build` command.
 * Then push your changes made to MD and YML files to master. If `mkdocs gh-deploy` was run, then it would deploy the html files to a different branch on github, but the MD files have to be pushed anyway, so you need to push the master branch too.
 
+
