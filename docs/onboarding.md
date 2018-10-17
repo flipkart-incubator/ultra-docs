@@ -1,54 +1,56 @@
-# Onboarding process
-Today integration with a new partner requires us to take following steps.
+# Onboarding a partner with Ultra
 
-* Closure on **Legal Contracts** and **Business Agreement** with partners.
+For on-boarding of a partner with Ultra platform, Flipkart has to keep a checklist of below mentioned steps to ensure a smooth transition:
 
-* **Information security** review and privacy policy Agreement.
+* Put all legal contracts and business agreements with the partners to closure.
 
-* **API Integration** with
+* Review information security and privacy policy agreement.
 
-    * **Login** as a service which
+* Integrate API with both of the following services:
 
-        * Integrates partners user service with oAuth2.0 built by Flipkart Authn Service.
+    * **Login:**
 
-        * Creates and Provides IdentityToken so that merchants have accountId equivalent, but yet user’s flipkart flow is not compromised.
+        * This service will integrate partner’s user service with oAuth2.0 built by Flipkart Authn service.
 
-        * Prompts user for data sharing permissions when partner requests user’s data like email/phone number.
+        * It will create and provide an identity token so that merchants have an account id equivalent and are not compromising Flipkart’s flow.
 
-        * Solicits missing data when a new use case arises at partners and in return enriches Flipkart data.
+        * It will prompt a user for data sharing permissions when partner requests user’s data like email or phone number.
 
-        * Prompts email verification/phone verification flows within native app so that merchants don’t have to do verification on their end.
+        * It will solicit missing data when a new use case arises at partner’s side and in return enriches Flipkart data.
 
-    * **Payment** as a service which
+        * It will also prompt email verification or phone verification flows within native application so that merchants don’t have to perform any verification on their end.
 
-        * Lets partner configure their nodal account and MIDS to power payments completion via flipkart payment gateway.
+    * **Payment:**
 
-        * Lets partner decide the allowed payment options for a user.
+        * This service will allow partners to configure their nodal account and MIDS to power payments completion via Flipkart payment gateway.
 
-        * Lets partner Run payment bank offers.
+        * It will allow partners to decide the number and type of payment options for a user.
 
-        * Lets partner configure expiry timer, convenience/ other fees.
+        * It will also allow partners to run bank offers on payments.
 
-        * Lets partner take the benefits of Fintech constructs like EMI, BNPL etc in future.
+        * It will permit the partner to configure session or payment expiry timer, convenience or other fees.
 
-        * Lets partner share order and payment details like payment status.
+        * The partners will take benefits of Fintech constructs like EMI, BNPL etc in the future.
 
-        * Lets partner issue refunds and cancellations.
+        * It allows the partner to share the order and payment details like payment status to the user.
 
-* Process Agreement and Semi automated integration with
+        * It will also help partners to issue refund and/or cancellation amount to the user.
 
-    * **Customer experience**
+* Ensure that there is a process agreement and semi-automated integration with the partner on:
 
-        * which solves for Visibility of orders on My Orders
+    * **Customer experience:**
 
-        * which solves for Discovery of help in Help Centre
+        * This will allow the visibility of orders in "My Orders" section.
 
-        * which solves for Communication on inbound and outbound calls
+        * It will enable the user to discover help in "Help Centre".
 
-    * **Accounting**
+        * It will solve for communication on inbound and outbound calls.
 
-        * Which solves for reconciliation, Taxes, etc
+    * **Accounting:**
 
-    * **Reporting**
+        * It will handle reconciliation, Taxes, etc.
 
-        * Which solves for visibility of business metrics periodically at both ends.
+    * **Reporting:**
+
+        * This will allow visibility of business metrics at both ends.
+
