@@ -1,5 +1,5 @@
-site_name: Ultra documentation
-site_description: Documentation for building apps on Flipkart Ultra platform
+site_name: Ultra
+site_description: A technical guide for building applications with Flipkart using Ultra platform
 pages:
     - Home: index.md
     - Tutorial : tutorial.md
