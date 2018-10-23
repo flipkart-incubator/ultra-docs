@@ -1,20 +1,19 @@
 # Integration with Ultra
 
-This section will guide you while you are integrating your application with Ultra. If you want to have a visual walk-through before following the detailed instructions, please head over to our [Ultra Demo](https://docs.google.com/document/d/1o3j1QRr4PofuJvWaFhsAN18vnLURFMEMBKpqD09Dt2Y/edit#heading=h.x9yfo0xokx3e) segment. You can open the Ultra playground application on your browser there and learn about implementation of the APIs.
+This section will guide you while you are integrating your application with Ultra. If you want to have a visual walk-through before following the detailed instructions, please head over to our [Ultra Demo](demo.md) segment. You can open the Ultra playground application on your browser there and learn about implementation of the APIs.
 
 Before we move on to the steps of integration, we want you to understand the high-level picture of the data-flow between different systems. The user’s data will flow to the partner’s end through Ultra. At user’s side, the internal APIs will interact with the partner’s UI within Ultra container and the user’s information such as login details will pass through the Flipkart’s ecosystem to the partner’s side with the help of the Ultra APIs. At partner’s side, the application will interact with the internal APIs of Flipkart and Ultra to gain user data and open access to their application. Following is the diagrammatic representation of this high level scenario:
 
 ![Architecture](img/image1.png)
-
 **_High-level representation of user’s data flow between systems_**
 
-Now, we will show you the steps to follow on how to integrate your application with Ultra platform. If you face any issues or queries while performing integration, please reach out to [us](https://docs.google.com/document/d/1o3j1QRr4PofuJvWaFhsAN18vnLURFMEMBKpqD09Dt2Y/edit#heading=h.dakbw8bfy9na).
+Now, we will show you the steps to follow on how to integrate your application with Ultra platform. If you face any issues or queries while performing integration, please reach out to [us](contact.md).
 
 ## Step 1: Choose your UI platform
 
 You can build your application on Ultra using either [React Native](https://facebook.github.io/react-native/) platform or simple HTML /PWA. Ultra supports both containers and we can help you in making this choice by spotlighting a comparison between these two platforms as below:
 
-| React Native | HTML |
+| **React Native** | **HTML** |
 |--------------|------|
 | Supports JavaScript code | Supports JavaScript code |
 | Extraordinary performance | Satisfactory performance |
