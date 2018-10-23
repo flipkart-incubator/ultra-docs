@@ -28,12 +28,13 @@ If you choose React Native, Ultra will pull in your React Native bundle from you
 
 Once DUS fetches your bundle within the Flipkart application, it will load your React Native experience within a React Fragment from where you can navigate to the other pages.
 
-This approach helps you in composing mobile applications faster having a rich UI and by using only Java scripts. You need to pick your fundamental UI building blocks and merge them simultaneously using JavaScript and React to produce a real mobile application but, limit the usage of the native bridges within Flipkart area only. Since one cannot deliver the local assets such as images/videos over-the-air as JavaScript, upload these assets to your CDN and reference them within the JavaScript code.
+> This approach helps you in composing mobile applications faster having a rich UI and by using only Java scripts. You need to pick your fundamental UI building blocks and merge them simultaneously using JavaScript and React to produce a real mobile application but, limit the usage of the native bridges within Flipkart area only. Since one cannot deliver the local assets such as images/videos over-the-air as JavaScript, upload these assets to your CDN and reference them within the JavaScript code.
 
 #### Using HTML
 
 If you build your application via HTML/PWA, Ultra will launch the webpage inside android’s web-view. You can pick your existing mobile website and reuse it for Ultra after making minor changes. 
 
-This approach will help you in building a good mobile application but it will not appear as realistic and responsive as the one developed using React Native. This further does not allow you to navigate away from your main domain.
+> This approach will help you in building a good mobile application but it will not appear as realistic and responsive as the one developed using React Native.
 
+!!!note Both the approaches will not allow you to navigate away from your main domain.
 
