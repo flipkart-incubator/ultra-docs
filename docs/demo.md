@@ -1,8 +1,12 @@
-#Ultra playground
-To play around with the API's first install Flipkart Android app and then clicking on [this link](https://www.flipkart.com/ultra/?clientId=playground) on your android phone will open Ultra playground within flipkart app.
-This process will open [this page](https://ultra-playground.herokuapp.com/) within Ultra container where you can play around the javascript APIs exposed to Ultra. Note that the page won't function properly outside of Ultra container.
+## Ulta Demo
 
-To see the code running behind the hood, open the [playground app](https://ultra-playground.herokuapp.com/) on your browser and use Chrome inspect to see the code.
+We present to you a special feature known as the Ultra playground for experimenting with the APIs. To explore this, follow these steps:
 
-##Demo Video
+* Install the Flipkart application on your Android smartphone.
+* Click on [this link](https://www.flipkart.com/ultra/?clientId=playground) through your smartphone. It will open the Ultra playground within Flipkart.
+* Then, it will open [this page](https://ultra-playground.herokuapp.com/) within the Ultra container where you can check out different JavaScript APIs exposed to Ultra. Please note that this page will not work outside the container.
+
+If you want a glimpse of the code running behind the scenes, open this [playground application](https://ultra-playground.herokuapp.com/) within the browser and you can use "Inspect" of Chrome browser to view the code.
+
+Also, check out this demo video for opening Ultra within Flipkart application
 <iframe width="560" height="315" src="https://www.youtube.com/embed/h85e9EhrZfM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
