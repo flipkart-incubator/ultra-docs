@@ -6,9 +6,9 @@ Ultra involves on-boarding of the companies or organizations who specialise in t
 
 Using Ultra as a development platform will allow Flipkart partners to open their doors to over 100 million handhelds in the country. Ultra supports a wide variety of technologies from the most basic web applications to very advanced technologies powered by React Native, thus, provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming.
 
-# About Ultra version 1.0
+# About Ultra
 
-In this version, we have set up a minimal viable process required to onboard a partner keeping below ethos in check:
+In Ultra, we have set up a minimal viable process required to onboard a partner keeping below ethos in check:
 
 * Swift onboarding
 * Data security
