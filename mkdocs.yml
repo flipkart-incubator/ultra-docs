@@ -1,19 +1,21 @@
 site_name: Ultra
 site_description: A technical guide for building applications with Flipkart using Ultra platform
 pages:
-    - Home: index.md
-    - Tutorial : tutorial.md
-    - Onboarding: onboarding.md
-    - Flow diagrams : flows.md
-    - Client Side API: clients.md
-    - Server Side API:
-        - Basic APIs: backend.md
-        - OMS: oms.md
-    - Demo: demo.md
-    - Contact Us : contact.md
-    - Announcements :
-        - All Announcements : announcement.md
-        - Migrating ClientId : migrating-clientid.md
+    - Welcome to Ultra: index.md
+    - Why Ultra: whyultra.md
+    - Getting Started : 
+        - Learn the basics: terms.md
+    - Integration with Ultra : 
+        - Tutorial: integrate.md
+        - API Details : 
+            - Client APIs: clients.md
+            - Server APIs: backend.md
+        - Ultra Demo: demo.md
+    - Basic Guidelines and Checklist: checklist.md
+    - Troubleshooting: troubleshoot.md
+    - FAQs: faq.md
+    - Contact Us: contact.md
+    - News and Announcements: announcement.md
 theme:
   name: 'material'
 markdown_extensions:
