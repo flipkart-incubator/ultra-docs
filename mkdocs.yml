@@ -2,7 +2,6 @@ site_name: Ultra
 site_description: A technical guide for building applications with Flipkart using Ultra platform
 pages:
     - Welcome to Ultra: index.md
-    - Why Ultra: whyultra.md
     - Getting Started : 
         - Learn the basics: terms.md
     - Integration with Ultra : 
