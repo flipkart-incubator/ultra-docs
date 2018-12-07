@@ -20,7 +20,7 @@ In Ultra, we have set up a minimal viable process required to onboard a partner 
 * Application performance
 * Affordability
 
-We have also taken strategic product decisions which has shaped Ultra offering following services to partners:
+We have also taken strategic product decisions which has shaped Ultra in offering following services to partners:
 
 * The partner will build and own user experience over the purchase funnel.
 * Flipkart will control discovery of applications.
