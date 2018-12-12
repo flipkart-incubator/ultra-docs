@@ -1,4 +1,4 @@
-# Ultra Client Side SDK documentation
+# Ultra Client Side SDK documentation 2
 
 > Latest JS SDK version : [1.0.0-beta](https://www.npmjs.com/package/fk-platform-sdk)
 
