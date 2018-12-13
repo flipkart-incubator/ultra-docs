@@ -1,0 +1,34 @@
+# Ultra Client Side Analytics SDK Documentation
+
+## Overview
+
+This part of SDK helps developers send user generated events to Ultra Platform.
+
+### Category - Travel
+
+#### Search Event
+
+To send user generated search events, first import Travel module from fk-platform-sdk/analytics
+```js
+import {Travel} from "fk-platform-sdk/analytics";
+```
+
+Create a search object by passing following arguments
+a.	Source location: String
+	This will be starting location for flight/bus and the location of hotel in case of hotel booking.
+b.	Destination location: String[]
+	This array should contain destination location for flights/bus. Incase there are intermediate locations they should came in same array in order.
+	This field can be empty for hotel booking.
+c.	Date: Date[]
+	This will contain array of dates for multi city travel. For hotel booking this will be start and end date of hotel reservation.
+d.	(Optional) RoundTrip: boolean
+	True if it is a round trip
+e. (Optional) Traveller Count: Number
+```js
+const search = new Travel.Search("bangalore", ["delhi"], [new Date()], false, 1);
+```
+Finally, get analytics module from fkPlatform and push the event. If the event is invalid then an error level log will be printed on console.
+```js
+fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
+```
+
