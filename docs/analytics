@@ -39,7 +39,7 @@ fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 Select event should be sent when user clicks and selects any flight/bus/hotel from the list.
 **Sample**
 ```js
-const select = new Travel.Select(Travel.Select("6E135","flight",3500);
+const select = new Travel.Select(Travel.Select("6E135","FLIGHT_DOMESTIC",3500);
 ```
 Following are the arguments for Select
 1.	Name: string
