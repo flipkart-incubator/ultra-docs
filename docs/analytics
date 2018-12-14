@@ -32,3 +32,25 @@ Finally, get analytics module from fkPlatform and push the event. If the event i
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
 
+#### Select Event
+```js
+const select = new Travel.Select(Travel.Select("6E135","flight",3500);
+```
+Following are the arguments for Select
+a.	Name: String
+	This will be flight name/hotel name and Bus operator name in case of Bus
+b.	Category: String
+	It should have one of the following values,
+	FLIGHT_INTERNATIONAL, FLIGHT_DOMESTIC, HOTEL_INTERNATIONAL, 	HOTEL_DOMESTIC, BUS
+c.	Price: Number
+	Price of the product selected
+
+#### Proceed To Pay Event
+```js
+const pay = new Travel.ProceedToPay(3760, 0, 0, 0);
+```
+Following are the arguments for Proceed to pay event
+a.	Cost of Product: Number
+b.	(Optional)Offer Amount: Number
+c.	(Optional)Booking Charge: Number
+d. (Optional)Value added service charge: Number
