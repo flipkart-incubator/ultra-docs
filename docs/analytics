@@ -15,7 +15,7 @@ import {Travel} from "fk-platform-sdk/analytics";
 
 Create a search object by passing following arguments
 1.	Source location: String
-	This will be starting location for flight/bus and the location of hotel in case of hotel booking.
+	Source location will be city name for Bus, location of hotel in case of hotels and should be International airport code for flight category.
 2.	Destination location: String[]
 	This array should contain destination location for flights/bus. Incase there are intermediate locations they should came in same array in order.
 	This field can be empty for hotel booking.
@@ -29,7 +29,7 @@ Create a search object by passing following arguments
 ```js
 const search = new Travel.Search("BLR", ["DEL"], [new Date()], false, 1);
 ```
-Finally, using analytics module from FKPlatform, push the event. If the event is invalid then an error level log will be printed on console.
+Finally push the event using analytics module from FKPlatform. If the event is invalid then an error level log will be printed on console.
 ```js
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
@@ -43,7 +43,7 @@ const select = new Travel.Select(Travel.Select("6E135","flight",3500);
 ```
 Following are the arguments for Select
 1.	Name: String
-	This will be flight name/hotel name and Bus operator name in case of Bus
+	This will be flight name/hotel name or name of Bus operator
 2.	Category: String
 	It should have one of the following values,
 	FLIGHT_INTERNATIONAL, FLIGHT_DOMESTIC, HOTEL_INTERNATIONAL, 	HOTEL_DOMESTIC, BUS
