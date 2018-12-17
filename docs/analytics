@@ -4,15 +4,30 @@
 
 This part of SDK helps developers send user generated events to Ultra Platform.
 
-### Category - Travel
+## Category - Travel
 
-#### Search Event
-
-Search event should be sent from the screen where user searches for flight/bus/hotel. To send events, first import Travel module from fk-platform-sdk/analytics
+### Add the dependency
+For adding dependency in node environment, import the SDK from fk-platform-sdk/analytics
 ```js
 import {Travel} from "fk-platform-sdk/analytics";
 ```
+Alternatively, if you are using webview only you can also include the following script directly inside a `<script>` tag:
+```js
+https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/analytics-min@1.0.3-analytics-sdk.js
+```
 
+### Create Event
+
+#### Search
+First step is to create an event object. Search event should be sent from the screen where user searches for flight/bus/hotel. 
+##### For react native
+```js
+const search = new Travel.Search("BLR", ["DEL"], [new Date()], false, 1);
+```
+##### For webview
+```js
+const search = FKEvents.Travel.Search("BLR", ["DEL"], [new  Date()], false, 1);
+```
 Create a search object by passing following arguments
 1.	Source location: string
 	Source location will be city name for Bus, location of hotel in case of hotels and should be International airport code for flight category.
@@ -25,18 +40,15 @@ Create a search object by passing following arguments
 	True if it is a round trip
 5. Traveller Count: number
 
-**Sample**
-```js
-const search = new Travel.Search("BLR", ["DEL"], [new Date()], false, 1);
-```
+### Sending the event
 Finally push the event using analytics module from FKPlatform. If the event is invalid then an error level log will be printed on console describing the issue with the event.
 ```js
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
 
-
 #### Select Event
 Select event should be sent when user clicks and selects any flight/bus/hotel from the list.
+
 **Sample**
 ```js
 const select = new Travel.Select(Travel.Select("6E135","FLIGHT_DOMESTIC",3500);
