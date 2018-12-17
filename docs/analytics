@@ -17,9 +17,10 @@ https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/analytics-min@1.0.3-anal
 ```
 
 ### Create Event
+After importing SDK, we can create event object of type, Search/Select/Proceed to Pay.
 
-#### Search
-First step is to create an event object. Search event should be sent from the screen where user searches for flight/bus/hotel. 
+#### Search Event
+Search event should be sent from the screen where user searches for flight/bus/hotel. 
 ##### For react native
 ```js
 const search = new Travel.Search("BLR", ["DEL"], [new Date()], false, 1);
