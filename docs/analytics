@@ -16,7 +16,7 @@ Alternatively, if you are using webview only you can also include the following 
 https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/analytics-min@1.0.3-analytics-sdk.js
 ```
 
-### Create Event
+### Create Event Object
 After importing SDK, we can create event object of type, Search/Select/Proceed to Pay.
 
 #### Search Event
