@@ -241,7 +241,7 @@ getContactInfo(phoneNumbers: string[]): Promise<NativeModuleResponse<{[key: stri
 Fetches names and other info against given list of phone numbers. Keys of the returned map will be given phone numbers. 
 
 ### Analytics Module
-Use this module if you wish to send user generated actions to ultra analytics library. For detailed description of this SDK refer [this page](analytics).
+Use this module if you wish to send user generated actions to ultra analytics library. For detailed description of this SDK refer [this page](analytics-overview.md).
 
 ### Relevant types
 
