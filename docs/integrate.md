@@ -1,49 +1,70 @@
 # Integration with Ultra
+---
+# Steps
 
-This section will guide you while you are integrating your application with Ultra. If you want to have a visual walk-through before following the detailed instructions, please head over to our [Ultra Demo](demo.md) segment. You can open the Ultra playground application on your browser there and learn about implementation of the APIs.
+These steps act as a comprehensive guide for integrating your service using Ultra platform. If you wish to have a visual walk-through before following the detailed instructions, check [here](demo.md). For any issues or queries encountered anytime during this process, please reach out to [us](contact.md).
 
-Before we move on to the steps of integration, we want you to understand the high-level picture of the data-flow between different systems. The user’s data will flow to the partner’s end through Ultra. At user’s side, the internal APIs will interact with the partner’s UI within Ultra container and the user’s information such as login details will pass through the Flipkart’s ecosystem to the partner’s side with the help of the Ultra APIs. At partner’s side, the application will interact with the internal APIs of Flipkart and Ultra to gain user data and open access to their application. Following is the diagrammatic representation of this high level scenario:
+## 1: Choose your UI platform
 
-![Architecture](img/image1.png)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-**_High-level representation of user’s data flow between systems_**
-
-Now, we will show you the steps to follow on how to integrate your application with Ultra platform. If you face any issues or queries while performing integration, please reach out to [us](contact.md).
-
-## Step 1: Choose your UI platform
-
-You can build your application on Ultra using either [React Native](https://facebook.github.io/react-native/) platform or simple HTML /PWA. Ultra supports both containers and we can help you in making this choice by spotlighting a comparison between these two platforms as below:
+Ultra supports [React Native](https://facebook.github.io/react-native/) as well as a simple HTML /PWA. You can build your application using either of these and we can help you in making the best choice by spotlighting a comparison between the two as follows:
 
 | **React Native** | **HTML** |
 |--------------|------|
 | Supports JavaScript code | Supports JavaScript code |
 | Extraordinary performance | Satisfactory performance |
 | Highly optimised for mobile applications | Average optimisation |
-| Bundle is delivered from Flipkart CDN, only differential components are downloaded and is cached within the Flipkart application | Bundle and assets follow cache-control headers and might be slower to render even from cache |
+| Bundle is delivered from Flipkart CDN, only differential components are downloaded and is cached within the Flipkart | Bundle and assets follow cache-control headers and might be slower to render even from cache |
 
 ### Ultra’s interaction with UI platform
 
 #### Using React Native
 
-If you choose React Native, Ultra will pull in your React Native bundle from your GitHub repository and then deliver to Flipkart application over-the-air. Flipkart receives these React Native JavaScript bundles via Dynamic Update Service ([DUS](https://github.com/Flipkart/DUS)). We recommend you to visit [this link](https://github.com/Flipkart/DUS) to understand how this works.
+Ultra pulls in the React Native bundles from your GitHub repository and then delivers it to Flipkart dynamically which we prefer to call as “Over-The-Air”. Flipkart receives these React Native JavaScript bundles via Dynamic Update Service (DUS). We recommend you to visit [this link](https://github.com/Flipkart/DUS) to understand how DUS works.
 
-Once DUS fetches your bundle within the Flipkart application, it will load your React Native experience within a React Fragment from where you can navigate to the other pages.
+Once DUS fetches your bundle within the Flipkart, it loads the React Native within a React Fragment from where you can navigate to the other pages.
 
-> This approach helps you in composing mobile applications faster having a rich UI and by using only Java scripts. You need to pick your fundamental UI building blocks and merge them simultaneously using JavaScript and React to produce a real mobile application but, limit the usage of the native bridges within Flipkart area only. Since one cannot deliver the local assets such as images/videos over-the-air as JavaScript, upload these assets to your CDN and reference them within the JavaScript code.
+> This approach helps you in composing mobile applications quick, having a rich UI and by using only JavaScripts. You are free to pick your fundamental UI building blocks and merge them simultaneously using JavaScript and React to produce a real mobile application. But, limit the usage of the native bridges within Flipkart area only. Since one cannot deliver the local assets such as images/videos dynamically like JavaScript, you have to upload these assets to your CDN separately and reference them within the JavaScript code.
 
 #### Using HTML
 
-If you build your application via HTML/PWA, Ultra will launch the webpage inside android’s web-view. You can pick your existing mobile website and reuse it for Ultra after making minor changes. 
+Ultra launches the webpage inside a mobile’s web-view. Here, you may pick your existing mobile website and mould it for Ultra after few tweaks. 
 
-> This approach will help you in building a good mobile application but it will not appear as realistic and responsive as the one developed using React Native.
+> This approach helps you in building a decent mobile application but it does not appear as realistic and responsive as the one developed using React Native.
 
-!!!note Both the approaches will not allow you to navigate away from your main domain. Suppose your application is hosted on some domain for e.g. “ABC.com” and it has hyperlink somewhere that navigates user to “ABC.org”. In such case, the site will not work and throw a “Security Error” message. Please contact us if you face any such issue in your application as we have got a way for bypassing this limitation by whitelisting the domains you own.
+!!!note One important point to keep in mind is that both the approaches do not allow you to navigate away from your main domain. Let us suppose your application is hosted on some domain for example, `ABC.com` and the site contains a hyperlink that navigates control to some other domain say, `ABC.org`. In such case, the site does not work and throws a `Security Error` message. If you have a similar situation in your application, please contact [us](contact.md) as we have got a way for bypassing this limitation by whitelisting the domains you own.
 
-## Step 2: Integrate Ultra JavaScript SDK
-After you have decided on which UI platform to opt, include Ultra’s JavaScript SDK into your application (either React Native or HTML/PWA). This SDK will help you build applications that run within the Flipkart application and give access to the Ultra specific bridge methods required for authorizations (Oauth), logins and payments.
+## 2: Integrate Ultra JavaScript SDK
+After you have made up your mind on which UI platform to work with (either React Native or HTML/PWA), include Ultra’s JavaScript SDK into your application. This SDK helps you build applications that run within Flipkart app and give access to the Ultra’s JavaScript methods required for logins, authorizations (OAuth) and payments.
 
-!!!note The logic presented here works in both React Native and HTML/PWA. These methods are asynchronous and always return a promise that gets resolved with some values. An exception to these methods are fire and forget calls where you may not care about the response.
+!!!note The logic presented here works in both React Native and HTML/PWA. These methods are asynchronous and always return a [promise](https://javascript.info/promise-basics) that gets resolved with some values except few other JavaScript methods that have no return value.
 
-Next, [add the dependency](clients.md#step-1) for the SDK. Please [contact us](contact.md) for generating your client parameters i.e. clientID and secret so you can access the Ultra APIs.
+Next, [add the dependency](clients.md#step-1) for the SDK. [Contact us](contact.md) for generating the parameters specific to your application i.e. clientID and secret to access the Ultra APIs.
 
-After adding the dependency, you need to [initialize the SDK](clients.md#step-2) with your clientID parameter (shared by [us](contact.md)).
+After adding the dependency, [initialize the SDK](clients.md#step-2) using the above parameters.
 
+## 3: Ultra User Login Process
+In this section, you learn how to fetch user details securely from Flipkart’s domain. A user can gain entry into your application only after allowing permissions to share their information (such as name, email, phone number etc.). This step guides you about the generation of grant token, fetching user’s information and login the user into your application.
+
+### Generate grant token
+You might have come across the terms which are very common in the technical world of authorization (OAuth) world such as “Granted Scopes” and “Grant tokens”. To know more, read [this](https://alexbilbie.com/guide-to-oauth-2-grants/).
+
+Before fetching any data of the user, call the `getToken()` method and supply the list of parameters that includes the list of user resources you want to gather i.e. user’s name, email, phone number etc. After you call this method, it renders an `Allow/Deny permissions` prompt to the user as shown below:
+
+
+!!!note This permission popup has a special behavior when a single scope is requested and user has some unverified pre-filled value. For example, if you have asked permission for a user.email scope and the user has a unverified email address in Flipkart, it automatically initiates the email verification for the user. This helps user in avoiding any extra clicks.
+
+Following use case diagram illustrates the entire scope selection process:
+
+
+Legend:
+
+
+We suggest to use flags like `isMandatory` and `shouldVerify` to control whether you want these permissions to be mandatory. Like here, `isMandatory` is a boolean type variable that you enable if you want the scope to be mandatory and must be filled by the user. `shouldVerify` is also a boolean type variable that you enable if you want that the same scope to be verified as well. To cite an example, if your `getToken()` call is `getToken(['scope':'user.email', 'isMandatory':true, 'shouldVerify':true])`, then it means that user is not allowed to grant permissions without entering the email address as well as verifying it.
+
+!!!note You should set both `isMandatory` and `shouldVerify` to true only when you absolutely require the user’s verified email address because you may observe that if such constraints are imposed on users, there occurs a significant drop in the number of users who grant permissions.
+
+!!!note Since most of the phone numbers of Flipkart users are OTP verified, there would be no requirement of such verification within this flow. But if there are any users who are not already OTP verified, a prompt for the OTP verification process appears to them before the control comes back to you.
+
+!!!note Once the user has allowed the permissions, a [promise](https://javascript.info/promise-basics) is returned which contains the information about the token that is resolved.
+
+The `getToken()` method returns a list of both allowed as well as rejected permissions that depend upon the user’s response to the `Allow/Deny permissions` prompt. It also returns an access token that has to be passed to your server so that it can hit the Flipkart’s API to read the user’s actual information. This information has to be read from one server by another server only using the provided `grantToken` so that it remains protected and secured.
