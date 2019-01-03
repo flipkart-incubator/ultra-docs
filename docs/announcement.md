@@ -1,3 +1,12 @@
+## New v3 server side Refund APIs
+_03/01/19_
+
+We have introduced new [Refund](backend.md#refund) APIs for the following
+
+* Creation of Refund Request
+* Query to fetch refund on the basis of Parent Refund Id
+* Query to fetch refund on the basis of Order Id
+
 ## Modification in OMS contract.
 _19/Sep/2018_
 
