@@ -478,6 +478,47 @@ Sample Request
   "identityToken": "Actual ID Token here"
 }
 ```
+```
+Sample Response
+{
+  "success": true,
+  "code": "SUCCESS",
+  "message": null,
+  "data": {
+    "parentRefund": {
+          "id": "PR19010313341416072947206",
+          "status": "init",
+          "requestedAmountInPaise": 500,
+          "orderId": "1527666755_68",
+          "refundType": "REFUND",
+          "clientRefId": "1527666755_67_refund_07",
+          "refundReason": "CentaurAPITesting",
+          "destinationId": null,
+          "createdAt": 1546502654079,
+          "updatedAt": 1546502654176
+    },
+    "childRefundsDataList": [
+          {
+            "childRefund": {
+              "id": "CR1901031334148265203106",
+              "status": "init",
+              "refundMode": "NETBANKING",
+              "paymentGateway": "FLIPKART",
+              "refundAmountInPaise": 500,
+              "forwardTransactionId": "PZT1901031332IJEMH01",
+              "parentRefundId": "PR19010313341416072947206",
+              "promiseDate": 1547193854000,
+              "bankReferenceNumber": null,
+              "createdAt": 1546502654179,
+              "updatedAt": 1546502654182
+            },
+            "fundTransactions": []
+          }
+        ]
+      }
+    }
+```
+
 
 ### Refund Query By Parent Refund Id
 ```
@@ -485,7 +526,64 @@ Path: /3/payment/refund/query/parentRefundId/{parentRefundId}
 
 Method: GET
 
-Response : RefundQueryResponse (This has already been described above)
+Response : RefundQueryResponse (As described above in CreateRefundResponse)
+```
+```
+Sample Response
+{
+    "parentRefund": {
+      "id": "PR19010313341416072947206",
+      "status": "init",
+      "requestedAmountInPaise": 500,
+      "orderId": "1527666755_68",
+      "refundType": "REFUND",
+      "clientRefId": "1527666755_67_refund_07",
+      "refundReason": "CentaurAPITesting",
+      "destinationId": null,
+      "createdAt": 1546502654079,
+      "updatedAt": 1546502654176
+    },
+    "childRefundsDataList": [
+      {
+        "childRefund": {
+          "id": "CR1901031334148265203106",
+          "status": "processing",
+          "refundMode": "NETBANKING",
+          "paymentGateway": "FLIPKART",
+          "refundAmountInPaise": 500,
+          "forwardTransactionId": "PZT1901031332IJEMH01",
+          "parentRefundId": "PR19010313341416072947206",
+          "promiseDate": 1547193854000,
+          "bankReferenceNumber": null,
+          "createdAt": 1546502654179,
+          "updatedAt": 1546502654359
+        },
+        "fundTransactions": [
+          {
+            "id": "RT19010313341426309566006",
+            "entity": "child_refund",
+            "entityId": "CR1901031334148265203106",
+            "status": "processing",
+            "transferStatus": "DEPENDENCY_SERVICE_FAILURE",
+            "transferResponseCode": "FKPG_EXCEPTION",
+            "externalRefId": null,
+            "pgMid": null,
+            "transactionAmountInPaise": 500,
+            "parentRefundId": "PR19010313341416072947206",
+            "createdAt": 1546502654360,
+            "updatedAt": 1546502654376,
+            "dataBag": {
+              "key": "FKPG",
+              "bank_reference_number": null,
+              "reference_id": null,
+              "pg_track_id": null
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 ### Refund Query By Order Id
@@ -494,7 +592,65 @@ Path: /3/payment/refund/query/orderId/{orderId}
 
 Method: GET
 
-Response : Array[RefundQueryResponse] (This has already been described above)
+Response : Array[RefundQueryResponse] (As described above in CreateRefundResponse)
+```
+```
+Sample Response
+[
+    {
+      "parentRefund": {
+        "id": "PR19010313341416072947206",
+        "status": "init",
+        "requestedAmountInPaise": 500,
+        "orderId": "1527666755_68",
+        "refundType": "REFUND",
+        "clientRefId": "1527666755_67_refund_07",
+        "refundReason": "CentaurAPITesting",
+        "destinationId": null,
+        "createdAt": 1546502654079,
+        "updatedAt": 1546502654176
+      },
+      "childRefundsDataList": [
+        {
+          "childRefund": {
+            "id": "CR1901031334148265203106",
+            "status": "processing",
+            "refundMode": "NETBANKING",
+            "paymentGateway": "FLIPKART",
+            "refundAmountInPaise": 500,
+            "forwardTransactionId": "PZT1901031332IJEMH01",
+            "parentRefundId": "PR19010313341416072947206",
+            "promiseDate": 1547193854000,
+            "bankReferenceNumber": null,
+            "createdAt": 1546502654179,
+            "updatedAt": 1546502654359
+          },
+          "fundTransactions": [
+            {
+              "id": "RT19010313341426309566006",
+              "entity": "child_refund",
+              "entityId": "CR1901031334148265203106",
+              "status": "processing",
+              "transferStatus": "DEPENDENCY_SERVICE_FAILURE",
+              "transferResponseCode": "FKPG_EXCEPTION",
+              "externalRefId": null,
+              "pgMid": null,
+              "transactionAmountInPaise": 500,
+              "parentRefundId": "PR19010313341416072947206",
+              "createdAt": 1546502654360,
+              "updatedAt": 1546502654376,
+              "dataBag": {
+                "key": "FKPG",
+                "bank_reference_number": null,
+                "reference_id": null,
+                "pg_track_id": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 ```
 
 

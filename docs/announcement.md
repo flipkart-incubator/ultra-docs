@@ -4,8 +4,8 @@ _03/01/19_
 We have introduced new [Refund](backend.md#refund) APIs for the following
 
 * Creation of Refund Request
-* Query to fetch refund on the basis of Parent Refund Id
-* Query to fetch refund on the basis of Order Id
+* Query to fetch refund details and status on the basis of Parent Refund Id
+* Query to fetch refund details and status on the basis of Order Id
 
 ## Modification in OMS contract.
 _19/Sep/2018_
