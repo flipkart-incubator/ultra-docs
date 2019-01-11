@@ -24,6 +24,7 @@ This further impacts the navigation stack which will appear from `Flipkart Homep
 Thus, you need to change the `clientId` value from old to new one simultaneously across all the systems that depend on it. Some of the examples where this inconsistency may arise are SMS or WhatsApp, payment redirections or Ultra landing page. Everything should be in synchronization with respect to the `clientId` value in the application.
 
 !!!note
-* This change does not impact the behavior of the old application because you can either pass the old or the new value of the identifier and it can understand both to make sure backward compatibility.
-* Applications that went live post this change will stay unaffected as they are using the new `clientId` format.
-* While migrating to the new clientId format, you need to make sure you do not migrate the Deeplink and the redirect URL unless rest of the systems are ready to migrate as this will avoid any UI inconsistency.
+    * This change does not impact the behavior of the old application because you can either pass the old or the new value of the identifier and it can understand both to make sure backward compatibility.
+    * Applications that went live post this change will stay unaffected as they are using the new `clientId` format.
+    * While migrating to the new clientId format, you need to make sure you do not migrate the Deeplink and the redirect URL unless rest of the systems are ready to migrate as this will avoid any UI inconsistency.
+
