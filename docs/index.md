@@ -4,7 +4,7 @@ Ultra is an application development platform that enables external service provi
 
 It involves on-boarding of partners’ application who specialise in the categories like travel ticket reservations, booking online movie tickets, paying online bills, etc. to improve their customer base through Flipkart. Ultra redirects a user to a partner’s application within Flipkart app window. The entry in the partner’s app is allowed based upon the user’s login credentials and permissions for sharing their data further. The users and the partner carry out all transactions through the Flipkart payment gateway (FKPG). After successful transactions, the user is able to check the status of the placed orders in Flipkart.
 
-Using Ultra as a development platform helps our partners to open their doors to over 100 million handhelds in the country. Ultra supports a wide variety of technologies from the most basic web applications to very advanced techniques powered by React Native, thus, provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming.
+Using Ultra as a development platform helps our partners to open their doors to over 100 million handhelds in the country. Ultra supports a wide variety of technologies from the most basic web applications to very advanced technologies powered by React Native, thus, provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming.
 
 # Why Ultra
 - - -
