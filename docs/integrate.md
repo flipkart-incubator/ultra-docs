@@ -21,7 +21,7 @@ Ultra supports [React Native](https://facebook.github.io/react-native/) as well 
 
 Ultra pulls in the React Native bundles from your GitHub repository and then delivers it to Flipkart dynamically which we prefer to call as “Over-The-Air”. Flipkart receives these React Native JavaScript bundles via Dynamic Update Service (DUS). We recommend you to visit [this link](https://github.com/Flipkart/DUS) to understand how DUS works.
 
-Once DUS fetches your bundle within the Flipkart, it loads the React Native within a React Fragment from where you can navigate to the other pages.
+Once DUS fetches your bundle within the Flipkart, it loads the React Native application within a React Fragment from where you can navigate to the other pages.
 
 > This approach helps you in composing mobile applications quick, having a rich UI and by using only JavaScripts. You are free to pick your fundamental UI building blocks and merge them simultaneously using JavaScript and React to produce a real mobile application. But, limit the usage of the native bridges within Flipkart area only. Since one cannot deliver the local assets such as images/videos dynamically like JavaScript, you have to upload these assets to your CDN separately and reference them within the JavaScript code.
 
