@@ -13,7 +13,7 @@ Ultra supports [React Native](https://facebook.github.io/react-native/) as well 
 | Supports JavaScript code | Supports JavaScript code |
 | Extraordinary performance | Satisfactory performance |
 | Highly optimised for mobile applications | Average optimisation |
-| Bundle is delivered from Flipkart CDN, only differential components are downloaded and is cached within the Flipkart | Bundle and assets follow cache-control headers and might be slower to render even from cache |
+| Bundle is delivered from Flipkart CDN, only differential components are downloaded and is cached | Bundle and assets follow cache-control headers and might be slower to render even from cache |
 
 ### Ultra’s interaction with UI platform
 
