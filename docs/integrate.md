@@ -49,7 +49,7 @@ In this section, you learn how to fetch user details securely from Flipkart’s 
 You might have come across the terms which are very common in the technical world of authorization (OAuth) world such as “Granted Scopes” and “Grant tokens”. To know more, read [this](https://alexbilbie.com/guide-to-oauth-2-grants/).
 
 Before fetching any data of the user, call the `getToken()` method and supply the list of parameters that includes the list of user resources you want to gather i.e. user’s name, email, phone number etc. After you call this method, it renders an `Allow/Deny permissions` prompt to the user as shown below:
-
+![Permission prompt](img/permissions.png)
 
 !!!note This permission popup has a special behavior when a single scope is requested and user has some unverified pre-filled value. For example, if you have asked permission for a user.email scope and the user has a unverified email address in Flipkart, it automatically initiates the email verification for the user. This helps user in avoiding any extra clicks.
 
