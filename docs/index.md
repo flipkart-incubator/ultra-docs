@@ -1,13 +1,12 @@
 # Welcome to Ultra
-- - -
 Ultra is an application development platform that enables external service providers such as MakeMyTrip and Phone Pe to host their application services on Flipkart. It helps Flipkart customers to securely access a variety of online convenience services such as online ticketing and payment of bills. The platform is scalable to include other business categories into Flipkart domain.
 
 It involves on-boarding of the external companies or organizations (also called as Ultra partners or simply partners) who specialise in the categories like travel ticket reservations, booking online movie tickets, paying online bills and more to improve their customer base through Flipkart. Ultra redirects a user to their application within Flipkart and grants the entry based on the user’s login credentials after seeking permissions from the user to share the data further. The users and the partners carry out the transactions through Flipkart payment gateway (FKPG). Post the successful transactions between them, users can check the status of these activities in Flipkart app.
 
 Using Ultra as a development platform allows such external companies to open their doors to over 100 million handhelds in the country. Ultra supports a wide variety of technologies from the most basic web applications to very advanced technologies powered by React Native, thus, provides ample room to grow and develop unique skills while keeping entry barrier low such that it’s not overwhelming.
 
+
 # Why Ultra
-- - -
 In an ever increasing mobile internet economy and with limited storage space on devices, users find it hard to get continued and seamless access to different services. With Flipkart having one of the largest user base in the country, building a distribution platform to host services offered by other non-competing players can help users get access to a one-stop destination.
 
 Users transact on multiple platforms today e.g. travel booking, movie ticket booking, etc. Thus, Ultra leverages Flipkart’s developer platform to offer turnkey integrations for identity, payments, communication channels and others to make users’ experience with external applications more seamless and engaging.
