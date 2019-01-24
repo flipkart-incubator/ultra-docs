@@ -1,83 +1,70 @@
-# Ultra Client Side SDK
+# Ultra Client Side SDK documentation
+Here are the details of the Client side APIs you need to incorporate while integration of your app with Ultra.
 
-> Latest JS SDK version : [1.0.0-beta](https://www.npmjs.com/package/fk-platform-sdk)
+> Use this latest version of JS SDK: [1.0.0-beta](https://www.npmjs.com/package/fk-platform-sdk)
 
-## Overview
-
-
-This SDK enables developers to build applications that run inside Flipkart app.
-
-All the methods mentioned here will work with both React Native and Webview. 
-All the methods are asynchronous in nature and will always return a promise that gets resolved with the values. Fire and forget calls are an exception where you may not care about the response.
-
-## Getting Started
+## Integrate JS SDK
 #### Add the dependency
-If using node, add this repository as an npm package (Both webview and react-native)
+If you are using a node, add the following repository as an NPM package for both WebView and React Native platforms. Visit [here](https://www.npmjs.com/package/fk-platform-sdk) to get the latest SDK for this repository.
 
 ```
 npm install --save fk-platform-sdk
 ```
 
-You can also visit [the NPM](https://www.npmjs.com/package/fk-platform-sdk) page for the SDK 
-
-Alternatively, if you are using webview only you can also include the following script directly inside a `<script>` tag:
+Or if you are using only a web browser without node, include the following script directly inside the `<script>` tag:
 
 ```
 https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@1.0.0-beta.1.js
 ```
 
 #### Initialize the SDK
-Import SDK and create a new platform instance. You will need to provide clientId given to you by Flipkart.
+Import the SDK as shown below. After importing, create a new platform instance using the `clientId` already shared with you by Flipkart. If you are not aware of the `clientId`, [check here]() for details.
 
-In Node Environment:
+##### WebView (with Node):
 
-
-##### For WEBVIEW
+***WebView:***
 ``` js
 import FKPlatform from "fk-platform-sdk/web"
 let fkPlatform = new FKPlatform(clientId);
 ```
-
-##### For REACT NATIVE
+***React Native:***
 ``` js
 import FKPlatform from "fk-platform-sdk"
 let fkPlatform = new FKPlatform(clientId);
-
 ```
 
-In Browser (Without using Node):
+##### Browser (without Node):
 
 ```js
 var fkPlatform = FKExtension.newPlatformInstance(clientID);
 ```
 
-Once this is done you can start using modules.
-
 !!!note
-    You should call `FKPlatform.isPlatformAvailable()` or, `window.FKExtension && FKExtension.isPlatformAvailable()` to check if you're inside Flipkart platform. It is recommended not to do any checks in partner code. More details [here](#detecting-flipkart-environment)
+    Call `FKPlatform.isPlatformAvailable()` or `window.FKExtension && FKExtension.isPlatformAvailable()` to check if you are inside Flipkart platform. We recommend you not to include any checks in your own (partner’s) code. To know more, [check this](#detecting-flipkart-environment).
 
 ## Modules
-### Permissions Module
+### Permissions
+In this module, we have listed the functions you use for generating `grantToken`, getting the permission scopes, making a call to `getToken()`, resolving promise and handling denials from users.
+
+**Get the list of permissions and permission scopes:**
 ```js
 let permissionsModule = fkPlatform.getModuleHelper().getPermissionsModule()
-
-//To get scopes:
-const SCOPES = permissionsModule.getScopes();
+const SCOPES = permissionsModule.getScopes();  //Get scopes
 ```
-**Available Scopes:**
+
+**List of Scopes:**
 ```
 SCOPES.USER_EMAIL,
 SCOPES.USER_MOBILE,
 SCOPES.USER_NAME
 ```
-**Methods:**
 
+**getToken Method Call:**
 ```
 getToken: (permissions: ScopeAccessRequest[]) => Promise<NativeModuleResponse<PermissionsManagerResponse>>
 ```
 
-Relevant interfaces:
-
+**Relevant Interfaces:**
 ```js
 interface ScopeAccessRequest {
     scope: Scopes;
@@ -93,8 +80,7 @@ interface NativeModuleResponse<T> {
 interface PermissionsManagerResponse { [key: Scopes]: boolean; }
 ```
 
-**Sample**
-
+**Sample request for generating Grant Token:**
 ```javascript
 var scopeReq = [{"scope":"user.email","isMandatory":true,"shouldVerify":false},{"scope":"user.mobile","isMandatory":false,"shouldVerify":false},{"scope":"user.name","isMandatory":false,"shouldVerify":false}];
 fkPlatform.getModuleHelper().getPermissionsModule().getToken(scopeReq).then(
@@ -106,115 +92,91 @@ function (e) {
 }
 ```
 
-`isMandatory` is a boolean which says whether you want the scope to be mandatorily filled by the user
+Here, in the sample request, `isMandatory` is a boolean type variable you set to `true` if you want the scope to be mandatory and a user must fill to proceed. `shouldVerify` is another boolean type variable you set if you want that the user must verify the same scope. Suppose you made a `getToken()` call: `getToken(['scope':'user.email', 'isMandatory':true, 'shouldVerify':true])`. This means that user can not grant permissions without entering and verifying a valid email address.
 
-additionally `shouldVerify` is boolean which says whether you want the scope to be mandatorily verified as well
+!!!note
+    Set both `isMandatory` and `shouldVerify` to true only when there is an absolute need of the user’s verified email address at your side. This is because of the observation that if we impose such constraints on users, it results in a significant drop in the number of users who proceed beyond the grant permissions screen.
 
-for e.g if you call `getToken(['scope':'user.email', 'isMandatory':true, 'shouldVerify':true])`, then that means user cannot grant permissions without filling his email address and also verifying it. You can use this on situations where you know that he user has an unverified email address and want to trigger email verification for the user.
-Note that the flags `isMandatory` and `shouldVerify` should be set to `true` only when you ABSOLUTELY need an email address which has to be verified as well, because you could see a significant drop off of permission grants when such constraints are imposed on users. 
+**Promise Resolution and Handling Denials**
+If the user denies the permissions, the [`promise`]() gets resolved and you receive a `grantToken`. This case might happen with partial denials from the user i.e. when user denies the permission to allow the phone number but accepts to permit the email address. Hence, regarding the token generation point of view, system treats each acceptance and denial as a success. Check `NativeModuleResponse.result` attribute to view the actual list of accepted and rejected permissions.
 
-Also note that the permission popup has a special behaviour when a single scope is requested and also has a unverified value prefilled by the user. For e.g, when you ask permission for a user.email scope, and the user already has an unverified email address in our system, then the UI will automatically initiate the email verfication flow. This is done to avoid an extra click for the user.
+!!!note
+    An ideal way of handling denials from the user is to show a page that explains why these permissions are mandatory. To know more, refer [Android's user guide](https://developer.android.com/topic/performance/vitals/permissions).
 
-The method `getToken` returns you both list of allowed and rejected permissions which depend on user response. It also returns an access token which you should be passing to your server using which it can hit Flipkart api to read relevant info. For security reasons secure info should only be read server to server using given grantToken.
+After the promise has failed, it invokes the `catch` block function with an object that has a `message` and `code`. Click [here](#handling-errors) for the list of possible errors.
 
-#### Promise resolution
-Promise fails and enters the `catch` block only if the user dismisses the permission popup (bottomsheet) or the SDK network calls failed.
-If user denies a permission, the promise will be resolved successfully and you get a `grantToken`.
-This is because there could be partial permission denial as well. For e.g user denied phone number, but granted email address
-Hence all the denials as well as accepts will still be treated as success from a token generation point of view.
-If you want to check if user denied a permission, you can check the `NativeModuleResponse` result to see if the permissions are granted or not.
+### Navigation
+In this module, we have listed the methods through which you control your application’s exit behaviour for different scenarios and navigation of deep-links to the other parts of the app.
 
-If the promise fails, Catch block function is invoked with an object which has `message` and `code`.
-Possible errors are [here](#handling-errors). 
-
-#### Handling denials
-You can analyze the `NativeModuleResponse.result` to know the exact list of scopes which got denied.
-The ideal way of handling denials is to show a page to the user as to why these permissions are mandatory to continue. Refer [Android's user guide](https://developer.android.com/topic/performance/vitals/permissions) on this topic on knowing more about this.
-
-### Navigation Module
-Common methods which will enable your application to control their exit behaviour and deeplink into other parts of the app.
-
+**Get the Navigation Module:**
 ```js
 let navigationModule = fkPlatform.getModuleHelper().getNavigationModule()
 ```
 
-**Methods:**
-The following methods are supported on the navigation module.
-
-#### Exit Session
+**Exit Session:**
 ```js
 exitSession(): void
+// It closes your application and redirects user back to the page where you launched your app.
 ```
 
-Closes the application and takes user back to the page from where the app was launched.
-
-#### Exit to Homepage
+**Exit to Homepage:**
 ```js
 exitToHomePage(): void
+// It closes your app and redirects a user to Flipkart’s home page.
 ```
 
-Closes the application and takes user to Flipkart homepage.
-
-#### Start Payment
+**Start Payment:**
 ```js
-
 startPayment(paymentToken: string): void
+// It launches Flipkart’s payment screen for the specified payment token.
 ```
 
-Launches Flipkart payment screen for given payment token. The payment token has to be generated by your server by hitting Flipkart PG server API. Once you call the startPayment() method on the client, the container will switch to Payments. Once payments is successful/failed the container switches back to ultra and you will get a callback.
-
-This callback will happen through a page load to the `successfulCallBackUrl` or `failureCallBackUrl` specified when payment token was generated. This URL will be opened within the payment container and is supposed to validate the payment response from FKPG (POST params are to be validated) and then do a container switch back to ultra. A container switch can be initiated by a HTTP redirect to the following URL
-
+After your server hits the `Flipkart’s Payment Gateway (FKPG)` server [API](), it generates the payment token. Ultra’s container switches to the Payment Gateway screen after you call `startPayment()` on the client side. Once the payment cycle completes, irrespective of a success or a failure, you receive a callback and the container switches back to Ultra. This callback happens through a `PageLoad()` event of either `successfulCallBackUrl` or `failureCallBackUrl` page at the time of payment token generation. This URL is accountable for validating the response (POST parameters) from FKPG within the Payment’s container. Then, it goes back to the Ultra’s container. The following URL starts the container switching:
 ```
 fapp://action?value={"screenType":"ultra","params":{"url":"<URLENCODED_URL_TO_OPEN_WITHIN_ULTRA>","clientId":"<YOUR_CLIENT_ID>","postPaymentFlow":true,"success":<TRUE_OR_FALSE>}}
 ```
 
-On Webview, once the container switches, the url specified in the params for `fapp://` will load as a regular page load. This loaded page should render the `Order confirmation` page for your service.
+After the container’s switch:
+| On WebView | On React Native |
+| --- | --- |
+| The URL specified in the `url` parameter of the above `fapp://` redirect loads normally through the regular `PageLoad()` event and renders the Order confirmation page for your service. | The React Native Event Emitter emits a custom event `loadUri` which contains the URL specified in the `url` parameter of the above `fapp://` redirect. |
 
-On ReactNative, once the container switches, you will get a custom event which will be emitted via RN Event Emitter.
-The name of the event is `loadUri` which will contain the URL you specified as params in the above `fapp://` redirect.
-
-#### Clear history 
-> This is a Webview Only method
-
+**Clear History:**
 ```js
 clearHistory()?: void
+
+// Used for WebView only.
+// It clears the history of all the forward and backward pages and maintains the existing page details only.
 ```
 
-Clears both forward and backward history such that only the existing page remains on webview.
-
-
-#### Navigate to Flipkart
-
+**Navigate to Flipkart app:**
 ```js
 navigateToFlipkart(url : string): void
+// It navigates to any Flipkart page based on the URL passed in the parameters. The URL should be a ‘fapp://’ redirect.
 ```
-> Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards. Please make sure you [do user-agent version check](clients/#detecting-presence-of-a-certain-feature) before accessing this API.
 
-Navigates to a Flipkart page given the URL. The URL should be a `fapp://` URL.
-
-The following URLs are supported.
-
-| Description              | URL                                                                                                                                                                          |
-|--------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+Following is the list of URLs supported by this method:
+| Page Description              | URL                                                                                                                                                                          |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Flipkart plus coins page | `fapp://action?value={"params": {"screenName": "LOCKED_COINS","valid":true},"screenType": "multiWidgetPage","type":"NAVIGATION","url": "/locked-coins"}` |
 
-#### Notify page location change 
-> This should be called only if you are using React Native.
+!!!note
+    This method is available only for JS SDK 1.0.0-beta.1, Flipkart app v6.7 and Ultra SDK v1.9 onwards. Ensure that you have done a [user-agent version check](clients/#detecting-presence-of-a-certain-feature) before accessing this API.
 
-> Available only on JS SDK 1.0.0-beta.1 onwards, FK app v6.7 onwards and ultra SDK v1.9 onwards
-Please make sure you [do user-agent version check](clients/#detecting-presence-of-a-certain-feature) before accessing this API.
+**Notify page location change:** 
 ```js
 notifyPageLocationChange(currentUri: string, isBackNavigation: boolean): void
 ```
 ```
-currentUri : Some representation of the current page in the URI format. E.g : http://example.com/search
-isBackNavigation: true if the page opened due to a back navigation. 
+where ‘currentUri’ is the representation of the current page in URI format. For example: http://example.com/search
+‘isBackNavigation’ is ‘true’ if the page opens because of back navigation.
+// It is specific to React Native platform only. 
 ```
 
-For basic analytics, Flipkart tries to optimize the funnel. For this purpose, its important to understand your funnel using events whenever a page change happens. On webviews, a page change can be inferred using the change in URL. But on react native, there is no way to infer this. Hence you are required to call this method to let flipkart's analytics to know that the user has navigated to a page.
+Flipkart keeps trying to optimize the user funnel for basic analytics. Whenever a page change occurs, it is important for you to understand about your funnel using events. In case of WebViews, a change in URL infers that there is a change in the existing page. But, for React Native, there is no way to find it out. Thus, for React Native platform, you need to call this method every time your screen changes so that our analytics library gets notified when the user has navigated to some page that might have changed. We suggest using this method on your Home page, Search page, Details page and when the user presses back button if it results in a change of screen.
 
-Call this whenever the screen changes. For e.g once on homepage and then on search page and then on details page. Also call this if your screen changes when the back button is pressed.
+!!!note
+    This method is available only for JS SDK 1.0.0-beta.1, Flipkart app v6.7 and Ultra SDK v1.9 onwards. Ensure that you have done a [user-agent version check](clients/#detecting-presence-of-a-certain-feature) before accessing this API.
 
 
 ### Contacts Module 
