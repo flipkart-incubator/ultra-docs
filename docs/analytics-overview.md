@@ -9,18 +9,13 @@ This part of SDK helps developers send user generated events to Ultra Platform.
 First step is to add the dependency for the analytics library.
 
 ##### For react native or node
-Add the [latest alpha version of SDK](https://www.npmjs.com/package/fk-platform-sdk/v/1.0.3-analytics-sdk-alpha) to your `package.json` :
+Add the [latest version of SDK](https://www.npmjs.com/package/fk-platform-sdk/v/1.0.5) to your `package.json` :
 ```js
-"fk-platform-sdk": "1.0.3-analytics-sdk-alpha"
+"fk-platform-sdk": "1.0.5"
 ```
 Then import the analytics module wherever you want to push an event.
 ```js
 import {<category_name>} from "fk-platform-sdk/analytics"; // for e.g <category_name> = Travel
-```
-##### For webview
-Include the following script inside a `<script>` tag:
-```js
-https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fk-analytics-min@1.0.3-analytics-sdk-alpha.js
 ```
 
 ### 2. Create Event Object
