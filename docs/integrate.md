@@ -48,7 +48,7 @@ After adding the dependency, [initialize the SDK](clients.md#step-2) using the a
 In this section, you learn how to fetch user details securely from Flipkart’s domain. A user can gain entry into your application only after allowing permissions to share their information (such as name, email, phone number etc.). This step guides you about the generation of grant token, fetching user’s information and login the user into your application.
 
 ### Generate grant token
-You might have come across the terms which are very common in the technical world of authorization (OAuth) world such as `Granted Scopes` and `Grant tokens`. To know more, [read this](https://alexbilbie.com/guide-to-oauth-2-grants/).
+You might have come across the terms which are very common in the technical world of authorization (OAuth) such as `Granted Scopes` and `Grant tokens`. To know more, [read this](https://alexbilbie.com/guide-to-oauth-2-grants/).
 
 Before fetching any data of the user, call the [`getToken()`](clients.md#permissions-module) method and supply the list of parameters that includes the list of user resources you want to gather i.e. user’s name, email, phone number etc. After you call this method, it renders an `Allow/Deny permissions` prompt to the user as shown below:
 ![Permission prompt](img/permissions.png)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -124,7 +124,7 @@ The entire payment flow from initiation of payment to the order confirmation pag
 In case of refunds, integrate our [refund API](backend.md#refund) with your application as per your business needs.
 
 ## 5: OMS Integration
-After the order has been placed and the payment has been successfully completed, the user would want to know the status of the placed order. So, now it is the time to call the [`Flipkart OMS APIs`](oms.md) to know about the order status. 
+After the order has been placed and the payment has been successfully completed, the user would want to know the status of the placed order. So, now it is the time to call the [`Flipkart OMS APIs`](oms.md) to update status of the order in your application. 
 
 The full form of `OMS` is `Order Management System`. This system handles the activities post the order is placed. Its main job is to power the `My Orders` page on Flipkart. `OMS lite` is the name of the view layer maintained by Flipkart for the orders placed on Ultra. This layer acts as a data source for `My Orders` history and our customer executive agents. Following diagram illustrates the purpose of OMS lite:
 ![OMS HLD](img/oms_hld.png)
