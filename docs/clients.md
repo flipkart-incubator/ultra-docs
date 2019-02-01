@@ -1,17 +1,17 @@
 # Ultra Client Side SDK documentation
 Here are the details of the Client side APIs you need to incorporate while integration of your app with Ultra.
 
-> Use this latest version of JS SDK: [1.0.0-beta](https://www.npmjs.com/package/fk-platform-sdk)
+> Use this latest version of JS SDK: [1.0.5](https://www.npmjs.com/package/fk-platform-sdk)
 
 ## Integrate JS SDK
 #### Add the dependency
-If you are using a node, add the following repository as an NPM package for both WebView and React Native platforms. Visit [here](https://www.npmjs.com/package/fk-platform-sdk) to get the latest SDK for this repository.
+If you are using `Node.js`, add the following repository as an NPM package for both WebView and React Native platforms. Visit [here](https://www.npmjs.com/package/fk-platform-sdk) to get the latest SDK for this repository.
 
 ```
 npm install --save fk-platform-sdk
 ```
 
-Or if you are using only a web browser without node, include the following script directly inside the `<script>` tag:
+Or if you are using webview only, include the following script directly inside the `<script>` tag:
 
 ```
 https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@1.0.0-beta.1.js
