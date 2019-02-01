@@ -4,7 +4,7 @@
 
 These steps act as a comprehensive guide for integrating your service using Ultra platform. If you wish to have a visual walk-through before following the detailed instructions, check [here](demo.md). For any issues or queries encountered anytime during this process, please reach out to [us](contact.md).
 
-## 1: Choose your UI platform
+## Step 1: Choose your UI platform
 
 Ultra supports [React Native](https://facebook.github.io/react-native/) as well as a simple HTML /PWA. You can build your application using either of these and we can help you in making the best choice by spotlighting a comparison between the two as follows:
 
@@ -34,7 +34,7 @@ Ultra launches the webpage inside a mobile’s web-view. Here, you may pick your
 !!!note
     One important point to keep in mind is that both the approaches do not allow you to navigate away from your main domain. Let us suppose your application is hosted on some domain for example, `ABC.com` and the site contains a hyperlink that navigates control to some other domain say, `ABC.org`. In such case, the site does not work and throws a `Security Error` message. If you have a similar situation in your application, please contact [us](contact.md) as we have got a way for bypassing this limitation by whitelisting the domains you own.
 
-## 2: Integrate Ultra JavaScript SDK
+## Step 2: Integrate Ultra JavaScript SDK
 After you have made up your mind on which UI platform to work with (either React Native or HTML/PWA), include Ultra’s JavaScript SDK into your application. This SDK helps you build applications that run within Flipkart app and give access to the Ultra’s JavaScript methods required for logins, authorizations (OAuth) and payments.
 
 Next, [add the dependency](clients.md#step-1) for the SDK. [Contact us](contact.md) for generating the parameters specific to your application i.e. clientID and secret to access the Ultra APIs.
@@ -44,7 +44,7 @@ After adding the dependency, [initialize the SDK](clients.md#step-2) using the a
 !!!note
     The logic presented here works in both React Native and HTML/PWA. These methods are asynchronous and always return a [promise](https://javascript.info/promise-basics) that gets resolved with some values except few other JavaScript methods that have no return value.
 
-## 3: Ultra User Login Process
+## Step 3: Ultra User Login Process
 In this section, you learn how to fetch user details securely from Flipkart’s domain. A user can gain entry into your application only after allowing permissions to share their information (such as name, email, phone number etc.). This step guides you about the generation of grant token, fetching user’s information and login the user into your application.
 
 ### Generate grant token
@@ -103,7 +103,7 @@ Since the user is already logged into the Flipkart, it is not a good idea to ask
 
 This completes the login flow, user is now free to explore your app facilities.
 
-## 4: Payment
+## Step 4: Payment
 Now comes the point where integration of your application happens with the Flipkart payment gateway (FKPG) APIs for issuing payments and refunds. For this, [contact us](contact.md) to receive the merchant credentials required to access the API. These merchant credentials vary from the parameters used for the Ultra APIs i.e. `clientId` and `secret`.
 
 The first step is to generate a [`payment token`](backend.md#payment-token) on the server side. This payment token has to be used to show the FKPG payment options screen via Ultra’s client SDK. This FKPG screen opens outside the Ultra’s container. Then, the next step is to start payment which opens the below screen for the user:
@@ -113,6 +113,7 @@ The first step is to generate a [`payment token`](backend.md#payment-token) on t
 After the payment is successful, redirect the user to your application’s order confirmation page within the container where a `POST` call leads to the `successfulCallBackUrl` specified [here](backend.md#payment-token). Check the FORM data payload details [here](backend.md#Callback-after-PGResponse). Then, issue an HTTP redirection request to the `fapp://` [redirect URL](clients#start-payment) so that the application control goes back to the Ultra container and the order confirmation page opens within this container in the similar format.
 
 The entire payment flow from initiation of payment to the order confirmation page is explained in the following sequence diagram:
+
 ![Payments](img/image3.png)
 
 !!!note
@@ -123,7 +124,7 @@ The entire payment flow from initiation of payment to the order confirmation pag
 
 In case of refunds, integrate our [refund API](backend.md#refund) with your application as per your business needs.
 
-## 5: OMS Integration
+## Step 4: OMS Integration
 After the order has been placed and the payment has been successfully completed, the user would want to know the status of the placed order. So, now it is the time to call the [`Flipkart OMS APIs`](oms.md) to update status of the order in your application. 
 
 The full form of `OMS` is `Order Management System`. This system handles the activities post the order is placed. Its main job is to power the `My Orders` page on Flipkart. `OMS lite` is the name of the view layer maintained by Flipkart for the orders placed on Ultra. This layer acts as a data source for `My Orders` history and our customer executive agents. Following diagram illustrates the purpose of OMS lite:
@@ -132,4 +133,3 @@ The full form of `OMS` is `Order Management System`. This system handles the act
 When you come to know that the order has been placed by the user, call [this API](oms.md) to inform Flipkart OMS and the details that you supply gets displayed on `My Orders` screen in Flipkart app. We also use this information to power our customer service executives for offering a customer delight by resolving the customer queries and calls in a more meaningful way.
 
 > The OMS integration is a mandatory step to follow. Although it has no UI implications, your application cannot go live unless this data reaches our server. We also expect that you initiate a call to our OMS APIs for every change in the state of your OMS to keep everything aligned.
-
