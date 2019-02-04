@@ -31,7 +31,7 @@ fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
 ##### For webview
 ```js
-const search = FKEvents.Travel.Search("BLR", ["DEL"], [new  Date()], false, 1);
+const search = FKExtension.analyticsHelper.travel.search("BLR", ["DEL"], [new  Date()], false, 1);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
 
@@ -61,7 +61,7 @@ fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(select);
 ```
 ##### For webview
 ```js
-const select = FKEvents.Travel.Select("6E135","FLIGHT_DOMESTIC",3500);
+const select = FKExtension.analyticsHelper.travel.select("6E135","FLIGHT_DOMESTIC",3500);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(select);
 
 ```
@@ -95,6 +95,6 @@ fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(pay);
 ```
 ##### For webview
 ```js
-const pay = FKEvents.Travel.ProceedToPay(3500, 0, 350, 0);
+const pay = FKExtension.analyticsHelper.travel.proceedToPayEvent(3500, 0, 350, 0);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(pay);
 ```

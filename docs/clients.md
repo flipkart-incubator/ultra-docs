@@ -1,6 +1,7 @@
 # Ultra Client Side SDK documentation
 
-> Latest JS SDK version : [1.0.0-beta](https://www.npmjs.com/package/fk-platform-sdk)
+### Latest JS SDK
+[![npm version](https://badge.fury.io/js/fk-platform-sdk.svg)](https://badge.fury.io/js/fk-platform-sdk)
 
 ## Overview
 
@@ -23,7 +24,7 @@ You can also visit [the NPM](https://www.npmjs.com/package/fk-platform-sdk) page
 Alternatively, if you are using webview only you can also include the following script directly inside a `<script>` tag:
 
 ```
-https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@1.0.0-beta.1.js
+https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fkext-browser-min@1.0.6.js
 ```
 
 #### Initialize the SDK
