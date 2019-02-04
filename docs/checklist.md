@@ -5,9 +5,9 @@ This section captures the guidelines for broad use cases which relates to almost
 
 ### General
 These general guidelines apply across all the pages within a partner’s application:
-* No external redirection in your app.
-* We do not tolerate obstruction of Flipkart’s property within Ultra.
-* Your app experience must have parity.
+- No external redirection in your app.
+- We do not tolerate obstruction of Flipkart’s property within Ultra.
+- Your app experience must have parity.
 
 ### Component-wise
 Here are the instructions to follow for special components within Ultra:
@@ -27,6 +27,6 @@ Use Flipkart’s Payment Gateway (FKPG) only for taking payments which applies t
 
 #### Post-Order placement
 - ***My Orders:*** Restrict the orders displayed on this page to the ones placed through Flipkart. This is because of the following reasons:
-  1. Orders placed within Flipkart or through redirection are actionable by Flipkart’s Customer Executives (CX) and they not responsible for any external orders.
-  2. FKPG does not support modification of the orders involving payment flows placed outside Flipkart.
+  - Orders placed within Flipkart or through redirection are actionable by Flipkart’s Customer Executives (CX) and they not responsible for any external orders.
+  - FKPG does not support modification of the orders involving payment flows placed outside Flipkart.
 - ***Contact Us or Help Center:*** You can use your own order tracking, issue resolution and other CX flows but for orders placed on the same platform only.
