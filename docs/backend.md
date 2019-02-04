@@ -75,7 +75,7 @@ isVerified(boolean)
 }
 ```
 
-##Payment flow.
+##Payment flow
 
 This section describes FKPG (Flipkart payment gateway) APIs which can be used to initiate payments and for receiving refunds.
 Contact Flipkart team to get the merchant credentials required to access this API. The merchant credentials are different from `clientId` and `secret` used for Ultra APIs
@@ -366,56 +366,102 @@ Sample Request
 }
 ```
 
-###Refund
+## Refund
+
+### Create Refund
 ```
-Path: 2/payment/refund
+Path: /3/payment/refund/create
 
 Method: POST
 Body: RefundRequest
+
 RefundRequest {
-merchantCredential(MerchantCredential),
-merchantTransactionId (string),
-payzippySaleTrasactionId (string),
-refundAmount (long),
-refundReason (string),
-refundedBy (string),
-merchantRefundTransactionId(string, optional),
-idempotencyId (string, optional),
-metadata (string, optional)
+    merchantCredential (MerchantCredential),
+    paymentMerchantTransactionId (string),
+    refundAmountInPaise (long),
+    refundMerchantTransactionId (string),
+    refundReason (string),
+    identityToken (string),
+    orderDate(long, optional)
 }
+
 MerchantCredential {
-name (string),
-password (string)
+    name (string),
+    password (string)
 }
-Response : RefundResponse
-RefundResponse {
-bankArn (string, optional),
-pgMID (string, optional),
-pgTrackId (string, optional),
-pgId (string, optional),
-pgName (string, optional),
-bankTransactionId (string, optional),
-terminalId (string, optional),
-cardBrand (string, optional) = ['VISA' or 'MASTERCARD' or 'AMEX' or 'MAESTRO' or 'DINERS' or 'RUPAY' or 'DEFAULT' or 'DISCOVER' or 'BAJAJ'],
-cardBin (string, optional),
-adjustmentTransactionIds (string, optional),
-adjustmentRelations (string, optional),
-adjustmentIds (string, optional),
-adjustmentAmounts (string, optional),
-refundAmount (long, optional),
-merchantTransactionId (string, optional),
-payzippyTransactionId (string, optional),
-refundCurrency (string, optional),
-transactionTime (long, optional),
-refundSla (RefundSla, optional),
-refundStatus (string, optional) = ['REFUND_REQUEST_RECEIVED' or 'REFUND_REQUEST_SUBMITTED' or 'SUCCESS' or 'FAILED' or 'REFUNDED' or 'PENDING'],
-refundResponseCode (string, optional) = ['SUCCESS' or 'REFUND_REQUEST_ACCEPTED' or 'REFUND_REQUEST_SENT' or 'REFUNDED' or 'REFUND_VOID_SUCCESS' or 'TXNID_NOT_FOUND' or 'REFUND_NOT_SUPPORTED' or 'REFUND_WINDOW_EXPIRED' or 'SIMILAR_PREVIOUS_PARTIAL_REFUND_DETECTED' or 'SALE_TRANSACTION_UNSUCCESSFUL' or 'SALE_TRANSACTION_VOID' or 'PARTIAL_REFUNDS_UNSUPPORTED' or 'INSUFFICIENT_BALANCE' or 'DUPLICATE_REFUND_REQUEST' or 'EXCESS_REFUND_AMOUNT' or 'SALE_TRANSACTION_REFUNDED' or 'MULTIPLE_REFUNDS_UNSUPPORTED' or 'PAYZIPPY_TECHNICAL_ERROR' or 'ACQUIRER_TECHNICAL_ERROR' or 'REFUND_TEMPORARILY_UNAVAILABLE' or 'VISA_DIRECT_TIMEOUT' or 'PENDING_ON_REFUND_REQUERY' or 'FAILED_ON_REFUND_REQUERY' or 'COULD_NOT_ACQUIRE_LOCK' or 'UPI_EXTERNAL_VPA_UNSUPPORTED'],
-refundResponseMessage (string, optional),
-metaData (string, optional)
+
+Response : CreateRefundResponse
+
+CreateRefundResponse {
+    success (boolean),
+    code (string),
+    message (string),
+    data (RefundQueryResponse)
 }
-RefundSla {
-minSla (long, optional),
-maxSla (long, optional)
+
+RefundQueryResponse {
+    parentRefund(ParentRefund),
+    childRefundsDataList (Array[ChildRefundsData])
+}
+
+ParentRefund {
+    id (string),
+    status (string) = ["requested" or "init" or "processing" or "completed"
+    or "failed" or "cancelled"],
+    requestedAmountInPaise (long),
+    orderId (string),
+    refundType (string) = ['REFUND' or 'PAYOUT' or 'FREEBIE_REFUND' or
+    'GOODWILL' or 'PRICE_DROP_REFUND' or 'CASHBACK' or 'SHIPPING_REFUND'
+    'REDIRECTED_REFUND' or 'DEBIT' or 'EXCHANGE_REFUND' or 'REVERSE_PAYMENT'
+    'REV_ADJUSTMENT' or 'OFFLINE'],
+    clientRefId (string),
+    refundReason (string),
+    destinationId (string),
+    createdAt (long),
+    updatedAt (long)
+}
+
+ChildRefundsData {
+    childRefund (ChildRefund),
+    fundTransactions (Array[FundTransaction])
+}
+
+ChildRefund {
+    private String id (string),
+
+    status (string) = ["new" or "requested" or "triggered" or "init" or "cancelled" or "picked" or "processing" or "failed" or "completed"
+    or "redirected" or "debited" or "splitted" or "clone_requested" or "cloned"],
+
+    refundMode (string) = ['QC_EGV' or 'NEFT' or 'CREDIT_CARD' or 'IMPS' or 'E_GIFT_VOUCHER' or 'FLIPKART_CREDIT' or 'SCLP-WALLET' or 'COD' or
+    'NETBANKING' or 'CREDIT_CARD_EMI' or 'DEBIT_CARD' or 'BACK_TO_SOURCE' or 'PART_NEFT' or 'QC-SCLP' or 'PHONEPE' or 'WALLET_DEFERRED' or
+    'WALLET_INSTANT' or 'EGV-SCLP' or 'VISA_DIRECT' or 'EGV_WALLET' or 'EGV' or 'FLIPKART_FINANCE' or 'INVALID_REFUND_MODE' ],
+
+    paymentGateway (string) = ['QC' or 'FLIPKART' or 'GCMS' or 'WALLET' or
+    'APL' or 'FTS' or 'COD' or 'EGV' or 'DEFAULT'],
+
+    refundAmountInPaise (long),
+    forwardTransactionId (string),
+    parentRefundId (string),
+    promiseDate (long),
+    bankReferenceNumber (string),
+    createdAt (long),
+    updatedAt (long)
+}
+
+FundTransaction {
+    id (string),
+    entity (string),
+    entityId (string),
+    status (string) = ["requested" or "init" or "processing" or "failed" or "completed" or "cancelled" or "debited"],
+    transferStatus (string),
+    transferResponseCode (string),
+    externalRefId (string),
+    pgMid (string),
+    transactionAmountInPaise (long),
+    parentRefundId (string),
+    createdAt (long),
+    updatedAt (long),
+    dataBag (Map<String, String>)
 }
 ```
 ```
@@ -425,13 +471,186 @@ Sample Request
     "name": "Enter name here",
     "password": "Enter hash here"
   },
-  "merchantTransactionId": "transaction1",
-  "payzippySaleTrasactionId": "PZT1712211056FQM0400",
-  "refundAmount": 100,
+  "paymentMerchantTransactionId": "transaction1",
+  "refundAmountInPaise": 1000,
+  "refundMerchantTransactionId": "transaction1-refund1"
   "refundReason": "testing",
-  "refundedBy": "Anvay",
-  "merchantRefundTransactionId": "transaction1-refund1"
+  "identityToken": "Actual ID Token here"
 }
+```
+```
+Sample Response
+{
+  "success": true,
+  "code": "SUCCESS",
+  "message": null,
+  "data": {
+    "parentRefund": {
+          "id": "PR19010313341416072947206",
+          "status": "init",
+          "requestedAmountInPaise": 500,
+          "orderId": "1527666755_68",
+          "refundType": "REFUND",
+          "clientRefId": "1527666755_67_refund_07",
+          "refundReason": "CentaurAPITesting",
+          "destinationId": null,
+          "createdAt": 1546502654079,
+          "updatedAt": 1546502654176
+    },
+    "childRefundsDataList": [
+          {
+            "childRefund": {
+              "id": "CR1901031334148265203106",
+              "status": "init",
+              "refundMode": "NETBANKING",
+              "paymentGateway": "FLIPKART",
+              "refundAmountInPaise": 500,
+              "forwardTransactionId": "PZT1901031332IJEMH01",
+              "parentRefundId": "PR19010313341416072947206",
+              "promiseDate": 1547193854000,
+              "bankReferenceNumber": null,
+              "createdAt": 1546502654179,
+              "updatedAt": 1546502654182
+            },
+            "fundTransactions": []
+          }
+        ]
+      }
+    }
+```
+
+
+### Refund Query By Parent Refund Id
+```
+Path: /3/payment/refund/query/parentRefundId/{parentRefundId}
+
+Method: GET
+
+Response : RefundQueryResponse (As described above in CreateRefundResponse)
+```
+```
+Sample Response
+{
+    "parentRefund": {
+      "id": "PR19010313341416072947206",
+      "status": "init",
+      "requestedAmountInPaise": 500,
+      "orderId": "1527666755_68",
+      "refundType": "REFUND",
+      "clientRefId": "1527666755_67_refund_07",
+      "refundReason": "CentaurAPITesting",
+      "destinationId": null,
+      "createdAt": 1546502654079,
+      "updatedAt": 1546502654176
+    },
+    "childRefundsDataList": [
+      {
+        "childRefund": {
+          "id": "CR1901031334148265203106",
+          "status": "processing",
+          "refundMode": "NETBANKING",
+          "paymentGateway": "FLIPKART",
+          "refundAmountInPaise": 500,
+          "forwardTransactionId": "PZT1901031332IJEMH01",
+          "parentRefundId": "PR19010313341416072947206",
+          "promiseDate": 1547193854000,
+          "bankReferenceNumber": null,
+          "createdAt": 1546502654179,
+          "updatedAt": 1546502654359
+        },
+        "fundTransactions": [
+          {
+            "id": "RT19010313341426309566006",
+            "entity": "child_refund",
+            "entityId": "CR1901031334148265203106",
+            "status": "processing",
+            "transferStatus": "DEPENDENCY_SERVICE_FAILURE",
+            "transferResponseCode": "FKPG_EXCEPTION",
+            "externalRefId": null,
+            "pgMid": null,
+            "transactionAmountInPaise": 500,
+            "parentRefundId": "PR19010313341416072947206",
+            "createdAt": 1546502654360,
+            "updatedAt": 1546502654376,
+            "dataBag": {
+              "key": "FKPG",
+              "bank_reference_number": null,
+              "reference_id": null,
+              "pg_track_id": null
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Refund Query By Order Id
+```
+Path: /3/payment/refund/query/orderId/{orderId}
+
+Method: GET
+
+Response : Array[RefundQueryResponse] (As described above in CreateRefundResponse)
+```
+```
+Sample Response
+[
+    {
+      "parentRefund": {
+        "id": "PR19010313341416072947206",
+        "status": "init",
+        "requestedAmountInPaise": 500,
+        "orderId": "1527666755_68",
+        "refundType": "REFUND",
+        "clientRefId": "1527666755_67_refund_07",
+        "refundReason": "CentaurAPITesting",
+        "destinationId": null,
+        "createdAt": 1546502654079,
+        "updatedAt": 1546502654176
+      },
+      "childRefundsDataList": [
+        {
+          "childRefund": {
+            "id": "CR1901031334148265203106",
+            "status": "processing",
+            "refundMode": "NETBANKING",
+            "paymentGateway": "FLIPKART",
+            "refundAmountInPaise": 500,
+            "forwardTransactionId": "PZT1901031332IJEMH01",
+            "parentRefundId": "PR19010313341416072947206",
+            "promiseDate": 1547193854000,
+            "bankReferenceNumber": null,
+            "createdAt": 1546502654179,
+            "updatedAt": 1546502654359
+          },
+          "fundTransactions": [
+            {
+              "id": "RT19010313341426309566006",
+              "entity": "child_refund",
+              "entityId": "CR1901031334148265203106",
+              "status": "processing",
+              "transferStatus": "DEPENDENCY_SERVICE_FAILURE",
+              "transferResponseCode": "FKPG_EXCEPTION",
+              "externalRefId": null,
+              "pgMid": null,
+              "transactionAmountInPaise": 500,
+              "parentRefundId": "PR19010313341416072947206",
+              "createdAt": 1546502654360,
+              "updatedAt": 1546502654376,
+              "dataBag": {
+                "key": "FKPG",
+                "bank_reference_number": null,
+                "reference_id": null,
+                "pg_track_id": null
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 ```
 
 
