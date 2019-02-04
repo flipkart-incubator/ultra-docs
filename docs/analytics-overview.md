@@ -9,7 +9,7 @@ This part of SDK helps developers send user generated events to Ultra Platform.
 First step is to add the dependency for the analytics library.
 
 ##### For react native or node
-Add the [latest version of SDK](https://www.npmjs.com/package/fk-platform-sdk) to your `package.json` :
+Add the [latest version of SDK](clients.md#latest-js-sdk) to your `package.json` :
 ```js
 "fk-platform-sdk": "1.0.6"
 ```

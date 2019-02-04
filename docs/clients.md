@@ -1,6 +1,7 @@
 # Ultra Client Side SDK documentation
 
-> Latest JS SDK version : [1.0.6](https://www.npmjs.com/package/fk-platform-sdk)
+### Latest JS SDK
+[![npm version](https://badge.fury.io/js/fk-platform-sdk.svg)](https://badge.fury.io/js/fk-platform-sdk)
 
 ## Overview
 
