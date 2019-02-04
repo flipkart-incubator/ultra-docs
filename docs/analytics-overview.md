@@ -4,7 +4,7 @@
 
 This part of SDK helps developers send user generated events to Ultra Platform.
 
-### 1. Add the dependency
+### Add the dependency
 
 First step is to add the dependency for the analytics library.
 
@@ -23,10 +23,10 @@ Include the following script inside a `<script>` tag:
 https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fk-analytics-travel-min@1.0.6.js
 ```
 
-### 2. Create Event Object
+### Create Event Object
 After importing SDK, you can create event object of any type described in [this page](analytics-travel.md), passing in all the required arguments for that event.
 
-### 3. Sending the event
+### Sending the event
 Finally push the event passing in the event object created as the argument. 
 ```js
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(event);
