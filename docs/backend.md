@@ -730,8 +730,9 @@ Response : Array[RefundQueryResponse] (Same as CreateRefundResponse)
 ## OMS
 ### Schema
 ***Order:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |orderId|string|yes|`orderId` is a reference to the merchant's OMS entry|
 |description|string|yes||
 |identityToken|string|yes|This identifies the user|
@@ -746,8 +747,9 @@ Response : Array[RefundQueryResponse] (Same as CreateRefundResponse)
 |cancellationCharges|List of CancellationCharges|no|Merchant can levy charges for the cancellation|
 
 ***Item:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |itemId|string|yes|It is an item identifier. It draws the customer to a product from order page|
 |title|string|yes|It is the description of an item. It is visible to the customer|
 |image|string|yes|Item's image|
@@ -755,26 +757,25 @@ Response : Array[RefundQueryResponse] (Same as CreateRefundResponse)
 |finalPrice|double|yes|Price of an item after applying both `merchantAdjustments` and `flipkartAdjustments`. This is `null` if the state is `INIT`|
 |category|string|yes|Category to which the item belongs. Flipkart provides this value. Please put no other values here|
 |fulfillmentDate|long|yes|Date of fulfillment of the item (For e.g., delivery date, travel date, etc.)|
-|itemState|enum(`INIT` or `SUCCESSFUL` or `CANCELLED` or `PENDING`)|yes|`INIT`: Used when the customer has not paid. <br/>
-`PENDING`: Payment is successful, however, the merchant is yet to confirm the order. <br/>
-`SUCCESSFUL`: Confirmed the item but not completely. Partial cancellation is also a part of this state. <br/> 
-`CANCELLED`: Cancelled the item. Here, the complete final price should either reflect in `Reverse Transaction` or `cancellationCharges`|
+|itemState|enum(`INIT` or `SUCCESSFUL` or `CANCELLED` or `PENDING`)|yes|`INIT`: Used when the customer has not paid. `PENDING`: Payment is successful, however, the merchant is yet to confirm the order. `SUCCESSFUL`: Confirmed the item but not completely. Partial cancellation is also a part of this state. `CANCELLED`: Cancelled the item. Here, the complete final price should either reflect in `Reverse Transaction` or `cancellationCharges`|
 |brand|string|yes|Provider/Manufacturer of product|
 |product|string|yes|Description of the product. Sometimes, it is the Title of any e-commerce product. Other times, it provides specific details like Flight number, Recharge type, etc.|
 |customerName|string|yes|Name of the person who has ordered the item|
 |quantity|integer|yes|Number of products clubbed in the same order. In case of a category as `travel`, it is the number of passengers. If you have no such business requirement, send `1`|
 
 ***Forward Transaction:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |transactionId|string|yes|PG shares the `transactionId`|
 |amount|double|yes|Final amount deducted from customer|
 |description|string|yes||
 |timestamp|long|yes|Time of transaction|
 
 ***Reverse Transaction:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |forwardTransactionId|string|yes|The forward transaction used to take money from customer|
 |reverseTransactionId|string|yes||
 |amount|double|yes|Refund amount|
@@ -782,21 +783,24 @@ Response : Array[RefundQueryResponse] (Same as CreateRefundResponse)
 |timestamp|long|yes|Time of transaction|
 
 ***Merchant Adjustment:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |adjustmentId|string|yes|Identifier for the adjustment on the merchant’s side|
 |amount|double|yes|Adjustment amount|
 |title|string|yes|Adjustment description. This could be visible to the customer|
 
 ***Flipkart Adjustment:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |adjustmentId|string|yes|Identifier for the adjustment provided by Flipkart in PG response|
 |amount|double|yes|Adjustment amount|
 
 ***Cancellation Charges:***
+
 |name|type|mandatory|notes|
-|---|---|---|---|
+| --- | :---: | :---: | --- |
 |itemId|string|yes|Represents an item’s identity which must be available in the list of existing items|
 |reason|string|yes|This is visible to the customer|
 |amount|double|yes|Cancellation amount|
