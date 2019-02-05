@@ -138,6 +138,7 @@ fapp://action?value={"screenType":"ultra","params":{"url":"<URLENCODED_URL_TO_OP
 ```
 
 After the container’s switch:
+
 | On WebView | On React Native |
 | --- | --- |
 | The URL specified in the `url` parameter of the above `fapp://` redirect loads normally through the regular `PageLoad()` event and renders the Order confirmation page for your service. | The React Native Event Emitter emits a custom event `loadUri` which contains the URL specified in the `url` parameter of the above `fapp://` redirect. |
@@ -157,6 +158,7 @@ navigateToFlipkart(url : string): void
 ```
 
 Following is the list of URLs supported by this method:
+
 | Page Description              | URL                                                                                                                                                                          |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Flipkart plus coins page | `fapp://action?value={"params": {"screenName": "LOCKED_COINS","valid":true},"screenType": "multiWidgetPage","type":"NAVIGATION","url": "/locked-coins"}` |
@@ -248,6 +250,7 @@ Send this event from the screen where user searches for flights or buses or hote
 Search(fromLocation: string, toLocation: string[], date: Date[], roundTrip: boolean, travellerCount: number)
 ```
 To create a Search event, pass the following arguments:
+
 - **fromLocation:** It is of `string` type. For buses, `from Location` is the city name. In case of hotels, this represents location of the hotel. For flights, this is the international airport code.
 - **toLocation:** A `string []` type. In case of buses or flights, `to Location` contains the destination city. For any intermediary locations, it stores different cities in the form of an array and in proper order. For hotels, this field will be empty.
 - **date:** A `Date []` type. In case of a bus or a flight, this contains an array of dates for multi-city travel. For hotels, it means the start and end date of reservation.
@@ -276,6 +279,7 @@ Select(name: string, category: string, price: number)
 ```
 
 To create a Select event, pass the following arguments:
+
 - **name:** It is a `string`. This is the flight’s name in case of flights. A hotel’s name for hotels or name of a bus operator for buses.
 - **category:** It is again a `string` type. This contains only one of the following values:
   - FLIGHT_INTERNATIONAL
