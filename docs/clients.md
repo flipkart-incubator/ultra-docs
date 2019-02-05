@@ -311,6 +311,7 @@ ProceedToPay(amountToPay: number, offerAmount: number, bookingCharge: number, va
 ```
 
 To create a Proceed to Pay event, pass the below arguments. Note that all these values are in Rupees and accept decimal format:
+
 - **amountToPay:** It is a `number`. This is a non-negative value and depicts the cost of the product (in Rupees) for `Travel` category.
 - **offerAmount (Optional):** A `number` type. This represents the offer amount given to the customer. It is a non-negative value.
 - **bookingCharge (Optional):** A `number` which contains the amount charged as convenience fees to the customer. This value is non-negative.
