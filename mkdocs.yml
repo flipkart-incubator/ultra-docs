@@ -3,9 +3,10 @@ site_description: A technical guide for building applications with Flipkart usin
 pages:
     - Overview: index.md
     - Getting Started : 
-        - Learn the basics: terms.md
         - Terminology: terms.md
-    - Basic Guidelines and Checklist: checklist.md
+    - Basic Guidelines and Checklist: 
+        - Guidelines: checklist.md
+        - Checklist: checklist.md
     - Integration with Ultra : 
         - Steps: integrate.md
         - API Details : 
