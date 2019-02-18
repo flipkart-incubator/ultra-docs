@@ -5,7 +5,7 @@ pages:
     - Getting Started : 
         - Terminology: terms.md
     - Basic Guidelines and Checklist: 
-        - Guidelines: checklist.md
+        - Guidelines: guidelines.md
         - Checklist: checklist.md
     - Integration with Ultra : 
         - Steps: integrate.md
