@@ -1,12 +1,18 @@
+# Ultra Demo 
 
-We present to you a special feature called known as the Ultra playground where you can gain more knowledge and experiment with the Ultra APIs experimenting with the APIs. Follow the below steps for playing around:
+We present to you a special feature called `The Ultra playground` where you can get your hands dirty while playing around with the Ultra APIs.
+
+Here are the steps to follow for experiencing this playground:
 
 * Install the Flipkart application on your Android smartphone.
-* Click on [this link](https://www.flipkart.com/ultra/?clientId=playground) through your smartphone. It will open the Ultra playground within Flipkart.
-* Then, it will open [this page](https://ultra-playground.herokuapp.com/) within the Ultra container where you can check out different JavaScript APIs exposed to Ultra. Please note that this page will not work outside the container.
+* Click on [this link](https://www.flipkart.com/ultra/?clientId=playground) through your smartphone. It opens the Ultra playground within Flipkart app.
+* Open [this page](https://ultra-playground.herokuapp.com/) within the Ultra's container where you can look into the different JavaScript APIs exposed to Ultra. 
 
-If you want a glimpse of the code running behind the scenes, open this [playground application](https://ultra-playground.herokuapp.com/) within the browser and you can use "Inspect" of Chrome browser to view the code.
+!!!note
+    Please note that this page does not work outside Ultra's container.
 
-Check out this video to have an experience on the outcome of merging your application with Ultra
+If you want a glimpse of the code running behind the scenes, open the [playground application](https://ultra-playground.herokuapp.com/) within your browser and use "Inspect" feature to see the real code.
+
+Do check out this cool video to get a feel on how does this integration really works with Ultra:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/h85e9EhrZfM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
