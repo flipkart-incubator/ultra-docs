@@ -5,7 +5,7 @@ This section captures the guidelines for broad use cases which relates to almost
 These general guidelines apply across all the pages within a partner’s application.
 
 - No external redirection in your app.
-- We do not tolerate obstruction of Flipkart’s property within Ultra.
+- No obstruction of Flipkart's property within Ultra.
 - Your app experience must have parity.
 
 ### Component-wise
@@ -17,7 +17,7 @@ Here are the instructions to follow for special components within Ultra:
 
 #### Order Funnel
 - ***Product Discovery:*** There are no explicit restrictions around flows such as the Search, the Flyout menu and other navigation panels. But you must take care of UI elements that might confuse the user. For example, the flyout menu must not be identical to Flipkart’s flyout menu, etc.
-- ***Offers:*** At any point in the funnel, do not display the offers that customers cannot avail within Flipkart’s context. Even, we would not allow any instructional notes. For example, messages that show how to avail an offer in another platform.
+- ***Offers:*** At any point in the funnel, do not display the offers that customers cannot avail within Flipkart’s context. Even the instructional notes, like the messages describing how to avail an offer in another platform, are not allowed.
 - ***Cart:*** Do not link shopping carts outside the Ultra platform. Because we don’t want to encourage user behaviors where they treat Ultra as one channel for partners to convert from. Facilitating completion of dropped off orders is not a key value proposition. Besides, linking external carts would create confusion for the users and it does not shape a right behavior with this freedom.
 - ***Checkout:*** There are no specific restrictions on the checkout page. Try to optimize your checkout funnel to ensure a minimal amount of drop-offs from the users. However, there are no specific guidelines as it may vary from one partner application to another.
 
