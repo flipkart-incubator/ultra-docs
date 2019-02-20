@@ -1,3 +1,5 @@
 # Frequently Asked Questions (FAQ)
 
-Sorry!! The page is under construction.
+*This page is under construction.
+
+We will be back soon with some data.
