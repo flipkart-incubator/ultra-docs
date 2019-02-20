@@ -114,7 +114,7 @@ After the payment is successful, redirect the user to your application’s order
 
 The entire payment flow from initiation of payment to the order confirmation page is explained in the following sequence diagram:
 
-![Payments](img/image3.png)
+![Payments](img/Payments.jpg)
 
 !!!note
     It is mandatory to redirect via `fapp://` to the Ultra container.
@@ -128,7 +128,7 @@ In case of refunds, integrate our [refund API](backend.md#refund) with your appl
 After the order has been placed and the payment has been successfully completed, the user would want to know the status of the placed order. So, now it is the time to call the [`Flipkart OMS APIs`](backend.md#oms) to update status of the order in your application. 
 
 The full form of `OMS` is `Order Management System`. This system handles the activities post the order is placed. Its main job is to power the `My Orders` page on Flipkart. `OMS lite` is the name of the view layer maintained by Flipkart for the orders placed on Ultra. This layer acts as a data source for `My Orders` history and our customer executive agents. Following diagram illustrates the purpose of OMS lite:
-![OMS HLD](img/oms_hld.png)
+![OMS HLD](img/OMS.jpg)
 
 When you come to know that the order has been placed by the user, call [this API](backend.md#oms) to inform Flipkart OMS and the details that you supply gets displayed on `My Orders` screen in Flipkart app. We also use this information to power our customer service executives for offering a customer delight by resolving the customer queries and calls in a more meaningful way.
 
