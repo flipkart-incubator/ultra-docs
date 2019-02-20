@@ -52,20 +52,20 @@ You might have come across the terms which are very common in the technical worl
 
 Before fetching any data of the user, call the [`getToken()`](clients.md#permissions) method and supply the list of parameters that includes the list of user resources you want to gather i.e. user’s name, email, phone number etc. After you call this method, it renders an `Allow/Deny permissions` prompt to the user as shown below:
 ![Permission prompt](img/permissions.png)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 **_Allow/Deny permissions prompt_**
 
 !!!note
     This permission popup has a special behavior when a single scope is requested and user has some unverified pre-filled value. For example, if you have asked permission for a `user.email` scope and the user has a unverified email address in Flipkart, it automatically initiates the email verification for the user. This helps user in avoiding any extra clicks.
 
 Following sequence diagram illustrates the entire scope selection process:
-![Scope Selection](img/image2.png)
+![Scope Selection](img/Scope_Selection.jpg)
 
 | **Legend**          | **Description**             |
 | --------------------------- | ---------------------- |
 | Partner UI                | Partner’s application UI which gets rendered within Flipkart app           |
 | SDK       | JavaScript client SDK that exposes Ultra’s APIs   |
-| Partner Server | Partner’s backend server |
+| FK Mobile API | MAPI service |
 | Ultra API | Public API which is exposed by Ultra i.e. platform.flipkart.net |
 
 We suggest to use flags like `isMandatory` and `shouldVerify` to control whether you want these permissions to be mandatory. Like here, `isMandatory` is a boolean type variable that you enable if you want the scope to be mandatory and must be filled by the user. `shouldVerify` is also a boolean type variable that you enable if you want that the same scope to be verified as well. Suppose, your `getToken()` call is `getToken(['scope':'user.email', 'isMandatory':true, 'shouldVerify':true])`. It means that user is not allowed to grant permissions without entering the email address as well as verifying it. 
@@ -89,7 +89,7 @@ After `promise` has failed, catch block function is invoked with an object that 
 
 ### Get user’s information
 In order to fetch user’s information, send the `grantToken` to your server either by using an AJAX call or any other mechanism that you prefer. This token is further used by your server to get an access token by making a call to `/1/authorization/auth` [(see how)](backend.md#access-token-generation). Then, use this access token to fetch user resources such as `user.email`, `user.mobile` [(check here)](backend.md#resource-fetching). Following sequence diagram illustrates this process:
-![Fetching Resource](img/image4.png)
+![Fetching Resource](img/Resource_Fetching.jpg)
 
 !!!note
     Since the APIs to fetch user’s information are available on client side as well (being REST APIs), we highly recommend you to always fetch the user’s data on server side to avoid security threats like MITM attacks.
