@@ -3,7 +3,6 @@ site_description: A technical guide for building applications with Flipkart usin
 pages:
     - Home: index.md
     - Tutorial : tutorial.md
-    - Onboarding: onboarding.md
     - Flow diagrams : flows.md
     - Client Side API: clients.md
     - Server Side API:

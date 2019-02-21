@@ -220,11 +220,3 @@ Sample Request
 }
 ```
 
-##Offers
-Flipkart might have some offers. These Apis let you interact with them.
-
-###Get offers list
-```
-Path: /2/offers/active
-Method: GET
-```
