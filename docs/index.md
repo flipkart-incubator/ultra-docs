@@ -13,11 +13,8 @@ In Ultra, we have set up a minimal viable process required to onboard a partner 
 * Swift onboarding
 * Data security
 * User privacy
-* User experience
 * Customer experience
-* Developer experience
 * Application performance
-* Affordability
 
 We have also taken strategic product decisions which has shaped Ultra in offering following services to partners:
 
