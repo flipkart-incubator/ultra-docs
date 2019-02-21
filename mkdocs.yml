@@ -5,19 +5,12 @@ pages:
     - Tutorial : tutorial.md
     - Onboarding: onboarding.md
     - Flow diagrams : flows.md
-    - Client Side API: 
-        - Basic APIs: clients.md
-        - Analytics :
-            - Overview : analytics-overview.md
-            - Travel : analytics-travel.md
+    - Client Side API: clients.md
     - Server Side API:
         - Basic APIs: backend.md
         - OMS: oms.md
     - Demo: demo.md
     - Contact Us : contact.md
-    - Announcements :
-        - All Announcements : announcement.md
-        - Migrating ClientId : migrating-clientid.md
 theme:
   name: 'material'
 markdown_extensions:

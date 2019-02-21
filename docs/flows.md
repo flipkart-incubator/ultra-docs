@@ -15,10 +15,6 @@ Fetching Oauth resources like `user.name`, `user.email`
 
 ![Fetching Resource](img/image4.png)
 
-##Forward Flow for payments.
-Initiating payment and opening order confirmation page (thank you page)
-![Payments](img/image3.png)
-
 ##Legend
 
 - Client UI / Partner UI : The HTML / React-native UI which renders your experience within flipkart app.

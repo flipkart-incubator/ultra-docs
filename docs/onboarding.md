@@ -19,22 +19,6 @@ Today integration with a new partner requires us to take following steps.
 
         * Prompts email verification/phone verification flows within native app so that merchants don’t have to do verification on their end.
 
-    * **Payment** as a service which
-
-        * Lets partner configure their nodal account and MIDS to power payments completion via flipkart payment gateway.
-
-        * Lets partner decide the allowed payment options for a user.
-
-        * Lets partner Run payment bank offers.
-
-        * Lets partner configure expiry timer, convenience/ other fees.
-
-        * Lets partner take the benefits of Fintech constructs like EMI, BNPL etc in future.
-
-        * Lets partner share order and payment details like payment status.
-
-        * Lets partner issue refunds and cancellations.
-
 * Process Agreement and Semi automated integration with
 
     * **Customer experience**
