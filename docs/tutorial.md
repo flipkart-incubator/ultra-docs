@@ -30,7 +30,7 @@ If you choose to build via HTML/PWA, then ultra will launch your webpage inside 
 
 ###Step 2 - Integrate JS SDK
 
-Based on the platform you choose, you have to [add the Ultra Javascript SDK to your HTML/React-native app](clients.md#step-1). This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login and Payments. Once you add the dependency for the SDK, you need to [initialize the SDK with your clientId](clients.md#step-2).
+Based on the platform you choose, you have to [add the Ultra Javascript SDK to your HTML/React-native app](clients.md#step-1). This SDK will provide access to Ultra specific bridge methods needed for Oauth/Login. Once you add the dependency for the SDK, you need to [initialize the SDK with your clientId](clients.md#step-2).
 
 [Contact flipkart](contact.md) to generate a `clientId` and `secret` needed to access Ultra APIs. For playing around with the APIs you can use [our test credentials](demo.md#test).
 
