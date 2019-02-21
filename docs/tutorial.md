@@ -60,18 +60,7 @@ Use the access token and fetch resources like `user.email` and `user.mobile`. Mo
 ###Step 4 - Auto login the user
 Use the value of `mobileNumber` in combination with the `isVerified` flag to automatically log the user in. You could now set a cookie which prevents calls to `getToken` from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.
 
-###Step 5 - Payment
-Follow steps in [payment flow](backend.md#payment-flow) to create a payment token and to `startPayment` and once payment is successful, redirect the user to your own order confirmation page.
-
-The money will reach the MIDs which have to be configured. Contact Flipkart so that your MID onboarding is done before the integration starts. This process takes a significant amount of time.
-
-The following screen is shown when you call `startPayment` :
-
-![Payment](img/payments.jpg)
-
-Also integrate with [refund API](backend.md#refund) as per your business requirements.
-
-###Step 6 - OMS integration
+###Step 5 - OMS integration
 Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.
 To do this you have to integrate with [Flipkart OMS APIs](oms.md) to let us know the status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](oms.md). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
 
