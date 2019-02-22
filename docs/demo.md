@@ -7,6 +7,3 @@ We present to you a special feature called known as the Ultra playground where y
 
 If you want a glimpse of the code running behind the scenes, open this [playground application](https://ultra-playground.herokuapp.com/) within the browser and you can use "Inspect" of Chrome browser to view the code.
 
-Check out this video to have an experience on the outcome of merging your application with Ultra
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h85e9EhrZfM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
