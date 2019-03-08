@@ -4,6 +4,7 @@ Here, we are listing some important terms and their definitions you must know wh
 ## Terms and Definitions
 <details>
   <summary>A</summary>
+  ---
   
   **Not available**
   
@@ -11,6 +12,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>B</summary>
+  ---
   
   **Not available**
   
@@ -18,6 +20,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>C</summary>
+  ---
   
   **ClientId:**
   
@@ -27,6 +30,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>D</summary>
+  ---
   
   **Deeplinks:**
   
@@ -36,6 +40,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>E</summary>
+  ---
   
   **Not available**
   
@@ -43,6 +48,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>F</summary>
+  ---
   
   **Flipkart Plus Coins:**
   
@@ -54,6 +60,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>G</summary>
+  ---
   
   **Granted Scopes:**
   
@@ -63,6 +70,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>H</summary>
+  ---
   
   **HTML:**
   
@@ -70,6 +78,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>I</summary>
+  ---
   
   **Not available**
   
@@ -77,6 +86,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>J</summary>
+  ---
   
   **Not available**
   
@@ -84,6 +94,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>K</summary>
+  ---
   
   **Not available**
   
@@ -91,6 +102,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>L</summary>
+  ---
   
   **Not available**
   
@@ -98,6 +110,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>M</summary>
+  ---
   
   **Merchant Credentials:**
   
@@ -111,6 +124,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>N</summary>
+  ---
   
   **Not available**
   
@@ -118,6 +132,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>O</summary>
+  ---
   
   **OMS:**
   
@@ -129,6 +144,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>P</summary>
+  ---
   
   **Permission:**
   
@@ -140,6 +156,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>Q</summary>
+  ---
   
   **Not available**
   
@@ -147,6 +164,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>R</summary>
+  ---
   
   **React Fragment:**
   
@@ -158,6 +176,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>S</summary>
+  ---
   
   **Scope:**
   
@@ -167,6 +186,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>T</summary>
+  ---
   
   **Not available**
   
@@ -174,6 +194,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>U</summary>
+  ---
   
   **Ultra Partner:**
   
@@ -187,6 +208,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>V</summary>
+  ---
   
   **Not available**
   
@@ -194,6 +216,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>W</summary>
+  ---
   
   **Not available**
   
@@ -201,6 +224,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>X</summary>
+  ---
   
   **Not available**
   
@@ -208,6 +232,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>Y</summary>
+  ---
   
   **Not available**
   
@@ -215,6 +240,7 @@ Here, we are listing some important terms and their definitions you must know wh
 
 <details>
   <summary>Z</summary>
+  ---
   
   **Not available**
   
