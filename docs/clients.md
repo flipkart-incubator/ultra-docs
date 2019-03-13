@@ -222,9 +222,9 @@ Use this module for sending user generated actions to Ultra’s analytics librar
 #### Add the dependency:
 ***With Node or for React Native:***
 
-Add the [latest alpha version of SDK]((https://www.npmjs.com/package/fk-platform-sdk/v/1.0.3-analytics-sdk-alpha)) to your package.json file:
+Add the [latest version of SDK](https://www.npmjs.com/package/fk-platform-sdk/v/1.0.5) to your `package.json` file:
 ```js
-"fk-platform-sdk": "1.0.3-analytics-sdk-alpha"
+"fk-platform-sdk": "1.0.5"
 ```
 Then, import the analytics module to the place where you want to push an event:
 ```js
@@ -235,7 +235,7 @@ import {<category_name>} from "fk-platform-sdk/analytics"; // for e.g <category_
 
 Embed the following script inside the `<script>` tag in your code:
 ```js
-https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fk-analytics-min@1.0.3-analytics-sdk-alpha.js
+https://img1a.flixcart.com/linchpin-web/fk-platform-sdk/fk-analytics-travel-min@1.0.6.js
 ```
 
 #### Create an Event object:
@@ -261,7 +261,7 @@ Here is the sample code:
 
 ***For WebView:***
 ```js
-const search = FKEvents.Travel.Search("BLR", ["DEL"], [new  Date()], false, 1);
+const search = FKExtension.analyticsHelper.travel.search("BLR", ["DEL"], [new  Date()], false, 1);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
 
@@ -271,7 +271,7 @@ const search = new Travel.Search("BLR", ["DEL"], [new Date()], false, 1);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(search);
 ```
 
-***Search Event:***
+***Select Event:***
 
 Send this event when the user selects or clicks on any flight or bus or hotel from the list.
 ```js
@@ -293,7 +293,7 @@ Here is the sample code:
 
 ***For WebView:***
 ```js
-const select = FKEvents.Travel.Select("6E135","FLIGHT_DOMESTIC",3500);
+const select = FKExtension.analyticsHelper.travel.select("6E135","FLIGHT_DOMESTIC",3500);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(select);
 ```
 
@@ -321,7 +321,7 @@ Here is the sample code:
 
 ***For WebView:***
 ```js
-const pay = FKEvents.Travel.ProceedToPay(3500, 0, 350, 0);
+const pay = FKExtension.analyticsHelper.travel.proceedToPayEvent(3500, 0, 350, 0);
 fkPlatform.getModuleHelper().getAnalyticsModule().pushEvent(pay);
 ```
 
