@@ -103,27 +103,6 @@ Since the user is already logged into the Flipkart, it is not a good idea to ask
 
 This completes the login flow, user is now free to explore your app facilities.
 
-## Step 4: Payment
-Now comes the point where integration of your application happens with the Flipkart payment gateway (FKPG) APIs for issuing payments and refunds. For this, [contact us](contact.md) to receive the merchant credentials required to access the API. These merchant credentials vary from the parameters used for the Ultra APIs i.e. `clientId` and `secret`.
-
-The first step is to generate a [`payment token`](backend.md#token-generation) on the server side. This payment token has to be used to show the FKPG payment options screen via Ultra’s client SDK. This FKPG screen opens outside the Ultra’s container. Then, the next step is to start payment which opens the below screen for the user:
-
-![Payment](img/payments.jpg)
-
-After the payment is successful, redirect the user to your application’s order confirmation page within the container where a `POST` call leads to the `successfulCallBackUrl` specified [here](backend.md#token-generation). Check the FORM data payload details [here](backend.md#callback-after-pg-response). Then, issue an HTTP redirection request to the `fapp://` [redirect URL](clients.md#navigation) so that the application control goes back to the Ultra container and the order confirmation page opens within this container in the similar format.
-
-The entire payment flow from initiation of payment to the order confirmation page is explained in the following sequence diagram:
-
-![Payments](img/Payments.jpg)
-
-!!!note
-    It is mandatory to redirect via `fapp://` to the Ultra container.
-    You should not open any UI page of your application outside Ultra container.
-
-> Your money is transferred to an MID account which has to be configured. [Contact our team](contact.md) to onboard your MID account with us before starting the integration since it takes a significant amount of time.
-
-In case of refunds, integrate our [refund API](backend.md#refund) with your application as per your business needs.
-
 ## Step 4: OMS Integration
 After the order has been placed and the payment has been successfully completed, the user would want to know the status of the placed order. So, now it is the time to call the [`Flipkart OMS APIs`](backend.md#oms) to update status of the order in your application. 
 
