@@ -1,7 +1,7 @@
 # Ultra Client Side SDK documentation
 Here are the details of the Client side APIs you need to incorporate while integration of your app with Ultra.
 
-> Use this latest version of JS SDK: [1.0.5](https://www.npmjs.com/package/fk-platform-sdk)
+> Use the latest version of JS SDK: [![npm version](https://badge.fury.io/js/fk-platform-sdk.svg)](https://badge.fury.io/js/fk-platform-sdk)
 
 ## Integrate JS SDK
 #### Add the dependency
