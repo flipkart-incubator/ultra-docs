@@ -52,8 +52,6 @@ Here, we are listing some important terms and their definitions you must know wh
   
   **Flipkart Plus Coins:**
   
-  **FKPG:**
-  
   **Funnel (User / Payment / Order):**
   
 </details>
