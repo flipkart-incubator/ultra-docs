@@ -222,9 +222,9 @@ Use this module for sending user generated actions to Ultra’s analytics librar
 #### Add the dependency:
 ***With Node or for React Native:***
 
-Add the [latest version of SDK](https://www.npmjs.com/package/fk-platform-sdk/v/1.0.5) to your `package.json` file:
+Add the [latest version of SDK](https://www.npmjs.com/package/fk-platform-sdk/v/1.0.6) to your `package.json` file:
 ```js
-"fk-platform-sdk": "1.0.5"
+"fk-platform-sdk": "1.0.6"
 ```
 Then, import the analytics module to the place where you want to push an event:
 ```js
