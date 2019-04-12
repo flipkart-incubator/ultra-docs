@@ -1,4 +1,4 @@
-##Tutorial
+##Tutorial/Integration Steps
 This tutorial will help you integrate your service into the Ultra platform. If you dont like to read instructions and want to tinker around first, head over to the [demo](demo.md) to open the playground app. You can open it on your browser to understand how the APIs are implemented.
 
 ###Step 1 - Decide your UI platform
@@ -67,6 +67,11 @@ To do this you have to integrate with [Flipkart OMS APIs](oms.md) to let us know
 
 ###Step 6 - My Orders page
 Users should be able to see their orders placed on partner apps via Flipkart app. To support this, partner HTML/PWA or React Native app should provide a "My Orders" page which only shows the orders placed by the customer via the Flipkart app.
+
+###Step 7 - Reconciliation Report
+In addition to real time order status update via OMS APIs, partner would also need to share the consolidated order statuses on T+1 basis. This report is required to reconcile any mismatches or missing data in Flipkart OMS vs Partner OMS due to any network or technical issues resulting in unsuccessful calls to Flipkart OMS APIs.
+
+This report is to be shared to Flipkart via another OMS API. Please contact us to get the report format/template.
 
 ###Demo
 Checkout the [demo page](demo.md) to see this flow in action.

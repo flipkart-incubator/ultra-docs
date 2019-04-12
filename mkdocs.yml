@@ -2,7 +2,7 @@ site_name: Ultra
 site_description: A technical guide for building applications with Flipkart using Ultra platform
 pages:
     - Home: index.md
-    - Tutorial : tutorial.md
+    - Tutorial/Integration Steps : tutorial.md
     - Flow diagrams : flows.md
     - Client Side API: clients.md
     - Server Side API:
