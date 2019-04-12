@@ -61,10 +61,13 @@ Use the access token and fetch resources like `user.email` and `user.mobile`. Mo
 Use the value of `mobileNumber` in combination with the `isVerified` flag to automatically log the user in. You could now set a cookie which prevents calls to `getToken` from happening each time the user opens your app. This completes the Login flow. Its highly recommended that you do this towards the end of the user funnel to avoid dropouts.
 
 ###Step 5 - OMS integration
-Now that the user has paid you, he will want to check for the status of your order using My Orders page in the Flipkart app.
+Once the user has completed payment, the order status details, including order id, order value, fulfilment date etc need to be shared with Flipkart for multiple purposes, like computation of loyalty benefits for Flipkart user, commission calculation etc.
 To do this you have to integrate with [Flipkart OMS APIs](oms.md) to let us know the status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](oms.md). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
 
->This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.
+[comment]: <> >This is a MANDATORY step and not optional. Although this step has no UI implications, your app cannot go live unless this data is being sent to our server.
+
+###Step 6 - My Orders page
+Users should be able to see their orders placed on partner apps via Flipkart app. To support this, partner HTML/PWA or React Native app should provide a "My Orders" page which only shows the orders placed by the customer via the Flipkart app.
 
 ###Demo
 Checkout the [demo page](demo.md) to see this flow in action.
