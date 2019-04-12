@@ -62,6 +62,7 @@ Use the value of `mobileNumber` in combination with the `isVerified` flag to aut
 
 ###Step 5 - OMS integration
 Once the user has completed payment, the order status details, including order id, order value, fulfilment date etc need to be shared with Flipkart for multiple purposes, like computation of loyalty benefits for Flipkart user, commission calculation etc.
+
 To do this you have to integrate with [Flipkart OMS APIs](oms.md) to let us know the status of an Order. A successful payment need not always mean a successful order. Hence a separate API call is required for this. More info [here](oms.md). These flows will also help Flipkart's Customer service agent answer customer queries/calls in a more meaningful manner.
 
 ###Step 6 - My Orders page
