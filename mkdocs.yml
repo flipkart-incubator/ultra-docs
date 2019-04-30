@@ -8,6 +8,7 @@ pages:
     - Server Side API:
         - Basic APIs: backend.md
         - OMS: oms.md
+        - Code Snippets: code-snippet.md
     - Demo: demo.md
     - Contact Us : contact.md
 theme:
