@@ -2,6 +2,122 @@
 Merchants can refer to these code snippets for onboarding the login flows.
 The following code snippets can be copy/pasted directly and are ready for use.
 
+###Helper Classes
+
+####UltraConstants.java
+
+This class contains constants that are used throughout the code.
+
+```
+public class UltraConstants {
+
+    public static class ULTRA_SERVICE_PATHS {
+        public static final String PLATFORM_PATH = "https://platform.flipkart.net";
+        public static final String JWT_VALIDATION_PATH = "/1/dummy";
+        public static final String ACCESS_TOKEN_PATH = "/1/authorization/auth";
+        public static final String BULK_RESOURCE_PATH = "/2/resource/bulk";
+    }
+
+    public static class HEADERS {
+        public static final String SECURE_TOKEN = "secureToken";
+        public static final String CONTENT_TYPE = "Content-Type";
+        public static final String JSON = "application/json";
+        public static final String CACHE_CONTROL = "Cache-Control";
+        public static final String NO_CACHE = "no-cache";
+    }
+
+    public static class QUERY_PARAMETERS {
+        public static final String GRANT_TOKEN = "grantToken";
+        public static final String CLIENT_ID = "clientId";
+        public static final String CLIENT_SECRET = "clientSecret";
+        public static final String ACCESS_TOKEN = "accessToken";
+    }
+
+    public static class JWT_TOKEN {
+        public static final String ALG = "alg";
+        public static final String RS256 = "rs256";
+        public static final String TYP = "typ";
+        public static final String JWT = "jwt";
+        public static final String RSA = "RSA";
+        public static final String EXPIRY_TIME = "1000000";
+    }
+
+}
+```
+####Response.java
+
+ This is a generic class to store all the response types.
+
+```
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+@Data   
+public class Response<T> {
+
+    @JsonProperty("STATUS")
+    String status;
+
+    @JsonProperty("RESPONSE")
+    T response;
+}
+```
+
+####AccessTokenResponse.java
+
+This class is used to store Access Token Response.
+
+```
+
+import lombok.Data;
+
+@Data   
+public class AccessTokenResponse { 
+ 
+    private String identityToken;   
+    private String accessToken;     
+}
+```
+
+##Dependencies
+
+The following Maven dependies are required to be imported in the code :
+```
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle.bcprov-jdk15on.1.57.org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.57</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+```
+
 ###Generate JWT Token
 This class is used to generate JWT token which is used to enable
  secure server to server communication between partner and Ultra.
@@ -19,7 +135,8 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;        
 import java.util.Date;      
 import java.util.HashMap;       
-import java.util.Map;       
+import java.util.Map;    
+import <UltraConstants.java class>   
 
 import io.jsonwebtoken.JwtBuilder;      
 import io.jsonwebtoken.Jwts;        
@@ -91,7 +208,7 @@ public class GenerateJWTToken {
                 .signWith(signatureAlgorithm, privKey);
 
         // Assigns the expiration time of the JWT token
-        Long expMillis = nowMillis + 1000 * 1000;
+        Long expMillis = nowMillis + UltraConstants.JWT_TOKEN.EXPIRY_TIME;
         Date exp = new Date(expMillis);
         jwtBuilder.setExpiration(exp);
 
@@ -110,9 +227,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;     
 import com.sun.jersey.api.client.Client;        
 import com.sun.jersey.api.client.WebResource;       
-import org.flipkart.ultra.v1.constants.UltraConstants;      
-import org.flipkart.ultra.v1.model.AccessTokenResponse;     
-import org.flipkart.ultra.v1.model.Response;
+import <UltraConstants.java helper class>   
+import <AccessTokenResponse.java helper class>   
+import <Response.java helper class>
 
 import java.io.IOException;
 
@@ -176,8 +293,8 @@ import com.google.gson.JsonArray;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import lombok.NoArgsConstructor;
-import org.flipkart.ultra.v1.constants.UltraConstants;
-import org.flipkart.ultra.v1.model.Response;
+import <UltraConstants.java helper class>   
+import <Response.java helper class>
 
 import java.io.IOException;
 import java.util.List;
@@ -225,118 +342,4 @@ public class GetBulkResource {
 
 
 }
-```
-
-###Helper Classes
-
-####UltraConstants.java
-
-This class contains constants that are used throughout the code.
-
-```
-public class UltraConstants {
-
-    public static class ULTRA_SERVICE_PATHS {
-        public static final String PLATFORM_PATH = "https://platform.flipkart.net";
-        public static final String JWT_VALIDATION_PATH = "/1/dummy";
-        public static final String ACCESS_TOKEN_PATH = "/1/authorization/auth";
-        public static final String BULK_RESOURCE_PATH = "/2/resource/bulk";
-    }
-
-    public static class HEADERS {
-        public static final String SECURE_TOKEN = "secureToken";
-        public static final String CONTENT_TYPE = "Content-Type";
-        public static final String JSON = "application/json";
-        public static final String CACHE_CONTROL = "Cache-Control";
-        public static final String NO_CACHE = "no-cache";
-    }
-
-    public static class QUERY_PARAMETERS {
-        public static final String GRANT_TOKEN = "grantToken";
-        public static final String CLIENT_ID = "clientId";
-        public static final String CLIENT_SECRET = "clientSecret";
-        public static final String ACCESS_TOKEN = "accessToken";
-    }
-
-    public static class JWT_TOKEN {
-        public static final String ALG = "alg";
-        public static final String RS256 = "rs256";
-        public static final String TYP = "typ";
-        public static final String JWT = "jwt";
-        public static final String RSA = "RSA";
-    }
-
-}
-```
-####Response.java
-
- This is a generic class to store all the response types
-
-```
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-
-@Data   
-public class Response<T> {
-
-    @JsonProperty("STATUS")
-    String status;
-
-    @JsonProperty("RESPONSE")
-    T response;
-}
-```
-
-####AccessTokenResponse.java
-
-This class is used to store Access Token Response
-
-```
-
-import lombok.Data;
-
-@Data   
-public class AccessTokenResponse { 
- 
-    private String identityToken;   
-    private String accessToken;     
-}
-```
-
-##Dependencies
-
-The following Maven dependies are required to be imported in the code :
-```
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle.bcprov-jdk15on.1.57.org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.57</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.5</version>
-        </dependency>
 ```

@@ -62,14 +62,14 @@ Once this is done you can start using modules.
 ```js
 let permissionsModule = fkPlatform.getModuleHelper().getPermissionsModule()
 
-//To get scopes:
-const SCOPES = permissionsModule.getScopes();
 ```
 **Available Scopes:**
 ```
-SCOPES.USER_EMAIL,
-SCOPES.USER_MOBILE,
-SCOPES.USER_NAME
+user.email,
+user.mobile,
+user.name,
+usser.location,
+user.storage
 ```
 **Methods:**
 
@@ -81,7 +81,7 @@ Relevant interfaces:
 
 ```js
 interface ScopeAccessRequest {
-    scope: Scopes;
+    scope: Scope; // This will include the scopes mentioned above
     isMandatory?: boolean;
     shouldVerify?: boolean;
 }
