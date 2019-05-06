@@ -68,7 +68,7 @@ let permissionsModule = fkPlatform.getModuleHelper().getPermissionsModule()
 user.email,
 user.mobile,
 user.name,
-usser.location,
+user.location,
 user.storage
 ```
 **Methods:**
