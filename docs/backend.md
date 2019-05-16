@@ -23,7 +23,7 @@ Properties of secure token
 {
   "iss": <clientId>,
   "iat": <unix timestamp in seconds>, // Issued at. Should be in past.
-  "exp": <unix timestamp in seconds> // Expiry of token. Should be in future. Also exp - iat should not be > 100.
+  "exp": <unix timestamp in seconds> // Expiry of token. Should be in future. Also exp - iat should not be > 1000.
 }
 ```
 The Public key should be shared with flipkart before hand.

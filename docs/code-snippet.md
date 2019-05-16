@@ -117,6 +117,17 @@ The following Maven dependies are required to be imported in the code :
         </dependency>
 
 ```
+###Generate Private and Public Key Pair
+
+On the command line enter the following command to generate private and public key pair :
+
+ssh-keygen -t rsa -b 4096 -m PEM -f private.key
+
+openssl rsa -in private.key -pubout -outform PEM -out public.key.pub
+
+private.key is the private key which is used to generate JWT token and should be kept secret by the partners.
+
+public.key.pub is the public key that should be shared with Flipkart inorder to validate the partner.
 
 ###Generate JWT Token
 This class is used to generate JWT token which is used to enable
