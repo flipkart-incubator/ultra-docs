@@ -354,3 +354,19 @@ public class GetBulkResource {
 
 }
 ```
+
+###OMS Validation Checks
+
+The following checks should be implemented while sending OMS Events :
+
+
+
+1. Order fulfillment date cannot be before order creation date. The order fulfillment date should be delivery date + cancellation period + buffer period (if needed).
+
+2. In case of completely cancelled orders, the sum of all forward transactions should be less than or equal to the sum of all reverse transactions and cancellation charges.
+
+3. The difference between the sum of base price of all items and sum of final price of all items should be equal to the sum of all merchant adjustments.
+
+Please note : 
+We support transaction amounts up to four decimal places.
+
