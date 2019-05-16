@@ -121,9 +121,9 @@ The following Maven dependies are required to be imported in the code :
 
 On the command line enter the following command to generate private and public key pair :
 
-ssh-keygen -t rsa -b 4096 -m PEM -f private.key
+*ssh-keygen -t rsa -b 4096 -m PEM -f private.key*
 
-openssl rsa -in private.key -pubout -outform PEM -out public.key.pub
+*openssl rsa -in private.key -pubout -outform PEM -out public.key.pub*
 
 private.key is the private key which is used to generate JWT token and should be kept secret by the partners.
 
