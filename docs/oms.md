@@ -93,8 +93,8 @@ latest state plus the replayed orders.
 Reconciliation report example:
 ```
 Order Id,Order States,Order Created Timestamp,Order Updated Timestamp,Total Forward Transaction,Total Reverse Transaction,Total Cancellation Charges
-1,INIT;SUCCESSFUL,1544424417569,1556802866753,760000,750000,10000
-2,INIT,1544424417569,1556802866753,850000,0,0
+ORDER_ID_1,INIT;SUCCESSFUL,1544424417569,1556802866753,760000,750000,10000
+ORDER_ID_2,INIT,1544424417569,1556802866753,850000,0,0
 ```
 
 Curl Request: 
