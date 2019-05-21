@@ -102,6 +102,6 @@ Curl Request:
 curl --request POST \
 --url https://platform.flipkart.net/2/oms/recon/report/upload \
 --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
---header 'securetoken: [secureTokne]' \
+--header 'securetoken: [secureToken]' \
 --form file=[file]
 ```
