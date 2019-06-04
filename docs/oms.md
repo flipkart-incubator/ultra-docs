@@ -46,6 +46,7 @@ name|type|mandatory|notes|
 name|type|mandatory|notes|
 |---|---|---|---|
 |transactionId|string|yes|The transactionId shared by PG|
+|pg|enum('NON_FKPG')|yes|The transaction type|
 |amount|double|yes|Final amount deducted from customer|
 |description|string|yes||
 |timestamp|long|yes|Time of transaction|
@@ -54,6 +55,7 @@ name|type|mandatory|notes|
 name|type|mandatory|notes|
 |---|---|---|---|
 |forwardTransactionId|string|yes|The forward transaction used to take money from customer|
+|pg|enum('NON_FKPG')|yes|The transaction type|
 |reverseTransactionId|string|yes||
 |amount|double|yes|amount to be refunded|
 |description|string|yes||
