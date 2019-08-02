@@ -225,6 +225,17 @@ Fetches names and other info against given list of phone numbers. Keys of the re
 ### Analytics Module
 Use this module if you wish to send user generated actions to ultra analytics library. For detailed description of this SDK refer [this page](analytics-overview.md).
 
+### SMS Module
+Using this module will allow your application to read OTP using Google's [Automatic SMS Verification flow](https://developers.google.com/identity/sms-retriever/overview). Please ensure to append the Flipkart's public key at the end of the message while generating the OTP(**Df9YrqIZHWd**), this key will be used by Android to deliver the message to our app. 
+
+Below is the sample code to use this function on the client side.
+
+```js
+fkPlatform.getModuleHelper().getSMSModule().captureMessage().then(function(result){
+    // result will contain the OTP message
+})
+```
+
 ### Relevant types
 
 ```js
