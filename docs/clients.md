@@ -243,7 +243,11 @@ fkPlatform.getModuleHelper().getSMSModule().captureMessage().then(function(resul
 `captureMessage()` function returns error after the timeout of 5 minutes or if the google play services is not available in the device.
 
 #### Generating message from backend
-At the end of the message append your client id and followed by Flipkart's public key(**Df9YrqIZHWd**), client id is used to identify the client for which we have to deliver the SMS and public key will be used by Android to deliver the message to our app.
+At the end of the message append your (client id) and followed by Flipkart's public key(**Df9YrqIZHWd**), client id is used to identify the client for which we have to deliver the SMS and public key will be used by Android to deliver the message to our app.
+
+A message looks something like this
+
+`Your Flipkart verification OTP code is 346167 . Code valid for 10 minutes only. Please DO NOT share this OTP with anyone. (playground.home) Df9YrqIZHWd`
 
 ### Relevant types
 
