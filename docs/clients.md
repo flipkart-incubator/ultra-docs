@@ -226,7 +226,7 @@ Fetches names and other info against given list of phone numbers. Keys of the re
 Use this module if you wish to send user generated actions to ultra analytics library. For detailed description of this SDK refer [this page](analytics-overview.md).
 
 ### SMS Module
-This module is available since SDK version 1.0.17.
+> Available from flipkart app v6.17, SDK version v1.0.17
 
 Using this module will allow your application to read SMS using Google's [Automatic SMS Verification flow](https://developers.google.com/identity/sms-retriever/overview). 
 
@@ -243,11 +243,13 @@ fkPlatform.getModuleHelper().getSMSModule().captureMessage().then(function(resul
 `captureMessage()` function returns error after the timeout of 5 minutes or if the google play services is not available in the device.
 
 #### Generating message from backend
-At the end of the message append your (client id) and followed by Flipkart's public key(**Df9YrqIZHWd**), client id is used to identify the client for which we have to deliver the SMS and public key will be used by Android to deliver the message to our app.
+At the end of the message append your `(client id)` and followed by Flipkart's public key(**Df9YrqIZHWd**), client id is used to identify the client for which we have to deliver the SMS and public key will be used by Android to deliver the message to our app.
 
 A message looks something like this
 
 `Your Flipkart verification OTP code is 346167 . Code valid for 10 minutes only. Please DO NOT share this OTP with anyone. (playground.home) Df9YrqIZHWd`
+
+In the above example `playground.home` is the clientId.
 
 ### Relevant types
 
