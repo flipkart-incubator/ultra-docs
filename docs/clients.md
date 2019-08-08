@@ -234,7 +234,7 @@ Below is the sample code to use this function on the client side.
 
 ```js
 fkPlatform.getModuleHelper().getSMSModule().captureMessage().then(function(result){
-    // result will contain the OTP message
+    // result will be an object with a member variable called message in it.
 }).catch(function(error) {
     // error could happen if the google play serive is not available or after timeout of 5 mins
 })
