@@ -10,6 +10,7 @@ pages:
         - OMS: oms.md
         - Code Snippets: code-snippet.md
     - Demo: demo.md
+    - FAQ: FAQ.md
     - Contact Us : contact.md
 theme:
   name: 'material'

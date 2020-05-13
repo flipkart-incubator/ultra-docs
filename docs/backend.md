@@ -82,141 +82,37 @@ This information will be rendered on the user's `My orders` screen with all the 
 For a better view of OMS, to understand its purpose and to understand the meaning of every field being uploaded refer [this page](oms.md) too
 ###OMS Upsert
 ```
-Path: /2/oms
+Path: /3/oms
 Method: POST
+HEADER
+secureToken : {secure_token} (JWT TOKEN)
+Content-Type : application/json
 Body:
 Order {
-orderId (string),
-description (string),
-identityToken (string),
-orderTimestamp (long),
-orderUpdatedTimestamp(long),
-orderUrl (string),
-items (Array[Item]),
-forwardTransactions (Array[ForwardTransaction], optional),
-reverseTransactions (Array[ReverseTransaction], optional),
-merchantAdjustments (Array[MerchantAdjustment], optional),
-flipkartAdjustments (Array[FlipkartAdjustment], optional),
-cancellationCharges (Array[CancellationCharges], optional)
-}
-Item {
-itemId (string),
-title (string),
-image (string),
-basePrice (double),
-finalPrice (double, optional),
-category (string),
-fulfillmentDate (long),
-itemState (string) = ['INIT' or 'SUCCESSFUL' or 'CANCELLED' or 'PENDING'],
-brand (string),
-product (string),
-customerName (string),
-quantity (string)
-}
-ForwardTransaction {
-transactionId (string),
-amount (double),
-description (string),
-timestamp (long)
-}
-ReverseTransaction {
-forwardTransactionId (string),
-reverseTransactionId (string),
-amount (double),
-description (string),
-timestamp (long)
-}
-MerchantAdjustment {
-adjustmentId (string),
-amount (double),
-title (string)
-}
-FlipkartAdjustment {
-adjustmentId (string),
-amount (double)
-}
-CancellationCharges {
-itemId (string),
-reason (string),
-amount (double)
+  orderId : <String>
+  orderState : <String> (ORDER_CONFIRMED , ORDER_FULFILLED, ORDER_CANCELLED)
+  identityToken : <String>
+  description : <String> (Optional)
+  orderTimestamp(Order Creation Timestamp) : <Long>
+  orderUpdatedTimestamp(Order Update time) : <Long>
+  forwardTransaction(Amount paid by customer to Partner) : <Double>
+  reverseTransaction(Amount Paid by Partner to customer) : <Double>
+  lastFulfillmentDate: <Long>
+  orderMetadata : <Map<String, String>> (Optional)
 }
 ```
 ```
 Sample Request
 {
-  "orderId": "DummyOrderId",
-  "description": "This is a dummy description",
-  "identityToken": "someIdentityToken",
-  "orderTimestamp": 1530622713945,
-  "orderUpdatedTimestamp": 1530622713945,
-  "orderUrl": "someURLToOrderPage",
-  "items": [
-    {
-      "itemId": "Product 1",
-      "title": "This is a product",
-      "image": "image.url",
-      "basePrice": 120,
-      "finalPrice": 100,
-      "category": "test",
-      "fulfillmentDate": 1530622713946,
-      "itemState": "SUCCESSFUL",
-      "brand": "Some brand",
-      "product": "modelNumber",
-      "customerName": "Lorem Ipsum",
-      "quantity": 1
-    },
-    {
-      "itemId": "Product 2",
-      "title": "This is a product",
-      "image": "image.url",
-      "basePrice": 120,
-      "finalPrice": 100,
-      "category": "test",
-      "fulfillmentDate": 1530622713946,
-      "itemState": "SUCCESSFUL",
-      "brand": "Some brand",
-      "product": "modelNumber",
-      "customerName": "Lorem Ipsum 2",
-      "quantity": 1
-    }
-  ],
-  "forwardTransactions": [
-    {
-      "transactionId": "transaction1",
-      "amount": 100,
-      "description": "Paid via FKPG",
-      "timestamp": 1530622713956
-    }
-  ],
-  "reverseTransactions": [
-    {
-      "forwardTransactionId": "transaction1",
-      "reverseTransactionId": "rev_transaction1",
-      "amount": 10,
-      "description": "Refund for cancellation",
-      "timestamp": 1530622714957
-    }
-  ],
-  "merchantAdjustments": [
-    {
-      "adjustmentId": "Dummy merchant adjustment id",
-      "title": "This is some title",
-      "amount": 20
-    }
-  ],
-  "flipkartAdjustments": [
-    {
-      "adjustmentId": "dummyAdjustmentId",
-      "amount": 20
-    }
-  ],
-  "cancellationCharges": [
-    {
-      "itemId": "Product 1",
-      "reason": "Cancellation costs are sometimes deducted",
-      "amount": 10
-    }
-  ]
+  "orderId": "ZO-B72BC17DD1",
+  "orderState": "ORDER_CONFIRMED",
+  "identityToken": "IDTKN848F9123941444B990045011A48D4920PEJ",
+  "orderTimestamp": 1588686476,
+  "orderUpdatedTimestamp": 1588686476,
+  "forwardTransaction": 0.98,
+  "reverseTransaction": 0,
+  "lastFulfillmentDate": 1591286671
+  "orderMetadata" : null // skip this field if not required
 }
 ```
 
